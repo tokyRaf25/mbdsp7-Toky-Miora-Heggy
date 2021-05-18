@@ -16,3 +16,4 @@ D:\ProjetTPT\mbdsp7-Toky-Miora-Heggy\ProjetClientBanque\ProjetClientBanque\obj\D
 D:\ProjetTPT\mbdsp7-Toky-Miora-Heggy\ProjetClientBanque\ProjetClientBanque\obj\Debug\net5.0-windows\ref\ProjetClientBanque.dll
 D:\ProjetTPT\mbdsp7-Toky-Miora-Heggy\ProjetClientBanque\ProjetClientBanque\obj\Debug\net5.0-windows\ProjetClientBanque.pdb
 D:\ProjetTPT\mbdsp7-Toky-Miora-Heggy\ProjetClientBanque\ProjetClientBanque\obj\Debug\net5.0-windows\ProjetClientBanque.genruntimeconfig.cache
+D:\ProjetTPT\mbdsp7-Toky-Miora-Heggy\ProjetClientBanque\ProjetClientBanque\obj\Debug\net5.0-windows\ProjetClientBanque.Properties.Resources.resources
