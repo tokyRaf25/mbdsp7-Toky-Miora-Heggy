@@ -19,3 +19,4 @@ D:\ProjetTPT\mbdsp7-Toky-Miora-Heggy\ProjetClientBanque\ProjetClientBanque\obj\D
 D:\ProjetTPT\mbdsp7-Toky-Miora-Heggy\ProjetClientBanque\ProjetClientBanque\obj\Debug\net5.0-windows\ProjetClientBanque.Properties.Resources.resources
 D:\ProjetTPT\mbdsp7-Toky-Miora-Heggy\ProjetClientBanque\ProjetClientBanque\obj\Debug\net5.0-windows\ProjetClientBanque.Forms.Dépot.resources
 D:\ProjetTPT\mbdsp7-Toky-Miora-Heggy\ProjetClientBanque\ProjetClientBanque\obj\Debug\net5.0-windows\ProjetClientBanque.Forms.Retrait.resources
+D:\ProjetTPT\mbdsp7-Toky-Miora-Heggy\ProjetClientBanque\ProjetClientBanque\obj\Debug\net5.0-windows\ProjetClientBanque.Forms.FormAccueil.resources

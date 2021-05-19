@@ -38,5 +38,30 @@ namespace ProjetClientBanque.Forms
         {
             LoadTheme();
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtSomme_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSomme_Leave(object sender, EventArgs e)
+        {
+            txtSomme.Text = string.Format("{0:#,##0.00}", double.Parse(txtSomme.Text));
+        }
     }
 }

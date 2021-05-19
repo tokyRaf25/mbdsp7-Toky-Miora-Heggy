@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetClientBanque.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,12 +19,15 @@ namespace ProjetClientBanque
         private Random random;
         private int tempIndex;
         private Form activeForm;
+        private AuthService authService;
+        private bool auth = false;
 
         //Constructor
         public Form1()
         {
             InitializeComponent();
             random = new Random();
+            authService = new AuthService();
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
@@ -97,16 +101,6 @@ namespace ProjetClientBanque
             lblTitle.Text = childForm.Text;
         }
 
-        private void btnDébit_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.Retrait(),sender);
-        }
-
-        private void btnCrédit_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.Dépot(), sender);
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -116,6 +110,7 @@ namespace ProjetClientBanque
         {
             if (activeForm != null)
                 activeForm.Close();
+            auth = false;
             Reset();
         }
 
@@ -136,6 +131,8 @@ namespace ProjetClientBanque
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            txtPass.PasswordChar = '*';
+            txtPass.MaxLength = 14;
         }
 
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
@@ -165,6 +162,61 @@ namespace ProjetClientBanque
         private void panelDesktopPane_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string username = txtUser.Text;
+            string password = txtPass.Text;
+            int login = authService.Login(username, password);
+            if(login == 1)
+            {
+                this.auth = true;
+                OpenChildForm(new Forms.FormAccueil(), sender);
+            }
+            else
+            {
+                MessageBox.Show("Erreur Login", "Erreur d'authentification",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error
+                                );
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            if (!auth)
+            {
+                MessageBox.Show("Veuillez vous connecté!");
+            }
+            else
+            {
+                OpenChildForm(new Forms.FormAccueil(), sender);
+            }
+        }
+
+        private void btnCrédit_Click(object sender, EventArgs e)
+        {
+            if (!auth)
+            {
+                MessageBox.Show("Veuillez vous connecté!");
+            }
+            else
+            {
+                OpenChildForm(new Forms.Dépot(), sender);
+            }
+        }
+
+        private void btnDébit_Click(object sender, EventArgs e)
+        {
+            if (!auth)
+            {
+                MessageBox.Show("Veuillez vous connecté!");
+            }
+            else
+            {
+                OpenChildForm(new Forms.Retrait(), sender);
+            }
         }
     }
 }

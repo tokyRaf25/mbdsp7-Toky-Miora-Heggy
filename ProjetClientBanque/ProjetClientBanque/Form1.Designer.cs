@@ -31,8 +31,9 @@ namespace ProjetClientBanque
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnCrédit = new System.Windows.Forms.Button();
             this.btnDébit = new System.Windows.Forms.Button();
+            this.btnCrédit = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,13 +70,35 @@ namespace ProjetClientBanque
             this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.panelMenu.Controls.Add(this.btnCrédit);
             this.panelMenu.Controls.Add(this.btnDébit);
+            this.panelMenu.Controls.Add(this.btnCrédit);
+            this.panelMenu.Controls.Add(this.btnHome);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(237, 701);
             this.panelMenu.TabIndex = 0;
+            // 
+            // btnDébit
+            // 
+            this.btnDébit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnDébit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDébit.FlatAppearance.BorderSize = 0;
+            this.btnDébit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDébit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDébit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDébit.Image = ((System.Drawing.Image)(resources.GetObject("btnDébit.Image")));
+            this.btnDébit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDébit.Location = new System.Drawing.Point(0, 204);
+            this.btnDébit.Name = "btnDébit";
+            this.btnDébit.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnDébit.Size = new System.Drawing.Size(237, 62);
+            this.btnDébit.TabIndex = 3;
+            this.btnDébit.Text = "    Faire un retrait";
+            this.btnDébit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDébit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDébit.UseVisualStyleBackColor = false;
+            this.btnDébit.Click += new System.EventHandler(this.btnDébit_Click);
             // 
             // btnCrédit
             // 
@@ -97,26 +120,26 @@ namespace ProjetClientBanque
             this.btnCrédit.UseVisualStyleBackColor = false;
             this.btnCrédit.Click += new System.EventHandler(this.btnCrédit_Click);
             // 
-            // btnDébit
+            // btnHome
             // 
-            this.btnDébit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.btnDébit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDébit.FlatAppearance.BorderSize = 0;
-            this.btnDébit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDébit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDébit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDébit.Image = ((System.Drawing.Image)(resources.GetObject("btnDébit.Image")));
-            this.btnDébit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDébit.Location = new System.Drawing.Point(0, 80);
-            this.btnDébit.Name = "btnDébit";
-            this.btnDébit.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnDébit.Size = new System.Drawing.Size(237, 62);
-            this.btnDébit.TabIndex = 1;
-            this.btnDébit.Text = "    Faire un retrait";
-            this.btnDébit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDébit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDébit.UseVisualStyleBackColor = false;
-            this.btnDébit.Click += new System.EventHandler(this.btnDébit_Click);
+            this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(0, 80);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnHome.Size = new System.Drawing.Size(237, 62);
+            this.btnHome.TabIndex = 1;
+            this.btnHome.Text = "    Accueil";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // panelLogo
             // 
@@ -233,9 +256,9 @@ namespace ProjetClientBanque
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(454, 31);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(108, 25);
+            this.lblTitle.Size = new System.Drawing.Size(146, 25);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "ACCUEIL";
+            this.lblTitle.Text = "CONNEXION";
             this.lblTitle.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
@@ -361,6 +384,7 @@ namespace ProjetClientBanque
             this.button1.TabIndex = 3;
             this.button1.Text = "Connecter";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox2
             // 
@@ -403,7 +427,7 @@ namespace ProjetClientBanque
 
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnCrédit;
-        private System.Windows.Forms.Button btnDébit;
+        private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Label label1;
@@ -425,6 +449,7 @@ namespace ProjetClientBanque
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.Button btnDébit;
     }
 }
 
