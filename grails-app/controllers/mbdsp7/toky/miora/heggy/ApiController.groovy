@@ -8,14 +8,14 @@ class ApiController {
     def adminService;
     def compteBancaireService;
     def mouvementBancaireService;
+    def passwordService;
     def builder = new JSONBuilder()
-
     def admin() {
         if (request.getMethod().equals("POST")) {
                 if (request.JSON.nom && request.JSON.motdepasse) {
                     Admin aa = new Admin()
                     aa.nom = request.JSON.nom
-                    aa.motdepasse = request.JSON.motdepasse
+                    aa.motdepasse = passwordService.getEncodedPassword(request.JSON.motdepasse)
                     adminService.save(aa)
                     def json = builder.build {
                         message = " insert success"
@@ -24,6 +24,14 @@ class ApiController {
                     return response.status = 201
                 }
                 return response.status = HttpServletResponse.SC_NOT_ACCEPTABLE
+        }
+        else if(request.getMethod().equals("GET")){
+            def rs = Admin.list()
+            def json = builder.build {
+               rs
+            }
+            render(status: 200, contentType: 'application/json', text: json)
+            return response.status = 200
         }
         return response.status = HttpServletResponse.SC_NOT_ACCEPTABLE
     }
@@ -35,7 +43,7 @@ class ApiController {
                     aa.nom = request.JSON.nom
                     aa.motdepasse = request.JSON.motdepasse
                     def rs = adminService.authentificate(aa)
-                    if(rs[0] == null){
+                    if(rs == null){
                         def json = builder.build {
                             message = " aucune correspondance"
                         }
