@@ -169,6 +169,7 @@ namespace ProjetClientBanque
             string username = txtUser.Text;
             string password = txtPass.Text;
             int login = authService.Login(username, password);
+            MessageBox.Show(TestCallApi.callApi(username, password));
             if(login == 1)
             {
                 this.auth = true;

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "unrnZn4ANgco/vLNw8EEKGestTvQSKQZ89SOmtThIq2nlTC434H9p3rt6K3whbqjRj1rRPnC9zrZpltaiAG+Sg==",
+  "dgSpecHash": "V3YAw7kFeI407C4Ms1YCODfBYa1FFLHGFClQOTVGuBtStpqxU0iB+2b9EowlRvXJPFJTfzk6iVA/3V9B5Qa6TA==",
   "success": true,
   "projectFilePath": "D:\\ProjetTPT\\mbdsp7-Toky-Miora-Heggy\\ProjetClientBanque\\ProjetClientBanque\\ProjetClientBanque.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\rainl\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
