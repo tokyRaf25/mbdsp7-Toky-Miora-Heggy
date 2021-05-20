@@ -9,10 +9,12 @@ class AdminService {
     }
     def authentificate(Admin a){
         def matchAdmin  = Admin.createCriteria().list{
-            eq("name",a.name)
+            eq("nom",a.nom)
             and {
-                eq("password",a.password)
+                eq("motdepasse",a.motdepasse)
             }
         }
     }
+
+
 }

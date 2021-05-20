@@ -8,4 +8,6 @@ class MouvementBancaireService {
     def save(MouvementBancaire mb) {
         mb.save();
     }
+
+
 }

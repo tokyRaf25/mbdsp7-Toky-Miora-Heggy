@@ -35,11 +35,20 @@ class ApiController {
                     aa.nom = request.JSON.nom
                     aa.motdepasse = request.JSON.motdepasse
                     def rs = adminService.authentificate(aa)
-                    def json = builder.build {
-                        rs
+                    if(rs[0] == null){
+                        def json = builder.build {
+                            message = " aucune correspondance"
+                        }
+                        render(status: 206, contentType: 'application/json', text: json)
+                        return response.status = 206
                     }
-                    render(status: 200, contentType: 'application/json', text: json)
-                    return response.status = 200
+                    else {
+                        def json = builder.build {
+                            rs
+                        }
+                        render(status: 200, contentType: 'application/json', text: json)
+                        return response.status = 200
+                    }
                 }
         }
         return response.status = HttpServletResponse.SC_NOT_ACCEPTABLE
@@ -87,10 +96,19 @@ class ApiController {
                     mb.compteBancaire = compteBancaireService.get(request.JSON.id)
                     mouvementBancaireService.save(mb)
                     CompteBancaire cb = compteBancaireService.get(request.JSON.id)
-                    if(mb.typeMouvement.name().equals("DEBIT")) {
-                        cb.soldeencours -= mb.somme
+
+                    if (mb.typeMouvement.name().equals("DEBIT")) {
+                        if(cb.soldeencours>mb.somme) {
+                                cb.soldeencours -= mb.somme
+                        } else{
+                            def json = builder.build {
+                                message = " Votre solde est insuffisant"
+                            }
+                            render(status: 406, contentType: 'application/json', text: json)
+                            return response.status = 406
+                        }
                     }
-                    else{
+                    else {
                         cb.soldeencours += mb.somme
                     }
                     compteBancaireService.save(cb)
