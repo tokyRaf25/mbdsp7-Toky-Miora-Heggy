@@ -1,9 +1,9 @@
 package mbdsp7.toky.miora.heggy
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class CompteBancaireSpec extends Specification implements DomainUnitTest<CompteBancaire> {
+class MouvementBancaireServiceSpec extends Specification implements ServiceUnitTest<MouvementBancaireService>{
 
     def setup() {
     }

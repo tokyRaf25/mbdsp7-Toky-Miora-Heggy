@@ -2,7 +2,7 @@ package mbdsp7.toky.miora.heggy
 
 class MouvementBancaire {
 
-    enum TypeMouvement{
+     enum TypeMouvement{
         DEBIT,CREDIT
     }
 
