@@ -12,8 +12,6 @@ class AdminService {
     def authentificate(Admin a){
         def listAdmin  = Admin.list()
         for(def i=0;i<listAdmin.size();i++){
-            /*println(a.motdepasse+ " et "+listAdmin[i].motdepasse)
-            println(a.motdepasse+ " et "+listAdmin[i].motdepasse)*/
             if(passwordservice.testPassword(a.motdepasse, listAdmin[i].motdepasse) &&
                     listAdmin[i].nom.equals(a.nom)){
                 return listAdmin[i]
