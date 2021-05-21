@@ -14,6 +14,7 @@ namespace ProjetClientBanque
 {
     public partial class Form1 : Form
     {
+        private AdminService adminService; 
         //Fields
         private Button currentButton;
         private Random random;
@@ -28,6 +29,7 @@ namespace ProjetClientBanque
             InitializeComponent();
             random = new Random();
             authService = new AuthService();
+            adminService = new AdminService();
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
@@ -164,13 +166,12 @@ namespace ProjetClientBanque
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             string username = txtUser.Text;
             string password = txtPass.Text;
-            int login = authService.Login(username, password);
-            MessageBox.Show(TestCallApi.callApi(username, password));
-            if(login == 1)
+            var is_authentificated = await adminService.LoginAsync(username, password);
+            if(is_authentificated)
             {
                 this.auth = true;
                 OpenChildForm(new Forms.FormAccueil(), sender);
