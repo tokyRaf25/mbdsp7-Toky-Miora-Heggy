@@ -13,13 +13,11 @@ class MouvementBancaireService {
        def result = MouvementBancaire.executeQuery("from MouvementBancaire  where compteBancaire.id ="+nc+"  order by dateMouvement desc")
         def resultLimited = []
         for(int i=0;i<result.size();i++){
-            if(i>=10){
-                return resultLimited
-            }
-            else{
+            if(i<10){
                 resultLimited.add(result[i])
-
             }
+
         }
+        return resultLimited
     }
 }

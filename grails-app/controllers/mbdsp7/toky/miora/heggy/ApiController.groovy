@@ -154,8 +154,7 @@ class ApiController {
             case "GET":
                 if(params.num) {
                     def cb = compteBancaireService.verify(Integer.parseInt(params.num))
-
-                    def rs = mouvementBancaireService.list(cb[0].id)
+                     def rs = mouvementBancaireService.list(cb[0].id)
                     def json = builder.build {
                         rs
                     }
