@@ -31,7 +31,6 @@ namespace ProjetClientBanque
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnDébit = new System.Windows.Forms.Button();
             this.btnCrédit = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -70,7 +69,6 @@ namespace ProjetClientBanque
             this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.panelMenu.Controls.Add(this.btnDébit);
             this.panelMenu.Controls.Add(this.btnCrédit);
             this.panelMenu.Controls.Add(this.btnHome);
             this.panelMenu.Controls.Add(this.panelLogo);
@@ -78,27 +76,6 @@ namespace ProjetClientBanque
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(237, 701);
             this.panelMenu.TabIndex = 0;
-            // 
-            // btnDébit
-            // 
-            this.btnDébit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.btnDébit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDébit.FlatAppearance.BorderSize = 0;
-            this.btnDébit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDébit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDébit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDébit.Image = ((System.Drawing.Image)(resources.GetObject("btnDébit.Image")));
-            this.btnDébit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDébit.Location = new System.Drawing.Point(0, 204);
-            this.btnDébit.Name = "btnDébit";
-            this.btnDébit.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnDébit.Size = new System.Drawing.Size(237, 62);
-            this.btnDébit.TabIndex = 3;
-            this.btnDébit.Text = "    Faire un retrait";
-            this.btnDébit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDébit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDébit.UseVisualStyleBackColor = false;
-            this.btnDébit.Click += new System.EventHandler(this.btnDébit_Click);
             // 
             // btnCrédit
             // 
@@ -115,7 +92,7 @@ namespace ProjetClientBanque
             this.btnCrédit.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnCrédit.Size = new System.Drawing.Size(237, 62);
             this.btnCrédit.TabIndex = 2;
-            this.btnCrédit.Text = "    Faire un dépot";
+            this.btnCrédit.Text = "    Transaction";
             this.btnCrédit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCrédit.UseVisualStyleBackColor = false;
             this.btnCrédit.Click += new System.EventHandler(this.btnCrédit_Click);
@@ -449,7 +426,6 @@ namespace ProjetClientBanque
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.TextBox txtUser;
-        private System.Windows.Forms.Button btnDébit;
     }
 }
 

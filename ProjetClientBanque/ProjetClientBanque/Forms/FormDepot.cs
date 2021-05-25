@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetClientBanque.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,11 @@ namespace ProjetClientBanque.Forms
 {
     public partial class Dépot : Form
     {
+        private CompteBancaireService compteBancaireService;
+        private MouvementBancaireService mouvementBancaireService;
         public Dépot()
         {
             InitializeComponent();
-            
         }
 
         private void LoadTheme()
@@ -37,6 +39,8 @@ namespace ProjetClientBanque.Forms
         private void FormDepot_Load(object sender, EventArgs e)
         {
             LoadTheme();
+            compteBancaireService = new CompteBancaireService();
+            mouvementBancaireService = new MouvementBancaireService();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -62,6 +66,32 @@ namespace ProjetClientBanque.Forms
         private void txtSomme_Leave(object sender, EventArgs e)
         {
             txtSomme.Text = string.Format("{0:#,##0.00}", double.Parse(txtSomme.Text));
+        }
+
+        private void numerosdecompte_Leave(object sender, EventArgs e)
+        {
+            string compteBancaire = TxtNumCompte.Text;
+            bool is_compteBancaire = compteBancaireService.ifCompteBancaireExist(compteBancaire);
+            if (!is_compteBancaire)
+            {
+                MessageBox.Show(compteBancaire + " n'est pas un compte bancaire valide!");
+                TxtNumCompte.Text = "";
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            double somme = double.Parse(txtSomme.Text);
+            string motdepasse = txtMotdepasse.Text;
+            string numerosdecompte = TxtNumCompte.Text;
+            string typeMouvement = comboBoxTypeM.Text;
+            var message = await mouvementBancaireService.doTransaction(somme, motdepasse, numerosdecompte, typeMouvement);
+            MessageBox.Show(message);
         }
     }
 }

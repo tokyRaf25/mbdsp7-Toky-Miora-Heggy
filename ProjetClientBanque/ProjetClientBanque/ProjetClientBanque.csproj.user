@@ -10,8 +10,5 @@
     <Compile Update="Forms\FormDepot.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormRetrait.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

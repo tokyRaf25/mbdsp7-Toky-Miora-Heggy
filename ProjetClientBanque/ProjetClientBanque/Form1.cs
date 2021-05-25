@@ -208,17 +208,5 @@ namespace ProjetClientBanque
                 OpenChildForm(new Forms.Dépot(), sender);
             }
         }
-
-        private void btnDébit_Click(object sender, EventArgs e)
-        {
-            if (!auth)
-            {
-                MessageBox.Show("Veuillez vous connecté!");
-            }
-            else
-            {
-                OpenChildForm(new Forms.Retrait(), sender);
-            }
-        }
     }
 }

@@ -33,68 +33,77 @@ namespace ProjetClientBanque.Forms
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtNumCompte = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSomme = new System.Windows.Forms.TextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.labelFormulaire = new System.Windows.Forms.Label();
             this.labelHistorique = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtMotdepasse = new System.Windows.Forms.TextBox();
+            this.comboBoxTypeM = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dateMouvement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Somme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.Location = new System.Drawing.Point(31, 304);
+            this.button1.Location = new System.Drawing.Point(122, 464);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(215, 39);
             this.button1.TabIndex = 1;
             this.button1.Text = "Valider l\'opération";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Location = new System.Drawing.Point(31, 109);
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker1.Location = new System.Drawing.Point(613, 27);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(215, 27);
+            this.dateTimePicker1.Size = new System.Drawing.Size(215, 25);
             this.dateTimePicker1.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 88);
+            this.label1.Location = new System.Drawing.Point(116, 161);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 15);
+            this.label1.Size = new System.Drawing.Size(0, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Date en cours";
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 218);
+            this.label2.Location = new System.Drawing.Point(122, 239);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Numéros de compte";
             // 
-            // textBox1
+            // TxtNumCompte
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(31, 237);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(215, 34);
-            this.textBox1.TabIndex = 5;
+            this.TxtNumCompte.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.TxtNumCompte.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtNumCompte.Location = new System.Drawing.Point(122, 258);
+            this.TxtNumCompte.Multiline = true;
+            this.TxtNumCompte.Name = "TxtNumCompte";
+            this.TxtNumCompte.Size = new System.Drawing.Size(215, 34);
+            this.TxtNumCompte.TabIndex = 5;
+            this.TxtNumCompte.Leave += new System.EventHandler(this.numerosdecompte_Leave);
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 150);
+            this.label3.Location = new System.Drawing.Point(122, 171);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 15);
             this.label3.TabIndex = 6;
@@ -104,7 +113,7 @@ namespace ProjetClientBanque.Forms
             // 
             this.txtSomme.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSomme.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSomme.Location = new System.Drawing.Point(31, 168);
+            this.txtSomme.Location = new System.Drawing.Point(122, 189);
             this.txtSomme.Multiline = true;
             this.txtSomme.Name = "txtSomme";
             this.txtSomme.Size = new System.Drawing.Size(215, 34);
@@ -114,22 +123,12 @@ namespace ProjetClientBanque.Forms
             this.txtSomme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSomme_KeyPress);
             this.txtSomme.Leave += new System.EventHandler(this.txtSomme_Leave);
             // 
-            // listView1
-            // 
-            this.listView1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(368, 89);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(470, 341);
-            this.listView1.TabIndex = 8;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // labelFormulaire
             // 
             this.labelFormulaire.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelFormulaire.AutoSize = true;
             this.labelFormulaire.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelFormulaire.Location = new System.Drawing.Point(31, 49);
+            this.labelFormulaire.Location = new System.Drawing.Point(122, 122);
             this.labelFormulaire.Name = "labelFormulaire";
             this.labelFormulaire.Size = new System.Drawing.Size(103, 25);
             this.labelFormulaire.TabIndex = 9;
@@ -140,30 +139,109 @@ namespace ProjetClientBanque.Forms
             this.labelHistorique.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelHistorique.AutoSize = true;
             this.labelHistorique.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelHistorique.Location = new System.Drawing.Point(368, 49);
+            this.labelHistorique.Location = new System.Drawing.Point(482, 122);
             this.labelHistorique.Name = "labelHistorique";
             this.labelHistorique.Size = new System.Drawing.Size(336, 25);
             this.labelHistorique.TabIndex = 10;
             this.labelHistorique.Text = "Historique des mouvements bancaires";
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(122, 305);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 15);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Mot de passe";
+            // 
+            // txtMotdepasse
+            // 
+            this.txtMotdepasse.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtMotdepasse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMotdepasse.Location = new System.Drawing.Point(122, 323);
+            this.txtMotdepasse.Multiline = true;
+            this.txtMotdepasse.Name = "txtMotdepasse";
+            this.txtMotdepasse.Size = new System.Drawing.Size(215, 34);
+            this.txtMotdepasse.TabIndex = 12;
+            // 
+            // comboBoxTypeM
+            // 
+            this.comboBoxTypeM.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboBoxTypeM.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxTypeM.FormattingEnabled = true;
+            this.comboBoxTypeM.Items.AddRange(new object[] {
+            "CREDIT",
+            "DEBIT"});
+            this.comboBoxTypeM.Location = new System.Drawing.Point(122, 397);
+            this.comboBoxTypeM.Name = "comboBoxTypeM";
+            this.comboBoxTypeM.Size = new System.Drawing.Size(215, 25);
+            this.comboBoxTypeM.TabIndex = 14;
+            this.comboBoxTypeM.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(123, 379);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 15);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Type de mouvement";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dateMouvement,
+            this.Somme,
+            this.Type});
+            this.dataGridView1.Location = new System.Drawing.Point(482, 171);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(346, 332);
+            this.dataGridView1.TabIndex = 16;
+            // 
+            // dateMouvement
+            // 
+            this.dateMouvement.HeaderText = "Date du mouvement";
+            this.dateMouvement.Name = "dateMouvement";
+            // 
+            // Somme
+            // 
+            this.Somme.HeaderText = "Somme";
+            this.Somme.Name = "Somme";
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            // 
             // Dépot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 465);
+            this.ClientSize = new System.Drawing.Size(888, 582);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBoxTypeM);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtMotdepasse);
             this.Controls.Add(this.labelHistorique);
             this.Controls.Add(this.labelFormulaire);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSomme);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtNumCompte);
             this.Name = "Dépot";
             this.Text = "FormDepot";
             this.Load += new System.EventHandler(this.FormDepot_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,11 +253,18 @@ namespace ProjetClientBanque.Forms
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtNumCompte;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSomme;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label labelFormulaire;
         private System.Windows.Forms.Label labelHistorique;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtMotdepasse;
+        private System.Windows.Forms.ComboBox comboBoxTypeM;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateMouvement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Somme;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
     }
 }
