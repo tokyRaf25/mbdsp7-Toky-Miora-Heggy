@@ -1,4 +1,5 @@
-﻿using ProjetClientBanque.Services;
+﻿using ProjetClientBanque.Models;
+using ProjetClientBanque.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,6 +49,15 @@ namespace ProjetClientBanque.Forms
            
         }
 
+        public void AfficherHistorique(List<MouvementBancaire> mouvementBancaires)
+        {
+            dataGridView1.Rows.Clear();
+            foreach (MouvementBancaire mvt in mouvementBancaires)
+            {
+                dataGridView1.Rows.Add(mvt.DateMouvement, mvt.Somme, mvt.TypeMouvement1);
+            }
+        }
+
         private void txtSomme_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -77,6 +87,17 @@ namespace ProjetClientBanque.Forms
                 MessageBox.Show(compteBancaire + " n'est pas un compte bancaire valide!");
                 TxtNumCompte.Text = "";
             }
+            else
+            {
+                PrintListMouvementBancaire();
+            }
+        }
+
+        private void PrintListMouvementBancaire()
+        {
+            string compteBancaire = TxtNumCompte.Text;
+            List<MouvementBancaire> mouvements = mouvementBancaireService.getLastHistorique(compteBancaire);
+            AfficherHistorique(mouvements);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,6 +113,7 @@ namespace ProjetClientBanque.Forms
             string typeMouvement = comboBoxTypeM.Text;
             var message = await mouvementBancaireService.doTransaction(somme, motdepasse, numerosdecompte, typeMouvement);
             MessageBox.Show(message);
+            PrintListMouvementBancaire();
         }
     }
 }

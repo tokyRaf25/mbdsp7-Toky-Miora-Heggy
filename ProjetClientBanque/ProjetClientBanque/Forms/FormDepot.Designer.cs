@@ -139,7 +139,7 @@ namespace ProjetClientBanque.Forms
             this.labelHistorique.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelHistorique.AutoSize = true;
             this.labelHistorique.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelHistorique.Location = new System.Drawing.Point(482, 122);
+            this.labelHistorique.Location = new System.Drawing.Point(422, 122);
             this.labelHistorique.Name = "labelHistorique";
             this.labelHistorique.Size = new System.Drawing.Size(336, 25);
             this.labelHistorique.TabIndex = 10;
@@ -198,16 +198,17 @@ namespace ProjetClientBanque.Forms
             this.dateMouvement,
             this.Somme,
             this.Type});
-            this.dataGridView1.Location = new System.Drawing.Point(482, 171);
+            this.dataGridView1.Location = new System.Drawing.Point(422, 189);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(346, 332);
+            this.dataGridView1.Size = new System.Drawing.Size(444, 314);
             this.dataGridView1.TabIndex = 16;
             // 
             // dateMouvement
             // 
             this.dateMouvement.HeaderText = "Date du mouvement";
             this.dateMouvement.Name = "dateMouvement";
+            this.dateMouvement.Width = 200;
             // 
             // Somme
             // 
