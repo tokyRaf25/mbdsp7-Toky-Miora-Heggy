@@ -16,7 +16,6 @@ class MouvementBancaireService {
             if(i<10){
                 resultLimited.add(result[i])
             }
-
         }
         return resultLimited
     }

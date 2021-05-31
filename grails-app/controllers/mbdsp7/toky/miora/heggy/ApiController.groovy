@@ -122,8 +122,6 @@ class ApiController {
                         mb.typeMouvement = MouvementBancaire.TypeMouvement.valueOf(request.JSON.typeMouvement)
                         mb.compteBancaire = cb
                         mouvementBancaireService.save(mb)
-                        //CompteBancaire cb = compteBancaireService.get(request.JSON.id)
-
                         if (mb.typeMouvement.name().equals("DEBIT")) {
                             if (cb.soldeencours > mb.somme) {
                                 cb.soldeencours -= mb.somme
