@@ -6,10 +6,9 @@ let Schema = mongoose.Schema;
 let ChampParCategorieSchema = Schema({
     id: Number,
     idCategorie: Number,
-    nomChamp: String,
-    cotes: Number
+    nomChamp: String
 });
 
 ChampParCategorieSchema.plugin(aggregatePaginate);
 
-module.exports = mongoose.models('pari_sport',ChampParCategorieSchema);
+module.exports = mongoose.models('Champ',ChampParCategorieSchema);

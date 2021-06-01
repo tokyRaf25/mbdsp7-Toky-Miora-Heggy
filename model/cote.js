@@ -12,4 +12,4 @@ let CoteSchema = Schema({
 
 CoteSchema.plugin(aggregatePaginate);
 
-module.exports = mongoose.models('pari_sport',CoteSchema);
+module.exports = mongoose.models('Cote',CoteSchema);

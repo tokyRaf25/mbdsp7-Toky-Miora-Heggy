@@ -5,6 +5,7 @@ let Schema = mongoose.Schema;
 
 let PariSportSchema = Schema({
     id: Number,
+    idTypePari: Number, //Foot, Course cheval??
     dateDebut: Date,
     dateFin: Date,
     autres_info: String,
@@ -13,4 +14,4 @@ let PariSportSchema = Schema({
 
 ParieSportSchema.plugin(aggregatePaginate);
 
-module.exports = mongoose.models('pari_sport',PariSportSchema);
+module.exports = mongoose.models('PariSport',PariSportSchema);
