@@ -24,18 +24,18 @@ function getChamps(req, res){
 function getChamp(req, res) {
     let champId = req.params.id;
   
-    Champ.findOne({ id: champId }, (err, cote) => {
+    Champ.findOne({ id: champId }, (err, champ) => {
       if (err) {
         res.send(err);
       }
-      res.json(cote);
+      res.json(champ);
     });
 }
 
-// Ajout d'un assignment (POST)
+// Ajout d'un champ (POST)
 function postChamp(req, res) {
+  console.log("execution d'une requete POST!");
     let champ = new Champ();
-    champ.id = req.body.id;
     champ.idCategorie = req.body.idCategorie;
     champ.nomChamp = req.body.nomChamp;
   
@@ -56,7 +56,7 @@ function updateChamp(req, res) {
     console.log("UPDATE recu Champ : ");
     console.log(req.body);
     Champ.findByIdAndUpdate(
-      req.body._id,
+      req.body.id,
       req.body,
       { new: true },
       (err, champ) => {
@@ -80,10 +80,22 @@ function updateChamp(req, res) {
     });
   }
 
+  //Avoir les champs à partir d'une categorie
+  function getChampByIdCategorie(){
+    let categorieId = req.params.idCategorie;
+    Champ.findOne({ idCategorie: categorieId }, (err, champ) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(champ);
+    });
+  }
+
   module.exports = {
     getChamps,
     postChamp,
     getChamp,
     updateChamp,
-    deleteChamp
+    deleteChamp,
+    getChampByIdCategorie
   };

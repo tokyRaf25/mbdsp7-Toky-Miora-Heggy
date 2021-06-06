@@ -1,6 +1,11 @@
 var express = require('express');
 var app = express();
 let mongoose = require('mongoose');
+let bodyParser = require('body-parser');
+
+//Déclaration des objets
+let champ = require('./routes/champ_par_categorie_paris');
+let pari = require('./routes/parie_sports');
 mongoose.Promise = global.Promise;
 
 //Connexion à la base de donnée mongoDB
@@ -11,6 +16,10 @@ const options = {
   useUnifiedTopology: true,
   useFindAndModify:false
 };
+
+// Pour les formulaires
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 mongoose.connect(uri, options)
   .then(() => {
@@ -25,6 +34,27 @@ app.get('/', function (req, res) {
   res.send('Bonjour !');
 });
 
+
+// les routes
+const prefix = '/api';
+
+//Champ par categorie
+app.route(prefix + '/champParCat')
+  .get(champ.getChamp)
+  .post(champ.postChamp)
+  .put(champ.updateChamp);
+
+  //Champ par categorie
+app.route(prefix + '/pari')
+  .get(pari.getPariSports)
+  .post(pari.postPariSport)
+  .put(pari.updatePariSport);
+
+app.route(prefix + '/pari/:id')
+  .get(pari.getPariSport)
+  .delete(pari.deletePariSport);
+
 app.listen(4000, function () {
   console.log("Application d'exemple écoutant sur le port 4000 !");
 });
+

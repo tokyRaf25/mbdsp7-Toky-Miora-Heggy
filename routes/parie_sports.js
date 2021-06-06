@@ -22,9 +22,10 @@ function getPariSports(req, res){
 
 //Récupérer un PariSport par son id (GET)
 function getPariSport(req, res) {
+    console.log("get pari by id "+req.params.id)
     let pariSportId = req.params.id;
   
-    PariSport.findOne({ id: pariSportId }, (err, pariSport) => {
+    PariSport.findOne({ _id: pariSportId }, (err, pariSport) => {
       if (err) {
         res.send(err);
       }
@@ -35,21 +36,20 @@ function getPariSport(req, res) {
 // Ajout d'un assignment (POST)
 function postPariSport(req, res) {
     let pariSport = new PariSport();
-    pariSport.id = req.body.id;
     pariSport.idTypePari = req.body.idTypePari;
     pariSport.dateDebut = req.body.dateDebut;
     pariSport.dateFin = req.body.dateFin;
     pariSport.autres_info = req.body.autres_info;
     pariSport.status = req.body.status;
-  
+    pariSport.equipes = req.body.equipes;
     console.log("POST parieSport reçu :");
     console.log(pariSport);
   
-    PariSport.save((err) => {
+    pariSport.save((err) => {
       if (err) {
-        res.send("cant post parieSport ", err);
+        res.send("cant post pariSport ", err);
       }
-      res.json({ message: `${PariSport.idChamp} saved!` });
+      res.json({ message: `${pariSport._id} saved!` });
     });
   }
 

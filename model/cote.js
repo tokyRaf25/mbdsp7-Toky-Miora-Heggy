@@ -4,7 +4,6 @@ var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
 let Schema = mongoose.Schema;
 
 let CoteSchema = Schema({
-    id: Number,
     idParieSport: Number,
     idChamp: Number,
     cotes: Number
@@ -12,4 +11,4 @@ let CoteSchema = Schema({
 
 CoteSchema.plugin(aggregatePaginate);
 
-module.exports = mongoose.models('Cote',CoteSchema);
+module.exports = mongoose.model('Cote',CoteSchema);

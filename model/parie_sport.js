@@ -4,14 +4,16 @@ var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
 let Schema = mongoose.Schema;
 
 let PariSportSchema = Schema({
-    id: Number,
-    idTypePari: Number, //Foot, Course cheval??
+    idTypePari: Number,
     dateDebut: Date,
     dateFin: Date,
     autres_info: String,
-    status: String
+    status: String,
+    equipes: [{
+        nomEquipe: String
+    }]
 });
 
-ParieSportSchema.plugin(aggregatePaginate);
+PariSportSchema.plugin(aggregatePaginate);
 
-module.exports = mongoose.models('PariSport',PariSportSchema);
+module.exports = mongoose.model('PariSport',PariSportSchema);
