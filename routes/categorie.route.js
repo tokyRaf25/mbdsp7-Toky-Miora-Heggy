@@ -1,8 +1,23 @@
 const categorie =  require("../models/Categorie")
 
 listCategorie = async ( req , res ) => { 
-   const val = await categorie.find();
-   res.send(val);
+   /*const val = await categorie.find();
+   res.send(val);*/
+   var categorieQuery = categorie.aggregate();
+  
+	  categorie.aggregatePaginate(
+		categorieQuery,
+		{
+		  page: parseInt(req.query.page) || 1,
+		  limit: parseInt(req.query.limit) || 10,
+		},
+		(err, categories) => {
+		  if (err) {
+			res.send(err);
+		  }
+		  res.send(categories);
+		}
+	  );
 }
 
 insertCategorie =  async(req,res) =>{

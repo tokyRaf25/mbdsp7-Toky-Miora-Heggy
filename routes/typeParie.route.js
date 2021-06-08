@@ -1,8 +1,23 @@
 const typeParie =  require("../models/TypeParie")
 
 listTypeParie = async ( req , res ) => {  
-   const val = await typeParie.find();
-   res.send(val);
+   /*const val = await typeParie.find();
+   res.send(val);*/
+    var typeParieQuery = typeParie.aggregate();
+  
+	  typeParie.aggregatePaginate(
+		typeParieQuery,
+		{
+		  page: parseInt(req.query.page) || 1,
+		  limit: parseInt(req.query.limit) || 10,
+		},
+		(err, typeParies) => {
+		  if (err) {
+			res.send(err);
+		  }
+		  res.send(typeParies);
+		}
+	  );
 }
 
 insertTypeParie =  async(req,res) =>{
