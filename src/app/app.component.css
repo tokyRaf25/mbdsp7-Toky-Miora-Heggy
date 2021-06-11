@@ -1,0 +1,66 @@
+.card{
+	margin-top:5px;
+}
+.btn.buttonform{
+	margin-left:5px;
+}
+.icon_subtitle{
+	margin-top:15px;
+}
+.icon_shop{
+	color:green;
+}
+.icon_delete{
+	color:green;
+	display: flex;
+	flex:1;
+    justify-content: flex-end;	
+	margin-right:15px;
+}
+
+.form-group.spef{
+	margin-bottom:-5px;
+}
+.formPersonnaliser{
+	display:flex;
+	flex:1;
+	justify-content:flex-end;
+} 
+.logo{
+	display : flex;
+	flex : 1;
+	justify-content:start-end;
+}
+.container.change{
+	padding-left : 0px;
+	padding-right : 0px;
+	background-color:#f2f2f2
+}
+.row.marge{
+	margin-left:10px ;
+	margin-right : 10px;
+}
+.form-control.inputspef{
+	margin-right:-10px;
+}
+.fab.align{
+	text-align:center;
+	margin-bottom:10px;
+	margin-left:5px;
+}
+.matCard{
+	display:flex;
+}
+.nav-link.personalisation{
+	width:139px;
+	margin-top:3px;
+}
+@media (max-width: 380px) {
+	.btn.buttoncss {
+		margin-left:10px;
+	}
+	.icon_delete{
+		margin-left:150px;
+		color:green;
+	}
+}

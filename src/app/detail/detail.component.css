@@ -1,0 +1,35 @@
+.icon_subtitle{
+	margin-top:15px;
+}
+.buttoncss{
+	margin-right:5px;
+}
+.buttonsecondary{
+	margin-right:5px;
+	width :220px;
+}
+.row.marge{
+	margin-left:10px ;
+	margin-right : 10px;
+}
+.subtitle{
+	margin-left:5px; 
+	float:right;
+}
+.icon_question{
+	margin-top:10px;
+}
+@media (min-width: 800px) {
+	.buttonsecondary{
+		margin-right:5px;
+		width :150px;
+	}
+	
+}
+@media (max-width: 380px) {
+	.buttonsecondary{
+		margin-right:5px;
+		width :70px;
+	}
+	
+}

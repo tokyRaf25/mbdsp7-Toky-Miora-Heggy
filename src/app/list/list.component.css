@@ -1,0 +1,39 @@
+.icon_subtitle{
+	margin-top:15px;
+}
+.buttoncss{
+	margin-right:5px;	
+}
+.buttonsecondary{
+	margin-right:5px;
+}
+.row.marge{
+	margin-left:10px ;
+	margin-right : 10px;
+}
+.subtitle{
+	margin-left:5px; 
+	float:right;
+}
+.button-tt-group {
+	display: flex;
+    flex: 1;
+    justify-content: flex-end;	
+}
+.matCard{
+	display:flex;
+}
+
+@media (max-width: 380px) {
+	.button-tt-group {
+		display:flex;
+		flex-wrap:nowrap;
+		margin-left:0px;
+	}
+	.buttoncss{
+		margin-right:5px;
+		margin-left:0px; 
+		
+	}
+	
+}
