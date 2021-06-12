@@ -83,10 +83,21 @@ function updatePariSport(req, res) {
     });
   }
 
+  function getPariByType(req,res){
+    let typePari = req.params.type;
+    PariSport.find({ idTypePari: typePari }, (err, champ) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(champ);
+    });
+  }
+
   module.exports = {
     getPariSports,
     postPariSport,
     getPariSport,
     updatePariSport,
-    deletePariSport
+    deletePariSport,
+    getPariByType,
   };

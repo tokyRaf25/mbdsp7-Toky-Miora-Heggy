@@ -80,6 +80,7 @@ function updateChamp(req, res) {
     });
   }
 
+
   //Avoir les champs à partir d'une categorie
   function getChampByIdCategorie(){
     let categorieId = req.params.idCategorie;
@@ -91,11 +92,17 @@ function updateChamp(req, res) {
     });
   }
 
+  //Avoir les champs par categories
+  function getChampParCategorie(){
+    
+  }
+
   module.exports = {
     getChamps,
     postChamp,
     getChamp,
     updateChamp,
     deleteChamp,
-    getChampByIdCategorie
+    getChampByIdCategorie,
+    getChampParCategorie
   };

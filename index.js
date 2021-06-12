@@ -40,11 +40,15 @@ const prefix = '/api';
 
 //Champ par categorie
 app.route(prefix + '/champParCat')
-  .get(champ.getChamp)
+  .get(champ.getChamps)
   .post(champ.postChamp)
   .put(champ.updateChamp);
 
-  //Champ par categorie
+  
+app.route(prefix + '/champParCat/trie')
+  .get(champ.getChampParCategorie)
+
+//Champ par categorie
 app.route(prefix + '/pari')
   .get(pari.getPariSports)
   .post(pari.postPariSport)
@@ -53,6 +57,9 @@ app.route(prefix + '/pari')
 app.route(prefix + '/pari/:id')
   .get(pari.getPariSport)
   .delete(pari.deletePariSport);
+
+  app.route(prefix + '/pari/type/:type')
+  .get(pari.getPariByType)
 
 app.listen(4000, function () {
   console.log("Application d'exemple écoutant sur le port 4000 !");
