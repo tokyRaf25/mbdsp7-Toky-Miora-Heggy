@@ -1,4 +1,4 @@
-let Champ = require('../model/champ_par_categorie_pari');
+let Champ = require('../models/champ_par_categorie_pari');
 
 
 //Récupérer tous les cotes (GET), avec paggination

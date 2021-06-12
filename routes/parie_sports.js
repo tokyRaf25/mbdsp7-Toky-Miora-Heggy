@@ -1,4 +1,4 @@
-let PariSport = require('../model/parie_sport');
+let PariSport = require('../models/parie_sport');
 
 
 //Récupérer tous les PariSports (GET), avec paggination

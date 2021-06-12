@@ -1,4 +1,4 @@
-let Cote = require('../model/cote');
+let Cote = require('../models/cote');
 
 
 //Récupérer tous les cotes (GET), avec paggination

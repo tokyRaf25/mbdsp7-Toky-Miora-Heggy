@@ -6,6 +6,9 @@ let bodyParser = require('body-parser');
 //Déclaration des objets
 let champ = require('./routes/champ_par_categorie_paris');
 let pari = require('./routes/parie_sports');
+const ParieRoutes = require('./routes/typeParie.route'); 
+const CategorieRoutes = require('./routes/categorie.route');
+
 mongoose.Promise = global.Promise;
 
 //Connexion à la base de donnée mongoDB
@@ -58,8 +61,24 @@ app.route(prefix + '/pari/:id')
   .get(pari.getPariSport)
   .delete(pari.deletePariSport);
 
-  app.route(prefix + '/pari/type/:type')
+app.route(prefix + '/pari/type/:type')
   .get(pari.getPariByType)
+
+app.route("/typeParie")
+  .get(ParieRoutes.listTypeParie) 
+  .post(ParieRoutes.insertTypeParie)
+  .put(ParieRoutes.updateTypeParie);
+  
+app.route("/typeParie/:id")
+  .delete(ParieRoutes.deleteTypeParie);
+  
+app.route("/categorie")
+  .get(CategorieRoutes.listCategorie)
+  .post(CategorieRoutes.insertCategorie)
+  .put(CategorieRoutes.updateCategorie);
+  
+app.route("/categorie/:id")
+  .delete(CategorieRoutes.deleteCategorie);
 
 app.listen(4000, function () {
   console.log("Application d'exemple écoutant sur le port 4000 !");
