@@ -1,0 +1,44 @@
+
+
+<div *ngIf="type=='list'" class="row">
+    <div class="col-12">
+        <div class="table-responsive bg-white box-shadow">
+            <table class="table table-hover">
+                <thead>
+                    <tr> 
+                        <th>Match</th>                      
+                        <th>Date</th>                        
+                        <th>Heure</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users | UserSearchPipe : searchText | paginate: { itemsPerPage: 6, currentPage: p }">                        
+                        <td class="align-middle text-truncate">{{user.profile.name}} {{user.profile.surname}}</td>
+                        <td class="align-middle text-truncate">{{user.work.position}}</td>                        
+                        <td class="align-middle text-truncate">{{user.contacts.email}}</td>
+                        <td class="align-middle">
+                            <i *ngIf="!user.settings.isDeleted" class="fa fa-soccer-ball-o mr-2" [ngClass]="{ 'text-success': user.settings.isActive, 
+                                                                                                     'text-inverse': !user.settings.isActive}" placement="bottom" [ngbTooltip]="(user.settings.isActive) ? 'active' : 'passive'"></i>
+                            <i *ngIf="user.settings.isDeleted" class="fa fa-soccer-ball-o mr-2 text-danger" placement="bottom" [ngbTooltip]="'deleted'"></i>
+                        </td>
+                        <td class="align-middle">
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-secondary btn-sm" (click)="openModal(modalContent, user)"><i class="fa fa-pencil"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="bg-white text-center">
+            <pagination-controls autoHide="true" (pageChange)="p = $event" maxSize="3"></pagination-controls>
+        </div>        
+    </div>
+</div>
