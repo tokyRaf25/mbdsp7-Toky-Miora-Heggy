@@ -64,21 +64,24 @@ app.route(prefix + '/pari/:id')
 app.route(prefix + '/pari/type/:type')
   .get(pari.getPariByType)
 
-app.route("/typeParie")
+app.route(prefix + "/typeParie")
   .get(ParieRoutes.listTypeParie) 
   .post(ParieRoutes.insertTypeParie)
   .put(ParieRoutes.updateTypeParie);
   
-app.route("/typeParie/:id")
-  .delete(ParieRoutes.deleteTypeParie);
+app.route(prefix + "/typeParie/:id")
+  .delete(ParieRoutes.deleteTypeParie)
+  .get(ParieRoutes.listMacthParTypeParie);
   
-app.route("/categorie")
+app.route(prefix + "/categorie")
   .get(CategorieRoutes.listCategorie)
   .post(CategorieRoutes.insertCategorie)
   .put(CategorieRoutes.updateCategorie);
   
-app.route("/categorie/:id")
-  .delete(CategorieRoutes.deleteCategorie);
+app.route(prefix + "/categorie/:id")
+  .delete(CategorieRoutes.deleteCategorie)
+  .get(CategorieRoutes.getListChampParCategorie);
+  
 
 app.listen(4000, function () {
   console.log("Application d'exemple écoutant sur le port 4000 !");

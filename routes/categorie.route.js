@@ -1,5 +1,5 @@
 const categorie =  require("../models/Categorie")
-
+const champ_categorie = require ("../models/champ_par_categorie_pari");
 listCategorie = async ( req , res ) => { 
    /*const val = await categorie.find();
    res.send(val);*/
@@ -57,9 +57,28 @@ updateCategorie = async (req,res) => {
   );
 }
 
+getListChampParCategorie =  async(req,res) =>{	
+	 var ChampQuery = champ_categorie.aggregate();
+  
+	  champ_categorie.aggregatePaginate(
+		ChampQuery,
+		{
+		  idCategorie: req.params.id
+		},
+		(err, champ_categorie) => {
+		  if (err) {
+			res.send(err);
+		  }
+		  res.send(champ_categorie);
+		}
+	  );
+	
+}
+
 module.exports = { 
   listCategorie,
   insertCategorie,
   deleteCategorie,
-  updateCategorie
+  updateCategorie,
+  getListChampParCategorie
 }
