@@ -1,0 +1,33 @@
+.rond{
+    background-color:red; 
+    color:#fff;
+    text-align:center; 
+    border-radius:50%; 
+    }
+.btn-primary2 {
+    color: #000;
+    background-color: #cecece;
+    border-color: #6b6f84;
+    box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+}
+.badge-light2 {
+    color: #000000;
+    background-color: #f54053;
+}
+.btn .badge2 {
+    position: relative;
+    top: -1px;
+}
+
+.badge2 {
+    display: inline-block;
+    padding: 0.5rem 0.5rem;
+    font-size: 86%;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.375rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

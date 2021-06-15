@@ -7,13 +7,12 @@ import { ClipboardModule } from 'ngx-clipboard';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
-import { IconsComponent } from '../../pages/icons/icons.component';
-import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { FootComponent } from '../../pages/foot/foot.component';
 import { TennisComponent } from '../../pages/tennis/tennis.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FichefootComponent } from 'src/app/pages/fichefoot/fichefoot.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -29,10 +28,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DashboardComponent,
     UserProfileComponent,
     TablesComponent,
-    IconsComponent,
     FootComponent,
     TennisComponent,
-    MapsComponent
+    FichefootComponent
   ]
 })
 
