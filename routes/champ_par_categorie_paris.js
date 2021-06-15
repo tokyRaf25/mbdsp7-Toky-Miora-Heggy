@@ -1,4 +1,6 @@
+const Categorie = require('../models/Categorie');
 let Champ = require('../models/champ_par_categorie_pari');
+const categorie =  require("./categorie.route")
 
 
 //Récupérer tous les cotes (GET), avec paggination
@@ -72,6 +74,7 @@ function updateChamp(req, res) {
   
   // suppression d'un cote (DELETE)
   function deleteChamp(req, res) {
+    console.log("suppression champ "+req.params.id);
     Champ.findByIdAndRemove(req.params.id, (err, champ) => {
       if (err) {
         res.send(err);
@@ -82,9 +85,9 @@ function updateChamp(req, res) {
 
 
   //Avoir les champs à partir d'une categorie
-  function getChampByIdCategorie(){
-    let categorieId = req.params.idCategorie;
-    Champ.findOne({ idCategorie: categorieId }, (err, champ) => {
+  function getChampByIdCategorie(req, res){
+    let categorieId = req.params.id;
+    Champ.find({ idCategorie: categorieId }, (err, champ) => {
       if (err) {
         res.send(err);
       }
@@ -93,9 +96,43 @@ function updateChamp(req, res) {
   }
 
   //Avoir les champs par categories
-  function getChampParCategorie(){
-    
+  function getChampParCategorie(req,res){
+    var categorieQuery = Categorie.aggregate();
+    Categorie.aggregatePaginate(
+      categorieQuery,
+      {
+        page: parseInt(req.query.page) || 1,
+        limit: parseInt(req.query.limit) || 10,
+      }).then(function(results){
+        results.docs.aggregate([
+          {
+            $group: { _id: { idCategorie: "$idCategorie" }, champs: { $push: "$nomChamp" } }
+          }
+         ]);
+         console.log(results);
+         res.send([]);
+      }).catch(function(err){
+        res.send(err);
+      });
   }
+
+  /*function getChampParCategorie(req,res){
+    var categorieQuery = Categorie.aggregate();
+	  Categorie.aggregatePaginate(
+		categorieQuery,
+		{
+		  page: parseInt(req.query.page) || 1,
+		  limit: parseInt(req.query.limit) || 10,
+		}).then(function(results){
+      var tab = Array.from(results.docs);
+      tab.forEach(element => {
+        console.log(element);
+      });
+      res.send(results);
+    }).catch(function(err){
+      res.send(err);
+    });
+  }*/
 
   module.exports = {
     getChamps,

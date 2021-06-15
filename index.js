@@ -51,6 +51,10 @@ app.route(prefix + '/champParCat')
 app.route(prefix + '/champParCat/trie')
   .get(champ.getChampParCategorie)
 
+app.route(prefix + '/champParCat/:id')
+  .get(champ.getChampByIdCategorie)
+  .delete(champ.deleteChamp)
+
 //Champ par categorie
 app.route(prefix + '/pari')
   .get(pari.getPariSports)
