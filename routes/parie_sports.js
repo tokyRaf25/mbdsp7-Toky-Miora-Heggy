@@ -37,10 +37,8 @@ function getPariSport(req, res) {
 function postPariSport(req, res) {
     let pariSport = new PariSport();
     pariSport.idTypePari = req.body.idTypePari;
-    pariSport.dateDebut = req.body.dateDebut;
-    pariSport.dateFin = req.body.dateFin;
+    pariSport.dateDuMatch = req.body.dateDuMatch;
     pariSport.autres_info = req.body.autres_info;
-    pariSport.status = req.body.status;
     pariSport.equipes = req.body.equipes;
     console.log("POST parieSport reçu :");
     console.log(pariSport);
