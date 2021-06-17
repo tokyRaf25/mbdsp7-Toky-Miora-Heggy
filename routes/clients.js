@@ -1,17 +1,10 @@
 const express = require('express');
-const router = express.Router();
 var bcrypt = require('bcryptjs');
-var Admin = require('../model/administrateur');
-var Client = require('../model/clients');
-var jwt = require('jsonwebtoken');
+var Client = require('../models/clients');
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
-const config = require('config.json');
-const clients = require('../model/clients');
+const clients = require('../models/clients');
 // routes
-router.post('/authenticate', authenticate);
-router.post('/register', register);
 
-module.exports = router;
 
 function authenticate(req, res, next) {
         Client.findOne({ name: req.body.name }, function (err, user) {
@@ -21,7 +14,7 @@ function authenticate(req, res, next) {
         var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
         if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
 
-        var token = jwt.sign({ id: user._id }, config.secret, {
+        var token = jwt.sign({ id: user._id }, 'supersecret', {
             expiresIn: 86400 // expires in 24 hours
         });
 
@@ -45,6 +38,9 @@ function register(req, res) {
         res.json({ message: `saved!` });
     });
 }
-router.get('/logout', function(req, res) {
-    res.status(200).send({ auth: false, token: null });
-});
+
+
+module.exports = {
+    authenticate,
+    register,
+  };

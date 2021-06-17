@@ -1,49 +1,30 @@
-require('rootpath')();
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const jwt = require('_helpers/jwt');
-const errorHandler = require('_helpers/error-handler');
-let mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
-//mongoose.set('debug', true);
+var express = require('express');
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+var app = express();
+const ParieRoutes = require('./routes/typeParie.route'); 
+const CategorieRoutes = require('./routes/categorie.route');
 
-// remplacer toute cette chaine par l'URI de connexion à votre propre base dans le cloud s
-//const uri = 'mongodb+srv://Heggy:Heggyiany@cluster0.le4ha.mongodb.net/assignments?retryWrites=true&w=majority';
-const uri = 'mongodb+srv://Parie:Parie123@cluster0.qiuua.mongodb.net/paridb?retryWrites=true&w=majority';
-
-const options = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-};
-
-mongoose.connect(uri, options)
-    .then(() => {
-            console.log("Connecté à la base MongoDB assignments dans le cloud !");
-            console.log("at URI = " + uri);
-        },
-        err => {
-            console.log('Erreur de connexion: ', err);
-        });
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(cors());
 
-// use JWT auth to secure the api
-app.use(jwt());
+mongoose.connect("mongodb+srv://tpt_tmh:EjUbrdYdtqlrscAV@cluster0.qiuua.mongodb.net/paridb?retryWrites=true&w=majority");
 
-// api routes
-app.use('/api', require('./routes/assignments'));
-app.use('/administrateur', require('./administrateur/administrateur.controller'));
-app.use('/clients', require('./clients/clients.controller'));
+app.route("/typeParie")
+  .get(ParieRoutes.listTypeParie) 
+  .post(ParieRoutes.insertTypeParie)
+  .put(ParieRoutes.updateTypeParie);
+  
+app.route("/typeParie/:id")
+  .delete(ParieRoutes.deleteTypeParie);
+  
+app.route("/categorie")
+  .get(CategorieRoutes.listCategorie)
+  .post(CategorieRoutes.insertCategorie)
+  .put(CategorieRoutes.updateCategorie);
+  
+app.route("/categorie/:id")
+  .delete(CategorieRoutes.deleteCategorie);
 
+app.listen(8000);
+console.log("Listening on 8000...");
 
-// global error handler
-app.use(errorHandler);
-
-// start server
-const port = process.env.PORT || 4000;
-app.listen(port, "0.0.0.0");
-console.log('Server listening on port ' + port);
