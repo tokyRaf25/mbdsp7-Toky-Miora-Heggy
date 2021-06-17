@@ -1,4 +1,4 @@
-<h2>Ngx datatable</h2>
+<!--<h2>Ngx datatable</h2>
 <p class="text-muted">Editable, filterable and sortable table made with <a href="https://github.com/swimlane/ngx-datatable" target="_blank" class="font-weight-bold transition">ngx-datatable</a>.</p>
 
 <div class="input-group mb-2">
@@ -68,4 +68,53 @@
         {{value}}
       </ng-template>
     </ngx-datatable-column>
-</ngx-datatable>   
+</ngx-datatable> -->
+<div widget class="card border-0 box-shadow">
+  <div class="card-header transparent border-0 text-muted">
+      <h5 class="mb-0">ng2-smart-table</h5>
+      <div class="widget-controls"> 
+          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>  
+          <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
+      </div>        
+  </div>
+  <div class="card-body pt-0 widget-body">
+      <p class="text-left fs-13 text-gray">Simple table component with editing, sorting, filtering and pagination for Angular. Built with <a href="https://github.com/akveo/ng2-smart-table" target="_blank" class="font-weight-bold transition">ng2-smart-table</a>.</p>
+      <div class="table-responsive">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>TypeParie</th>
+                      <th>Categorie</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let a of champ">
+                      <td>{{a.idCategorie}}</td>
+                      <td>{{a.nomChamp}}</td>
+                      
+                      <td class="align-middle">
+                          <div class="btn-group" role="group">
+                              <button class="btn btn-secondary btn-sm"><i class="fa fa-pencil"></i></button>
+                           </div>
+                           <a  (click)="deleteChamp(a)">
+                              <i class="fa fa-trash"></i>
+                            </a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>  
+      <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" (click)="premierePage()">Première</a></li>
+            <li class="page-item"><a class="page-link" (click)="pagePrecedente()"   [class.disabled]="!hasPrevPage">Prev</a></li>
+            <li class="page-item"><a class="page-link" (click)="pageSuivante()" [class.disabled]="!hasNextPage">Suiv</a></li>
+            <li class="page-item"><a class="page-link" (click)="dernierePage()">Dernière</a></li>
+          </ul>
+        </nav>        
+  </div>
+</div>  

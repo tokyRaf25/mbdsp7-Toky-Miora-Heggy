@@ -12,13 +12,38 @@
     <div class="card-body pt-0 widget-body">
         <p class="text-left fs-13 text-gray">Simple table component with editing, sorting, filtering and pagination for Angular. Built with <a href="https://github.com/akveo/ng2-smart-table" target="_blank" class="font-weight-bold transition">ng2-smart-table</a>.</p>
         <div class="table-responsive">
-            <ng2-smart-table  class="table table-hover"
-                              [settings]="settings" 
-                              [source]="data" 
-                              (deleteConfirm)="onDeleteConfirm($event)"
-                              (rowSelect)="onRowSelect($event)" 
-                              (userRowSelect)="onUserRowSelect($event)"
-                              (rowHover)="onRowHover($event)"></ng2-smart-table>
-        </div>          
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>TypeParie</th>
+                        <th>Categorie</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of categorie">
+                        <td>{{a.idTypePari}}</td>
+                        <td>{{a.nomcategorie}}</td>
+                        
+                        <td class="align-middle">
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-secondary btn-sm"><i class="fa fa-pencil"></i></button>
+                             </div>
+                             <a  (click)="deleteCategorie(a)">
+                                <i class="fa fa-trash"></i>
+                              </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>  
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a class="page-link" (click)="premierePage()">Première</a></li>
+              <li class="page-item"><a class="page-link" (click)="pagePrecedente()"   [class.disabled]="!hasPrevPage">Prev</a></li>
+              <li class="page-item"><a class="page-link" (click)="pageSuivante()" [class.disabled]="!hasNextPage">Suiv</a></li>
+              <li class="page-item"><a class="page-link" (click)="dernierePage()">Dernière</a></li>
+            </ul>
+          </nav>        
     </div>
 </div>

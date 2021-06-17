@@ -1,7 +1,8 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-
-
+import { ChampService } from './../../../creation-foot/champ.service';
+import { Champ } from './../../../creation-foot/champ.model';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-ngx',
   templateUrl: './ngx.component.html',
@@ -9,12 +10,22 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 })
 export class NgxComponent {
 
+  champ:Champ[];
   editing = {};
   rows = [];
   temp = [];
   selected = [];
   loadingIndicator: boolean = true;
   reorderable: boolean = true;
+  page: Number=1;
+  limit: Number=10;
+  totalDocs: Number;
+  totalPages: Number;
+  hasPrevPage: boolean;
+  prevPage: Number;
+  hasNextPage: boolean;
+  nextPage: Number;
+  showMsg: boolean = false;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
@@ -24,7 +35,11 @@ export class NgxComponent {
     { name: 'Company' }
   ];
 
- constructor() {
+ constructor(
+  private champService: ChampService,
+  private route: ActivatedRoute,
+  private router: Router
+ ) {
     this.fetch((data) => {
       this.temp = [...data];
       this.rows = data;
@@ -63,6 +78,77 @@ export class NgxComponent {
 
   onActivate(event) {
     console.log('Activate Event', event);
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(queryParams => {
+      this.page = +queryParams.page || 1;
+      this.limit = +queryParams.limit || 2;
+      this.getChamp();
+    });
+  }
+
+  getChamp(){
+    this.champService.getAllChampPagine(this.page, this.limit).subscribe(data=>{
+      this.champ = data.docs;
+      this.page = data.page;
+      this.limit = data.limit;
+      this.totalDocs = data.totalDocs;
+      this.totalPages = data.totalPages;
+      this.hasPrevPage = data.hasPrevPage;
+      this.prevPage = data.prevPage;
+      this.hasNextPage = data.hasNextPage;
+      this.nextPage = data.nextPage;
+      console.log(data);
+    });
+  }
+  premierePage() {
+    this.router.navigate(['/pages/tables/dynamic-tables/ngx'], {
+      queryParams: {
+        page:1,
+        limit:this.limit,
+      }
+    });
+  }
+
+  pageSuivante() {
+   
+    this.router.navigate(['/pages/tables/dynamic-tables/ngx'], {
+      queryParams: {
+        page:this.nextPage,
+        limit:this.limit,
+      }
+    });
+  }
+
+
+  pagePrecedente() {
+    this.router.navigate(['/pages/tables/dynamic-tables/ngx'], {
+      queryParams: {
+        page:this.prevPage,
+        limit:this.limit,
+      }
+    });
+  }
+
+  dernierePage() {
+    this.router.navigate(['/pages/tables/dynamic-tables/ngx'], {
+      queryParams: {
+        page:this.totalPages,
+        limit:this.limit,
+      }
+    });
+  }
+
+  deleteChamp(champ:Champ){
+
+    if(confirm("Etes vous sur de vouloir supprimer ")) {
+      this.champService.deleteChamp(champ._id).subscribe(data=>{
+        this.getChamp();
+        this.showMsg= true;
+        this.router.navigate(['/pages/tables/dynamic-tables/ngx'],{replaceUrl:true});
+      });
+    } 
   }
 
 }

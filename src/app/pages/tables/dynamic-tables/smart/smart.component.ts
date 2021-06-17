@@ -1,5 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-
+import { CategorieService } from './../../../creation-foot/categorie.service';
+import { Categorie } from './../../../creation-foot/categorie.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ChampService } from './../../../creation-foot/champ.service';
+import { Champ } from './../../../creation-foot/champ.model';
 @Component({
   selector: 'app-smart',
   templateUrl: './smart.component.html',
@@ -8,6 +12,16 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 export class SmartComponent {
   public data = [];
+  categorie:Categorie[];
+  page: Number=1;
+  limit: Number=10;
+  totalDocs: Number;
+  totalPages: Number;
+  hasPrevPage: boolean;
+  prevPage: Number;
+  hasNextPage: boolean;
+  nextPage: Number;
+  showMsg: boolean = false;
   public settings = {
     selectMode: 'single',  //single|multi
     hideHeader: false,
@@ -71,7 +85,12 @@ export class SmartComponent {
     }
   };
 
-  constructor() { 
+  constructor(
+    private categorieService: CategorieService,
+    private champService: ChampService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { 
     this.getData((data) => {
       this.data = data;
     });
@@ -105,5 +124,77 @@ export class SmartComponent {
   public onRowHover(event){
     //console.log(event);
   }
+
+  getCategorie(){
+    this.categorieService.getAllCategoriePagine(this.page, this.limit).subscribe(data=>{
+      this.categorie = data.docs;
+      this.page = data.page;
+      this.limit = data.limit;
+      this.totalDocs = data.totalDocs;
+      this.totalPages = data.totalPages;
+      this.hasPrevPage = data.hasPrevPage;
+      this.prevPage = data.prevPage;
+      this.hasNextPage = data.hasNextPage;
+      this.nextPage = data.nextPage;
+      console.log(data);
+    });
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(queryParams => {
+      this.page = +queryParams.page || 1;
+      this.limit = +queryParams.limit || 2;
+      this.getCategorie();
+    });
+  }
+  premierePage() {
+    this.router.navigate(['/pages/tables/dynamic-tables/smart'], {
+      queryParams: {
+        page:1,
+        limit:this.limit,
+      }
+    });
+  }
+
+  pageSuivante() {
+   
+    this.router.navigate(['/pages/tables/dynamic-tables/smart'], {
+      queryParams: {
+        page:this.nextPage,
+        limit:this.limit,
+      }
+    });
+  }
+
+
+  pagePrecedente() {
+    this.router.navigate(['/pages/tables/dynamic-tables/smart'], {
+      queryParams: {
+        page:this.prevPage,
+        limit:this.limit,
+      }
+    });
+  }
+
+  dernierePage() {
+    this.router.navigate(['/pages/tables/dynamic-tables/smart'], {
+      queryParams: {
+        page:this.totalPages,
+        limit:this.limit,
+      }
+    });
+  }
+
+  deleteCategorie(categorie:Categorie){
+
+    if(confirm("Etes vous sur de vouloir supprimer ")) {
+      this.categorieService.deleteCategorie(categorie._id).subscribe(data=>{
+        this.getCategorie();
+        this.showMsg= true;
+        this.router.navigate(['/pages/tables/dynamic-tables/smart'],{replaceUrl:true});
+      });
+    } 
+  }
+	
 
 }

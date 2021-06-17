@@ -6,7 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { User, UserProfile, UserWork, UserContacts, UserSocial, UserSettings } from './membership.model';
 import { MembershipService } from './membership.service';
 import { MenuService } from '../../theme/components/menu/menu.service';
- 
+
+
 @Component({
   selector: 'app-membership',
   templateUrl: './membership.component.html',
@@ -65,7 +66,7 @@ export class MembershipComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers(); 
-    this.form = this.fb.group({
+	this.form = this.fb.group({
         id: null,
         username: [null, Validators.compose([Validators.required, Validators.minLength(5)])],
         password: [null, Validators.compose([Validators.required, Validators.minLength(6)])],       
@@ -199,5 +200,6 @@ export class MembershipComponent implements OnInit {
       this.modalRef.close();    
     }
   } 
+  
 
 }
