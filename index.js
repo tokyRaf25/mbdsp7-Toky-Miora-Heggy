@@ -9,6 +9,7 @@ let pari = require('./routes/parie_sports');
 const ParieRoutes = require('./routes/typeParie.route'); 
 const CategorieRoutes = require('./routes/categorie.route');
 const client = require('./routes/clients');
+const Admin = require('./routes/administrateurs');
 const jwt = require('./_helpers/jwt');
 const errorHandler = require('./_helpers/error-handler');
 
@@ -48,6 +49,12 @@ const prefix = '/api';
 
 app.route(prefix + '/authentification')
   .post(client.authenticate)
+
+app.route(prefix + '/registration')
+.post(client.register)
+
+app.route("/authentification")
+.post(Admin.authenticate)
 
 //Champ par categorie
 app.route(prefix + '/champParCat')
