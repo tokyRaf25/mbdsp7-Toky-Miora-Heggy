@@ -112,7 +112,12 @@ function updateChamp(req, res) {
           //console.log(element);
         });
            var hash = data.reduce((p,c) => (p[c.idCategorie] ? p[c.idCategorie].push(c) : p[c.idCategorie] = [c],p) ,{});
-           var newData = Object.keys(hash).map(k => ({idCategorie: k, champs: hash[k]}));
+           var newData = Object.keys(hash).map(
+             function(k){
+             return {idCategorie: k, /*nomCategorie:categorie.getNomByIdCategorie(k),*/ champs: hash[k]}
+            });
+
+           //console.log(categorie.getNomByIdCategorie("60c8945b80e58a3b546df516"));
 
         dataReturn = {
           docs:newData,
@@ -132,23 +137,6 @@ function updateChamp(req, res) {
       });
   }
 
-  /*function getChampParCategorie(req,res){
-    var categorieQuery = Categorie.aggregate();
-	  Categorie.aggregatePaginate(
-		categorieQuery,
-		{
-		  page: parseInt(req.query.page) || 1,
-		  limit: parseInt(req.query.limit) || 10,
-		}).then(function(results){
-      var tab = Array.from(results.docs);
-      tab.forEach(element => {
-        console.log(element);
-      });
-      res.send(results);
-    }).catch(function(err){
-      res.send(err);
-    });
-  }*/
 
   module.exports = {
     getChamps,
