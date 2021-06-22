@@ -11,6 +11,7 @@ const ParieRoutes = require('./routes/typeParie.route');
 const CategorieRoutes = require('./routes/categorie.route');
 const resultatReel = require('./routes/resultats_reels');
 const resultatPredit = require('./routes/resultats_predits');
+const pointDeVente = require('./routes/point_de_ventes');
 
 mongoose.Promise = global.Promise;
 
@@ -130,6 +131,18 @@ app.route("/categorie")
   
 app.route("/categorie/:id")
   .delete(CategorieRoutes.deleteCategorie);
+
+/******************************************************************* */  
+
+/************************Routes API Points de ventes************************************** */
+app.route(prefix + '/point_de_vente')
+  .get(pointDeVente.getPointDeVentes) 
+  .post(pointDeVente.postPointDeVente)
+  .put(pointDeVente.updatePointDeVente);
+  
+app.route("/point_de_vente/:id")
+  .get(pointDeVente.getPointDeVente)
+  .delete(pointDeVente.deletePointDeVente);
 
 /******************************************************************* */  
 

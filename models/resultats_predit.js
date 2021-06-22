@@ -12,4 +12,4 @@ let ResultatPreditSchema = Schema({
 
 ResultatPreditSchema.plugin(aggregatePaginate);
 
-module.exports = mongoose.model('ResultatReel',ResultatPreditSchema);
+module.exports = mongoose.model('ResultatPredit',ResultatPreditSchema);
