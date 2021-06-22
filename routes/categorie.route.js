@@ -1,5 +1,6 @@
-const categorie =  require("../models/Categorie")
-
+const categorie =  require("../models/Categorie");
+let Champ = require('../models/champ_par_categorie_pari');
+const ChampService = require ('../service/champ_par_categorie_paris.service');
 listCategorie = async ( req , res ) => { 
    /*const val = await categorie.find();
    res.send(val);*/
@@ -23,6 +24,7 @@ listCategorie = async ( req , res ) => {
 insertCategorie =  async(req,res) =>{
    let insert = new categorie();
    insert.nomcategorie = req.body.nomcategorie;
+   insert.idTypeParis = req.body.idTypeParis;
    insert.save((err) => {
     if (err) {
       res.send("cant post categorie ", err);
@@ -57,9 +59,34 @@ updateCategorie = async (req,res) => {
   );
 }
 
+getListCategorieParTp = async(req,res)=>{
+	try { 
+		 var ChampQuery = categorie.aggregate();
+		 let resultCategorie = await categorie.aggregatePaginate(
+			ChampQuery,
+			{
+			  idTypePari: req.params.id
+			}
+		 );
+		 if(resultCategorie && resultCategorie.docs && resultCategorie.docs.length > 0) { 
+			for (let i =0 ; i< resultCategorie.docs.length ; i++) { 
+					let resultChamp =  await ChampService.getChampByIdCategorie(resultCategorie.docs[i]._id);
+					resultCategorie.docs[i].Champ = resultChamp;
+			}
+		 }
+		 res.send(resultCategorie);
+	}
+	catch (e) { 
+		res.send(e);
+		throw e ;
+	}
+}
+
+
 module.exports = { 
   listCategorie,
   insertCategorie,
   deleteCategorie,
-  updateCategorie
+  updateCategorie,
+  getListCategorieParTp
 }

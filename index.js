@@ -32,6 +32,13 @@ mongoose.connect(uri, options)
       console.log('Erreur de connexion: ', err);
     });
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Authorization");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  next();
+});
+
 // '/' est la route racine
 app.get('/', function (req, res) {
   res.send('Bonjour !');
@@ -78,7 +85,8 @@ app.route("/categorie")
   .put(CategorieRoutes.updateCategorie);
   
 app.route("/categorie/:id")
-  .delete(CategorieRoutes.deleteCategorie);
+  .delete(CategorieRoutes.deleteCategorie)
+  .get(CategorieRoutes.getListCategorieParTp);
 
 app.listen(4000, function () {
   console.log("Application d'exemple écoutant sur le port 4000 !");
