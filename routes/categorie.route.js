@@ -61,13 +61,18 @@ updateCategorie = async (req,res) => {
 
 getListCategorieParTp = async(req,res)=>{
 	try { 
-		 var ChampQuery = categorie.aggregate();
-		 let resultCategorie = await categorie.aggregatePaginate(
-			ChampQuery,
+		 var ChampQuery = categorie.aggregate([
 			{
-			  idTypePari: req.params.id
+				$match : { 
+					idTypePari : req.params.id
+				}
 			}
+		 ]);
+		 let resultCategorie = await categorie.aggregatePaginate(
+			ChampQuery
 		 );
+	
+		 //console.log(resultCategorie);
 		 if(resultCategorie && resultCategorie.docs && resultCategorie.docs.length > 0) { 
 			for (let i =0 ; i< resultCategorie.docs.length ; i++) { 
 					let resultChamp =  await ChampService.getChampByIdCategorie(resultCategorie.docs[i]._id);

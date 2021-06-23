@@ -4,7 +4,7 @@ var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
 let Schema = mongoose.Schema;
 
 let PariSportSchema = Schema({
-    idTypePari: Number,
+    idTypePari: String,
     dateDebut: Date,
     dateFin: Date,
     autres_info: String,

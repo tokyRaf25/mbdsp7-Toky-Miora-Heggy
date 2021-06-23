@@ -33,6 +33,24 @@ function getPariSport(req, res) {
     });
 }
 
+function getLastPari(req,res){
+	var aggregateQuery = PariSport.aggregate(); 
+    
+    PariSport.aggregatePaginate(
+    aggregateQuery,
+    {
+	  sort:{dateDebut:1},
+      limit: 1,
+    },
+    (err, parisport) => {
+      if (err) {
+        res.send(err);
+      }
+      res.send(parisport);
+    }
+  );
+}
+
 // Ajout d'un assignment (POST)
 function postPariSport(req, res) {
     let pariSport = new PariSport();
@@ -100,4 +118,5 @@ function updatePariSport(req, res) {
     updatePariSport,
     deletePariSport,
     getPariByType,
+	getLastPari
   };

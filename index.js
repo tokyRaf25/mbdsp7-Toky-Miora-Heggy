@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
+let cote = require('./routes/cotes');
 
 //Déclaration des objets
 let champ = require('./routes/champ_par_categorie_paris');
@@ -54,6 +55,8 @@ app.route(prefix + '/champParCat')
   .post(champ.postChamp)
   .put(champ.updateChamp);
 
+app.route(prefix + '/champParCat/:id')
+  .delete(champ.deleteChamp);
   
 app.route(prefix + '/champParCat/trie')
   .get(champ.getChampParCategorie)
@@ -70,6 +73,9 @@ app.route(prefix + '/pari/:id')
 
 app.route(prefix + '/pari/type/:type')
   .get(pari.getPariByType)
+  
+app.route(prefix + '/pariOne')
+  .get(pari.getLastPari)
 
 app.route("/typeParie")
   .get(ParieRoutes.listTypeParie) 
@@ -88,6 +94,15 @@ app.route("/categorie/:id")
   .delete(CategorieRoutes.deleteCategorie)
   .get(CategorieRoutes.getListCategorieParTp);
 
+app.route(prefix + '/cote')
+  .get(cote.getCotes) 
+  .post(cote.postCote)
+  .put(cote.updateCote);
+  
+app.route("/cote/:id")
+  .get(cote.getCote)
+  .delete(cote.deleteCote);
+  
 app.listen(4000, function () {
   console.log("Application d'exemple écoutant sur le port 4000 !");
 });

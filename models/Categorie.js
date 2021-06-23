@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 let CategorieSchema = new Schema({
    nomcategorie : String,
-   idTypeParis:String
+    idTypePari:String
 });
 
 CategorieSchema.plugin(aggregatePaginate);
