@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 const Categorie = require('../models/Categorie');
 let Champ = require('../models/champ_par_categorie_pari');
 const categorie =  require("./categorie.route")
+=======
+let Champ = require('../models/champ_par_categorie_pari');
+>>>>>>> dev-node-api
 
 
 //Récupérer tous les cotes (GET), avec paggination
@@ -58,7 +62,11 @@ function updateChamp(req, res) {
     console.log("UPDATE recu Champ : ");
     console.log(req.body);
     Champ.findByIdAndUpdate(
+<<<<<<< HEAD
       req.body._id,
+=======
+      req.body.id,
+>>>>>>> dev-node-api
       req.body,
       { new: true },
       (err, champ) => {
@@ -74,7 +82,10 @@ function updateChamp(req, res) {
   
   // suppression d'un cote (DELETE)
   function deleteChamp(req, res) {
+<<<<<<< HEAD
     console.log("suppression champ "+req.params.id);
+=======
+>>>>>>> dev-node-api
     Champ.findByIdAndRemove(req.params.id, (err, champ) => {
       if (err) {
         res.send(err);
@@ -85,9 +96,15 @@ function updateChamp(req, res) {
 
 
   //Avoir les champs à partir d'une categorie
+<<<<<<< HEAD
   function getChampByIdCategorie(req, res){
     let categorieId = req.params.id;
     Champ.find({ idCategorie: categorieId }, (err, champ) => {
+=======
+  function getChampByIdCategorie(){
+    let categorieId = req.params.idCategorie;
+    Champ.findOne({ idCategorie: categorieId }, (err, champ) => {
+>>>>>>> dev-node-api
       if (err) {
         res.send(err);
       }
@@ -96,6 +113,7 @@ function updateChamp(req, res) {
   }
 
   //Avoir les champs par categories
+<<<<<<< HEAD
   function getChampParCategorie(req,res){
     var champQuery = Champ.aggregate();
     var dataReturn;
@@ -138,6 +156,12 @@ function updateChamp(req, res) {
   }
 
 
+=======
+  function getChampParCategorie(){
+    
+  }
+
+>>>>>>> dev-node-api
   module.exports = {
     getChamps,
     postChamp,

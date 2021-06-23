@@ -33,6 +33,7 @@ function getPariSport(req, res) {
     });
 }
 
+<<<<<<< HEAD
 function getLastPari(req,res){
 	var aggregateQuery = PariSport.aggregate(); 
     
@@ -51,12 +52,21 @@ function getLastPari(req,res){
   );
 }
 
+=======
+>>>>>>> dev-node-api
 // Ajout d'un assignment (POST)
 function postPariSport(req, res) {
     let pariSport = new PariSport();
     pariSport.idTypePari = req.body.idTypePari;
+<<<<<<< HEAD
     pariSport.dateDuMatch = req.body.dateDuMatch;
     pariSport.autres_info = req.body.autres_info;
+=======
+    pariSport.dateDebut = req.body.dateDebut;
+    pariSport.dateFin = req.body.dateFin;
+    pariSport.autres_info = req.body.autres_info;
+    pariSport.status = req.body.status;
+>>>>>>> dev-node-api
     pariSport.equipes = req.body.equipes;
     console.log("POST parieSport reçu :");
     console.log(pariSport);
@@ -116,5 +126,8 @@ function updatePariSport(req, res) {
     updatePariSport,
     deletePariSport,
     getPariByType,
+<<<<<<< HEAD
 	getLastPari
+=======
+>>>>>>> dev-node-api
   };
