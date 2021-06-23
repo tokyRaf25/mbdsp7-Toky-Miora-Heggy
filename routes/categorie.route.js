@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 const categorie =  require("../models/Categorie");
 let Champ = require('../models/champ_par_categorie_pari');
 const ChampService = require ('../service/champ_par_categorie_paris.service');
-=======
-const categorie =  require("../models/Categorie")
-
->>>>>>> dev-node-api
 listCategorie = async ( req , res ) => { 
    /*const val = await categorie.find();
    res.send(val);*/
@@ -29,10 +24,7 @@ listCategorie = async ( req , res ) => {
 insertCategorie =  async(req,res) =>{
    let insert = new categorie();
    insert.nomcategorie = req.body.nomcategorie;
-<<<<<<< HEAD
    insert.idTypeParis = req.body.idTypeParis;
-=======
->>>>>>> dev-node-api
    insert.save((err) => {
     if (err) {
       res.send("cant post categorie ", err);
@@ -109,11 +101,7 @@ module.exports = {
   listCategorie,
   insertCategorie,
   deleteCategorie,
-<<<<<<< HEAD
   updateCategorie,
   getListCategorieParTp,
   getNomByIdCategorie
-=======
-  updateCategorie
->>>>>>> dev-node-api
 }
