@@ -5,10 +5,14 @@ let bodyParser = require('body-parser');
 let cote = require('./routes/cotes');
 
 //Déclaration des objets
+let cote = require('./routes/cotes');
 let champ = require('./routes/champ_par_categorie_paris');
 let pari = require('./routes/parie_sports');
 const ParieRoutes = require('./routes/typeParie.route'); 
 const CategorieRoutes = require('./routes/categorie.route');
+const resultatReel = require('./routes/resultats_reels');
+const resultatPredit = require('./routes/resultats_predits');
+const pointDeVente = require('./routes/point_de_ventes');
 
 mongoose.Promise = global.Promise;
 
@@ -49,7 +53,7 @@ app.get('/', function (req, res) {
 // les routes
 const prefix = '/api';
 
-//Champ par categorie
+/************************Routes API champParCategorie************************************** */
 app.route(prefix + '/champParCat')
   .get(champ.getChamps)
   .post(champ.postChamp)
@@ -61,7 +65,12 @@ app.route(prefix + '/champParCat/:id')
 app.route(prefix + '/champParCat/trie')
   .get(champ.getChampParCategorie)
 
-//Champ par categorie
+app.route(prefix + '/champParCat/:id')
+  .get(champ.getChampByIdCategorie)
+  .delete(champ.deleteChamp)
+/******************************************************************* */  
+
+/************************Routes API PariSport************************************** */
 app.route(prefix + '/pari')
   .get(pari.getPariSports)
   .post(pari.postPariSport)
@@ -77,6 +86,45 @@ app.route(prefix + '/pari/type/:type')
 app.route(prefix + '/pariOne')
   .get(pari.getLastPari)
 
+/******************************************************************* */
+
+/************************Routes API Cote************************************** */
+app.route(prefix + '/cote')
+  .get(cote.getCotes) 
+  .post(cote.postCote)
+  .put(cote.updateCote);
+  
+app.route("/cote/:id")
+  .get(cote.getCote)
+  .delete(cote.deleteCote);
+
+/******************************************************************* */ 
+
+/************************Routes API Résultats réels************************************** */
+app.route(prefix + '/resultats_reel')
+  .get(resultatReel.getResultatReels) 
+  .post(resultatReel.postResultatReel)
+  .put(resultatReel.updateResultatReel);
+  
+app.route("/resultats_reel/:id")
+.get(resultatReel.getResultatReel)
+  .delete(resultatReel.deleteResultatReel);
+
+/******************************************************************* */  
+
+/************************Routes API Résultats prédites************************************** */
+app.route(prefix + '/resultats_predit')
+  .get(resultatPredit.getResultatPredits) 
+  .post(resultatPredit.postResultatPredit)
+  .put(resultatPredit.updateResultatPredit);
+  
+app.route("/resultats_predit/:id")
+.get(resultatPredit.getResultatPredit)
+  .delete(resultatPredit.deleteResultatPredit);
+
+/******************************************************************* */  
+
+/************************Routes API Type de parie************************************** */
 app.route("/typeParie")
   .get(ParieRoutes.listTypeParie) 
   .post(ParieRoutes.insertTypeParie)
@@ -84,7 +132,11 @@ app.route("/typeParie")
   
 app.route("/typeParie/:id")
   .delete(ParieRoutes.deleteTypeParie);
-  
+
+/******************************************************************* */  
+
+/************************Routes API Type de categorie************************************** */
+
 app.route("/categorie")
   .get(CategorieRoutes.listCategorie)
   .post(CategorieRoutes.insertCategorie)
@@ -94,15 +146,21 @@ app.route("/categorie/:id")
   .delete(CategorieRoutes.deleteCategorie)
   .get(CategorieRoutes.getListCategorieParTp);
 
-app.route(prefix + '/cote')
-  .get(cote.getCotes) 
-  .post(cote.postCote)
-  .put(cote.updateCote);
+/******************************************************************* */  
+
+/************************Routes API Points de ventes************************************** */
+app.route(prefix + '/point_de_vente')
+  .get(pointDeVente.getPointDeVentes) 
+  .post(pointDeVente.postPointDeVente)
+  .put(pointDeVente.updatePointDeVente);
   
-app.route("/cote/:id")
-  .get(cote.getCote)
-  .delete(cote.deleteCote);
-  
+app.route("/point_de_vente/:id")
+  .get(pointDeVente.getPointDeVente)
+  .delete(pointDeVente.deletePointDeVente);
+
+/******************************************************************* */  
+
+
 app.listen(4000, function () {
   console.log("Application d'exemple écoutant sur le port 4000 !");
 });

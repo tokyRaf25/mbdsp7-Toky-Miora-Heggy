@@ -97,42 +97,46 @@ function updateChamp(req, res) {
 
   //Avoir les champs par categories
   function getChampParCategorie(req,res){
-    var categorieQuery = Categorie.aggregate();
-    Categorie.aggregatePaginate(
-      categorieQuery,
+    var champQuery = Champ.aggregate();
+    var dataReturn;
+    Champ.aggregatePaginate(
+      champQuery,
       {
         page: parseInt(req.query.page) || 1,
         limit: parseInt(req.query.limit) || 10,
       }).then(function(results){
-        results.docs.aggregate([
-          {
-            $group: { _id: { idCategorie: "$idCategorie" }, champs: { $push: "$nomChamp" } }
-          }
-         ]);
-         console.log(results);
-         res.send([]);
+        var tab = Array.from(results.docs);
+        var data = [];
+        tab.forEach(element => {
+          data.push(element);
+          //console.log(element);
+        });
+           var hash = data.reduce((p,c) => (p[c.idCategorie] ? p[c.idCategorie].push(c) : p[c.idCategorie] = [c],p) ,{});
+           var newData = Object.keys(hash).map(
+             function(k){
+             return {idCategorie: k, /*nomCategorie:categorie.getNomByIdCategorie(k),*/ champs: hash[k]}
+            });
+
+           //console.log(categorie.getNomByIdCategorie("60c8945b80e58a3b546df516"));
+
+        dataReturn = {
+          docs:newData,
+          totalDocs:results.totalDocs,
+          limit:results.limit,
+          page:results.page,
+          totalPages:results.totalPages,
+          pagingCounter:results.pagingCounter,
+          hasPrevPage:results.hasPrevPage,
+          hasNextPage:results.hasNextPage,
+          prevPage:results.prevPage,
+          nextPage:results.nextPage
+        }
+        res.send(dataReturn);
       }).catch(function(err){
         res.send(err);
       });
   }
 
-  /*function getChampParCategorie(req,res){
-    var categorieQuery = Categorie.aggregate();
-	  Categorie.aggregatePaginate(
-		categorieQuery,
-		{
-		  page: parseInt(req.query.page) || 1,
-		  limit: parseInt(req.query.limit) || 10,
-		}).then(function(results){
-      var tab = Array.from(results.docs);
-      tab.forEach(element => {
-        console.log(element);
-      });
-      res.send(results);
-    }).catch(function(err){
-      res.send(err);
-    });
-  }*/
 
   module.exports = {
     getChamps,

@@ -88,10 +88,20 @@ getListCategorieParTp = async(req,res)=>{
 }
 
 
+function getNomByIdCategorie(idCategorie){
+  var result = null;
+  categorie.findOne({ _id: idCategorie }, (err, categorie) => {
+    result = categorie.nomcategorie;
+    //console.log(result);
+  });
+  return result;
+}
+
 module.exports = { 
   listCategorie,
   insertCategorie,
   deleteCategorie,
   updateCategorie,
-  getListCategorieParTp
+  getListCategorieParTp,
+  getNomByIdCategorie
 }
