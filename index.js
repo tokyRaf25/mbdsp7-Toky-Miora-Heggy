@@ -5,7 +5,6 @@ let bodyParser = require('body-parser');
 let cote = require('./routes/cotes');
 
 //Déclaration des objets
-let cote = require('./routes/cotes');
 let champ = require('./routes/champ_par_categorie_paris');
 let pari = require('./routes/parie_sports');
 const ParieRoutes = require('./routes/typeParie.route'); 
