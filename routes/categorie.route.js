@@ -67,7 +67,6 @@ updateCategorie = async (req,res) => {
   );
 }
 
-<<<<<<< HEAD
 getListCategorieParTp = async(req,res)=>{
 	try { 
 		 var ChampQuery = categorie.aggregate([
@@ -106,8 +105,6 @@ function getNomByIdCategorie(idCategorie){
   return result;
 }
 
-=======
->>>>>>> dev-node-api
 module.exports = { 
   listCategorie,
   insertCategorie,
