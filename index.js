@@ -12,6 +12,10 @@ const CategorieRoutes = require('./routes/categorie.route');
 const resultatReel = require('./routes/resultats_reels');
 const resultatPredit = require('./routes/resultats_predits');
 const pointDeVente = require('./routes/point_de_ventes');
+const client = require('./routes/clients');
+const Admin = require('./routes/administrateurs');
+const jwt = require('./_helpers/jwt');
+const errorHandler = require('./_helpers/error-handler');
 
 mongoose.Promise = global.Promise;
 
@@ -48,11 +52,22 @@ app.get('/', function (req, res) {
   res.send('Bonjour !');
 });
 
-
+// use JWT auth to secure the api
+app.use(jwt());
 // les routes
 const prefix = '/api';
 
-/************************Routes API champParCategorie************************************** */
+
+app.route(prefix + '/authentification')
+  .post(client.authenticate)
+
+app.route(prefix + '/registration')
+.post(client.register)
+
+app.route("/authentification")
+.post(Admin.authenticate)
+
+//Champ par categorie
 app.route(prefix + '/champParCat')
   .get(champ.getChamps)
   .post(champ.postChamp)
