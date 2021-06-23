@@ -118,31 +118,31 @@ app.route(prefix + '/resultats_predit')
   .post(resultatPredit.postResultatPredit)
   .put(resultatPredit.updateResultatPredit);
   
-app.route("/resultats_predit/:id")
+app.route(prefix +"/resultats_predit/:id")
 .get(resultatPredit.getResultatPredit)
   .delete(resultatPredit.deleteResultatPredit);
 
 /******************************************************************* */  
 
 /************************Routes API Type de parie************************************** */
-app.route("/typeParie")
+app.route(prefix +"/typeParie")
   .get(ParieRoutes.listTypeParie) 
   .post(ParieRoutes.insertTypeParie)
   .put(ParieRoutes.updateTypeParie);
   
-app.route("/typeParie/:id")
+app.route(prefix +"/typeParie/:id")
   .delete(ParieRoutes.deleteTypeParie);
 
 /******************************************************************* */  
 
 /************************Routes API Type de categorie************************************** */
 
-app.route("/categorie")
+app.route(prefix +"/categorie")
   .get(CategorieRoutes.listCategorie)
   .post(CategorieRoutes.insertCategorie)
   .put(CategorieRoutes.updateCategorie);
   
-app.route("/categorie/:id")
+app.route(prefix +"/categorie/:id")
   .delete(CategorieRoutes.deleteCategorie)
   .get(CategorieRoutes.getListCategorieParTp);
 
@@ -154,7 +154,7 @@ app.route(prefix + '/point_de_vente')
   .post(pointDeVente.postPointDeVente)
   .put(pointDeVente.updatePointDeVente);
   
-app.route("/point_de_vente/:id")
+app.route(prefix +"/point_de_vente/:id")
   .get(pointDeVente.getPointDeVente)
   .delete(pointDeVente.deletePointDeVente);
 
