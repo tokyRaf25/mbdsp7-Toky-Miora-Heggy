@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
 });
 
 // use JWT auth to secure the api
-app.use(jwt());
+//app.use(jwt());
 // les routes
 const prefix = '/api';
 
