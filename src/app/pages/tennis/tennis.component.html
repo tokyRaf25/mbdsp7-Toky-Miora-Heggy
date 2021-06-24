@@ -1,5 +1,5 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
- 
+  
 </div>
 <div class="container-fluid mt--7">
   <div class="row">
@@ -8,7 +8,7 @@
         <div class="card-header border-0">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="mb-0">TOP des paris Tennis</h3>
+              <h3 class="mb-0">TOP des paris TENNIS</h3>
             </div>
           </div>
         </div>
@@ -19,123 +19,30 @@
               <tr>
                 <th scope="col">Matchs</th>
                 <th scope="col">Date</th>
-                <th scope="col">Heure</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let a of pari_sport">
                 <th scope="row">
                   <div class="media align-items-center">
                     <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/tennis.jpg">
+                      <img alt="Image placeholder" src="../assets/img/theme/foot.jpg">
                     </a>
                     <div class="media-body">
-                      <span class="mb-0 text-sm">Tsonga VS Djockovic</span>
+                      <span class="mb-0 text-sm"> {{a.equipes[0].nomEquipe}} VS {{a.equipes[1].nomEquipe}}</span>
+                      <p class="">
+                        <span class=" mr-5"> {{a.autres_info}}</span>
+                      </p>
                     </div>
                   </div>
                 </th>
                 <td>
-                  15-06-2021
-                </td>
-                <td>
-                  20:00
+                  {{a.dateDuMatch}}
                 </td>
                 <td>
                   <div class="col text-center">
-                    <a href="#!" class="btn btn-sm btn-primary">Voir détails <i class="ni ni-bold-right"></i></a>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/tennis.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Belgique VS Danemark</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  15-06-2021
-                </td>
-                <td>
-                  20:00
-                </td>
-                <td>
-                  <div class="col text-center">
-                    <a href="#!" class="btn btn-sm btn-primary">Voir détails <i class="ni ni-bold-right"></i></a>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/tennis.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Croatie VS Pologne</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  15-06-2021
-                </td>
-                <td>
-                  22:00
-                </td>
-                <td>
-                  <div class="col text-center">
-                    <a href="#!" class="btn btn-sm btn-primary">Voir détails <i class="ni ni-bold-right"></i></a>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/tennis.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Allemagne VS Croatie</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  15-06-2021
-                </td>
-                <td>
-                  15:00
-                </td>
-                <td>
-                  <div class="col text-center">
-                    <a href="#!" class="btn btn-sm btn-primary">Voir détails <i class="ni ni-bold-right"></i></a>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/tennis.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Portugal VS France</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  23-06-2021
-                </td>
-                <td>
-                  20:00
-                </td>
-                <td>
-                  <div class="col text-center">
-                    <a href="#!" class="btn btn-sm btn-primary">Voir détails <i class="ni ni-bold-right"></i></a>
+                    <a routerLinkActive="active" [routerLink]="['/fiche-foot']" class="btn btn-sm btn-primary">Voir détails <i class="ni ni-bold-right"></i></a>
                   </div>
                 </td>
               </tr>
@@ -225,24 +132,4 @@
     </div>
   </div>
 </div>
-<script>
-var slideIndex = 0;
-showSlides();
 
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
-</script>

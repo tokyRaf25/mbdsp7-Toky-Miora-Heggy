@@ -33,119 +33,27 @@
               <tr>
                 <th scope="col">Matchs</th>
                 <th scope="col">Date</th>
-                <th scope="col">Heure</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let a of pari_sport">
                 <th scope="row">
                   <div class="media align-items-center">
                     <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/foot.jpg">
+                      <img *ngIf="a.idTypePari == '60c9ee674a243561604bd63e'" alt="Image placeholder" src="../assets/img/theme/tennis.jpg">
+					            <img *ngIf="a.idTypePari == '60b91a09bb33a3e0bd749715'" alt="Image placeholder" src="../assets/img/theme/foot.jpg">
                     </a>
                     <div class="media-body">
-                      <span class="mb-0 text-sm">Allemagne VS France</span>
+                      <span class="mb-0 text-sm">{{a.equipes[0].nomEquipe}} VS {{a.equipes[1].nomEquipe}}</span>
+                      <p class="">
+                        <span class=" mr-5">{{a.autres_info}}</span>
+                      </p>
                     </div>
                   </div>
                 </th>
                 <td>
-                  15-06-2021
-                </td>
-                <td>
-                  20:00
-                </td>
-                <td>
-                  <div class="col text-center">
-                    <a routerLinkActive="active" [routerLink]="['/fiche-foot']" class="btn btn-sm btn-primary">Voir détails <i class="ni ni-bold-right"></i></a>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/foot.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Belgique VS Danemark</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  15-06-2021
-                </td>
-                <td>
-                  20:00
-                </td>
-                <td>
-                  <div class="col text-center">
-                    <a routerLinkActive="active" [routerLink]="['/fiche-foot']" class="btn btn-sm btn-primary">Voir détails <i class="ni ni-bold-right"></i></a>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/foot.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Croatie VS Pologne</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  15-06-2021
-                </td>
-                <td>
-                  22:00
-                </td>
-                <td>
-                  <div class="col text-center">
-                    <a routerLinkActive="active" [routerLink]="['/fiche-foot']" class="btn btn-sm btn-primary">Voir détails <i class="ni ni-bold-right"></i></a>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/foot.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Allemagne VS Croatie</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  15-06-2021
-                </td>
-                <td>
-                  15:00
-                </td>
-                <td>
-                  <div class="col text-center">
-                    <a routerLinkActive="active" [routerLink]="['/fiche-foot']" class="btn btn-sm btn-primary">Voir détails <i class="ni ni-bold-right"></i></a>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/foot.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Portugal VS France</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  23-06-2021
-                </td>
-                <td>
-                  20:00
+                  {{a.dateDuMatch}}
                 </td>
                 <td>
                   <div class="col text-center">
@@ -155,6 +63,25 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" (click)="pagePrecedente()"   [class.disabled]="!hasPrevPage">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="!#">0</a></li>
+              <li class="page-item">
+                <a class="page-link" (click)="pageSuivante()" [class.disabled]="!hasNextPage">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
@@ -238,4 +165,5 @@
       </div>
     </div>
   </div>
+  
 </div>
