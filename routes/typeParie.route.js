@@ -1,5 +1,5 @@
 const typeParie =  require("../models/TypeParie")
-const parie_sport =  require("../models/parie_sport")
+
 listTypeParie = async ( req , res ) => {  
    /*const val = await typeParie.find();
    res.send(val);*/
@@ -57,31 +57,9 @@ updateTypeParie = async (req,res) => {
   );
 }
 
-listMacthParTypeParie = async(req,res) =>{
-	
-	 var parie_sportQuery = parie_sport.aggregate();
-  
-	  parie_sport.aggregatePaginate(
-		parie_sportQuery,
-		{
-		  page: parseInt(req.query.page) || 1,
-		  limit: parseInt(req.query.limit) || 10,
-		  idTypePari: req.params.id
-		},
-		(err, parie_sport) => {
-		  if (err) {
-			res.send(err);
-		  }
-		  res.send(parie_sport);
-		}
-	  );
-	
-}
-
 module.exports = { 
   listTypeParie,
   insertTypeParie,
   deleteTypeParie,
-  updateTypeParie,
-  listMacthParTypeParie
+  updateTypeParie
 }
