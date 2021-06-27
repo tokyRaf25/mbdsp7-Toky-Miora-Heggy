@@ -6,7 +6,7 @@ import { HttpClient,HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class CategorieService {
-  uri = "http://localhost:4000";
+  uri = "http://localhost:4000/api";
 
   constructor( private http:HttpClient) { }
 

@@ -1,3 +1,4 @@
+import { Categorie} from "./categorie.model";
 export interface Equipe { 
     nomEquipe : String ;
 }
@@ -9,6 +10,7 @@ export class Parisport {
     status: String;
     equipes:Equipe[]; 
     total:Number;
+    Categorie:Categorie[];
 }
 
 export class ParisportModele {

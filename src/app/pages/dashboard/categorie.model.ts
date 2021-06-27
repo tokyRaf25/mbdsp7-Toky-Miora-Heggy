@@ -1,7 +1,9 @@
+import { Champ } from "./champ.model";
 export class Categorie {
     _id:String;
     idTypePari:String;
     nomcategorie : String;
+    champ:Champ[];
 }
 export class CategorieModele {
 	
