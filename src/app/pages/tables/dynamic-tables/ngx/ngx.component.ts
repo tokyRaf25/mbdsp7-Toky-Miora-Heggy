@@ -3,6 +3,8 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ChampService } from './../../../creation-foot/champ.service';
 import { Champ } from './../../../creation-foot/champ.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Categorie } from 'app/pages/creation-foot/categorie.model';
+import { CategorieService } from './../../../creation-foot/categorie.service';
 @Component({
   selector: 'app-ngx',
   templateUrl: './ngx.component.html',
@@ -17,6 +19,7 @@ export class NgxComponent {
   selected = [];
   loadingIndicator: boolean = true;
   reorderable: boolean = true;
+  categorie:Categorie[];
   page: Number=1;
   limit: Number=10;
   totalDocs: Number;
@@ -26,7 +29,12 @@ export class NgxComponent {
   hasNextPage: boolean;
   nextPage: Number;
   showMsg: boolean = false;
-
+  champUpdated:Champ;
+  nomchamp:String;
+  idchamp:String;
+  categorieList:Categorie[];
+  categorieSelected : string;
+  showMsgDelete: boolean = false;
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
   columns = [
@@ -37,6 +45,7 @@ export class NgxComponent {
 
  constructor(
   private champService: ChampService,
+  private categorieService: CategorieService,
   private route: ActivatedRoute,
   private router: Router
  ) {
@@ -85,6 +94,7 @@ export class NgxComponent {
       this.page = +queryParams.page || 1;
       this.limit = +queryParams.limit || 2;
       this.getChamp();
+      this.getCategorie();
     });
   }
 
@@ -99,7 +109,18 @@ export class NgxComponent {
       this.prevPage = data.prevPage;
       this.hasNextPage = data.hasNextPage;
       this.nextPage = data.nextPage;
-      console.log(data);
+      //console.log(data);
+      this.categorieService.getAllCategorieModel().subscribe(data=>{
+        this.categorie = data.docs;
+        //console.log(data);
+        this.champ.forEach(champ=>{
+            this.categorie.forEach(categorie=>{
+                if(champ.idCategorie == categorie._id){
+                  champ.nomCategorie = categorie.nomcategorie;
+                }
+            });
+        });
+      });
     });
   }
   premierePage() {
@@ -145,10 +166,47 @@ export class NgxComponent {
     if(confirm("Etes vous sur de vouloir supprimer ")) {
       this.champService.deleteChamp(champ._id).subscribe(data=>{
         this.getChamp();
-        this.showMsg= true;
+        this.showMsgDelete= true;
         this.router.navigate(['/pages/tables/dynamic-tables/ngx'],{replaceUrl:true});
       });
     } 
+  }
+
+  getInfo(champ:Champ){
+    this.champUpdated = champ;
+    this.nomchamp = this.champUpdated.nomChamp;
+    this.idchamp = this.champUpdated._id;
+   
+  }
+
+  getCategorie(){
+    this.categorieService.getAllCategoriePagine(1,10).subscribe(data=>{
+      this.categorieList = data.docs;
+    });
+  }
+
+  get getCategorieSelect() {
+    return this.categorie;
+  }
+
+  set setCategorieSelect(value) {
+    this.categorie = value;
+  }
+
+  update(){
+    if(this.categorieSelected && this.nomchamp && this.idchamp){
+      console.log(this.categorieSelected +"et" + this.nomchamp + "et"+this.idchamp);
+      var champ =  new Champ();
+      champ.nomChamp = this.nomchamp;
+      champ._id = this.idchamp;
+      champ.idCategorie = this.categorieSelected;
+      this.champService.updateChamp(champ).subscribe(data=>{
+        this.getChamp();
+        this.showMsg= true;
+        this.showMsgDelete = false;
+        this.router.navigate(['/pages/tables/dynamic-tables/ngx'],{replaceUrl:true});
+      });
+    }
   }
 
 }

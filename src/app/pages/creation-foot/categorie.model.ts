@@ -1,7 +1,11 @@
+import { Champ } from "./champ.model";
+
 export class Categorie {
     _id:String;
     idTypePari:String;
     nomcategorie : String;
+    Champ:Champ[];
+    nomType;
 }
 export class CategorieModele {
 	
@@ -16,3 +20,10 @@ export class CategorieModele {
     limit:Number;
 	
 }
+
+/*export class CategorieForm {
+    _id:String;
+    idTypePari:String;
+    nomcategorie : String;
+    champ:Champ[];
+}*/

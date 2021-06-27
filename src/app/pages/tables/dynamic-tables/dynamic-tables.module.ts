@@ -5,7 +5,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SmartComponent } from './smart/smart.component';
 import { NgxComponent } from './ngx/ngx.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export const routes = [
   { path: '', redirectTo: 'smart', pathMatch: 'full'},
   { path: 'smart', component: SmartComponent, data: { breadcrumb: 'Smart DataTable' } },
@@ -18,7 +18,9 @@ export const routes = [
     RouterModule,
     Ng2SmartTableModule,
     NgxDatatableModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     SmartComponent,

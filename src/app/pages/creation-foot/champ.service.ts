@@ -21,4 +21,16 @@ export class ChampService {
   deleteChamp(id:String):Observable<any> {  
     return this.http.delete(this.uri+"/champParCat/" +id);
   }
+
+  deleteChampParCategorie(id:String):Observable<any> {  
+    return this.http.delete(this.uri+"/champParCat/Categorie/" +id);
+  }
+ 
+  addChamp(champ:Champ):Observable<any> {
+    return this.http.post(this.uri+"/champParCat", champ);
+   }
+
+  updateChamp(champ:Champ):Observable<any>{
+    return this.http.put(this.uri+"/champParCat",champ);
+  }
 }

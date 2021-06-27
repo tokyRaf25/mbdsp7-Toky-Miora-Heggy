@@ -3,7 +3,11 @@ import { CategorieService } from './../../../creation-foot/categorie.service';
 import { Categorie } from './../../../creation-foot/categorie.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChampService } from './../../../creation-foot/champ.service';
+import { Type } from './../../../creation-foot/type';
+import { TypeService } from './../../../creation-foot/type.service';
 import { Champ } from './../../../creation-foot/champ.model';
+import { isThisHour } from 'date-fns';
+import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-smart',
   templateUrl: './smart.component.html',
@@ -12,7 +16,11 @@ import { Champ } from './../../../creation-foot/champ.model';
 
 export class SmartComponent {
   public data = [];
+  type:Type[];
+  categorieUpdated:Categorie;
   categorie:Categorie[];
+  typeParie:string = "";
+  test:string;
   page: Number=1;
   limit: Number=10;
   totalDocs: Number;
@@ -22,6 +30,10 @@ export class SmartComponent {
   hasNextPage: boolean;
   nextPage: Number;
   showMsg: boolean = false;
+  showMsgDelete: boolean = false;
+  modalformGroup:FormGroup;
+  nomcategorie:String;
+  idcategorie:String;
   public settings = {
     selectMode: 'single',  //single|multi
     hideHeader: false,
@@ -88,8 +100,10 @@ export class SmartComponent {
   constructor(
     private categorieService: CategorieService,
     private champService: ChampService,
+    private typeService: TypeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private formBuilder:FormBuilder
   ) { 
     this.getData((data) => {
       this.data = data;
@@ -136,7 +150,18 @@ export class SmartComponent {
       this.prevPage = data.prevPage;
       this.hasNextPage = data.hasNextPage;
       this.nextPage = data.nextPage;
-      console.log(data);
+       this.typeService.getAllTypePari().subscribe(data=>{
+          this.type = data.docs;
+              this.categorie.forEach(categorie=>{
+                this.type.forEach(type=>{
+                      if(categorie.idTypePari == type._id){
+                        console.log("Test 1");
+                          categorie.nomType = type.typeParie;
+                      }
+                });
+                console.log(categorie.nomType);
+           });
+      });
     });
   }
 
@@ -146,6 +171,7 @@ export class SmartComponent {
       this.limit = +queryParams.limit || 2;
       this.getCategorie();
     });
+    
   }
   premierePage() {
     this.router.navigate(['/pages/tables/dynamic-tables/smart'], {
@@ -189,12 +215,52 @@ export class SmartComponent {
 
     if(confirm("Etes vous sur de vouloir supprimer ")) {
       this.categorieService.deleteCategorie(categorie._id).subscribe(data=>{
-        this.getCategorie();
-        this.showMsg= true;
-        this.router.navigate(['/pages/tables/dynamic-tables/smart'],{replaceUrl:true});
+        this.champService.deleteChampParCategorie(categorie._id).subscribe(data=>{
+          this.getCategorie();
+          this.showMsgDelete= true;  
+          this.router.navigate(['/pages/tables/dynamic-tables/smart'],{replaceUrl:true});
+        });
       });
     } 
   }
 	
+  getType(){
+    this.typeService.getAllTypePari().subscribe(data=>{
+      this.type = data.docs;
+      console.log(data.docs);
+    });
+  }
+  get gettypeParie() {
+    return this.typeParie;
+  }
+  set setCategorieSelect(value) {
+    this.categorie = value;
+  }
+
+  getInfo(categorie:Categorie){
+      this.categorieUpdated = categorie;
+      this.nomcategorie = this.categorieUpdated.nomcategorie;
+      this.idcategorie = this.categorieUpdated._id;
+     
+  }
+
+  update(){
+    if(this.typeParie && this.nomcategorie && this.idcategorie){
+      console.log(this.typeParie+ " et "+this.nomcategorie + " et "+this.idcategorie);
+      var categorie =  new Categorie();
+      categorie.idTypePari = this.typeParie;
+      categorie.nomcategorie =  this.nomcategorie;
+      categorie._id = this.idcategorie;
+      this.categorieService.updateCategorie(categorie).subscribe(data=>{
+        this.getCategorie();
+        this.showMsgDelete = false;
+        this.showMsg= true;
+        this.router.navigate(['/pages/tables/dynamic-tables/smart'],{replaceUrl:true});
+      });
+    }
+  }
+
+ 
+
 
 }

@@ -1,77 +1,22 @@
-<!--<h2>Ngx datatable</h2>
-<p class="text-muted">Editable, filterable and sortable table made with <a href="https://github.com/swimlane/ngx-datatable" target="_blank" class="font-weight-bold transition">ngx-datatable</a>.</p>
+<div class="col-12 mb-4"  *ngIf="showMsgDelete">
+  <div class="col-xs-12">
+    <p class="alert alert-success">
+        <strong>Deleted Success!</strong> 
 
-<div class="input-group mb-2">
-    <span class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></span>
-    <input class="form-control" type="text" placeholder="Type to filter the name column..." (keyup)="updateFilter($event)"/>
+    </p>
+  </div>
 </div>
+<div class="col-12 mb-4"  *ngIf="showMsg">
+  <div class="col-xs-12">
+    <p class="alert alert-success">
+        <strong>Update Success!</strong> 
 
-<ngx-datatable
-    #table
-    class="material"
-    [headerHeight]="40"
-    [limit]="10"
-    [columnMode]="'force'"
-    [footerHeight]="50"
-    [rowHeight]="'auto'"
-    [rows]="rows"
-    [loadingIndicator]="loadingIndicator"
-    [selected]="selected"
-    [selectionType]="'checkbox'"
-    (activate)="onActivate($event)"
-    (select)='onSelect($event)'>
-    <ngx-datatable-column
-        [width]="30"
-        [sortable]="false"
-        [canAutoResize]="false"
-        [draggable]="true"
-        [resizeable]="false"
-        [headerCheckboxable]="true"
-        [checkboxable]="true">
-      </ngx-datatable-column>
-    <ngx-datatable-column name="Name">
-      <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-        <span
-          title="Double click to edit"
-          (dblclick)="editing[row.$$index + '-name'] = true"
-          *ngIf="!editing[row.$$index + '-name']">
-          {{value}}
-        </span>
-        <input
-          autofocus
-          (blur)="updateValue($event, 'name', value, row)"
-          *ngIf="editing[row.$$index + '-name']"
-          type="text"
-          [value]="value"
-        />
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Gender">
-      <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-        <span
-          title="Double click to edit"
-          (dblclick)="editing[row.$$index + '-gender'] = true"
-          *ngIf="!editing[row.$$index + '-gender']">
-          {{value}}
-        </span>
-        <select
-          *ngIf="editing[row.$$index + '-gender']"
-          (change)="updateValue($event, 'gender', value, row)"
-          [value]="value">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Company">
-      <ng-template ngx-datatable-cell-template let-value="value">
-        {{value}}
-      </ng-template>
-    </ngx-datatable-column>
-</ngx-datatable> -->
+    </p>
+  </div>
+</div>
 <div widget class="card border-0 box-shadow">
   <div class="card-header transparent border-0 text-muted">
-      <h5 class="mb-0">ng2-smart-table</h5>
+      <h5 class="mb-0">Listes des Champs</h5>
       <div class="widget-controls"> 
           <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
           <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
@@ -81,28 +26,28 @@
       </div>        
   </div>
   <div class="card-body pt-0 widget-body">
-      <p class="text-left fs-13 text-gray">Simple table component with editing, sorting, filtering and pagination for Angular. Built with <a href="https://github.com/akveo/ng2-smart-table" target="_blank" class="font-weight-bold transition">ng2-smart-table</a>.</p>
-      <div class="table-responsive">
+       <div class="table-responsive">
           <table class="table">
               <thead>
                   <tr>
-                      <th>TypeParie</th>
                       <th>Categorie</th>
+                      <th>Champ</th>
                       <th>Action</th>
                   </tr>
               </thead>
               <tbody>
                   <tr *ngFor="let a of champ">
-                      <td>{{a.idCategorie}}</td>
+                      <td>{{a.nomCategorie}}</td>
                       <td>{{a.nomChamp}}</td>
                       
                       <td class="align-middle">
-                          <div class="btn-group" role="group">
-                              <button class="btn btn-secondary btn-sm"><i class="fa fa-pencil"></i></button>
-                           </div>
-                           <a  (click)="deleteChamp(a)">
+                        <button type="button"  (click)="getInfo(a)" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+                          <i class="fa fa-edit"></i>
+                        </button>
+                        &nbsp;
+                        <button type="button" (click)="deleteChamp(a)" class="btn btn-dark">
                               <i class="fa fa-trash"></i>
-                            </a>
+                        </button>
                       </td>
                   </tr>
               </tbody>
@@ -117,4 +62,33 @@
           </ul>
         </nav>        
   </div>
-</div>  
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="inputFirstName">Categorie</label>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="categorieSelected" name="categorieSelected">
+              <option  *ngFor="let a of categorieList" [ngValue]="a._id">{{a.nomcategorie}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Nom Champ</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="nomchamp" name="nomchamp">
+          <input type="hidden" class="form-control" id="exampleInputPassword1"   [(ngModel)]="idchamp" name="idchamp">
+        </div>     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" (click)="update()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,7 @@ import { HttpClient,HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class CategorieService {
-  uri = "http://localhost:4000";
+  uri = "http://localhost:4000/api";
 
   constructor( private http:HttpClient) { }
 
@@ -22,5 +22,19 @@ export class CategorieService {
   }
   deleteCategorie(id:String):Observable<any> {  
     return this.http.delete(this.uri+"/categorie/" +id);
+  }
+  addCategorie(categorie:Categorie):Observable<any> {
+    return this.http.post(this.uri+"/categorie", categorie);
+   }
+  updateCategorie(categorie:Categorie):Observable<any>{
+    return this.http.put(this.uri+"/categorie",categorie);
+  }
+
+  createForm(id:string):Observable<CategorieModele>{
+     return this.http.get<CategorieModele>(this.uri+"/categorie/" +id)
+  }
+
+  getAllCategorieModel():Observable<CategorieModele> {
+    return this.http.get<CategorieModele>(this.uri+"/categorie");
   }
 }

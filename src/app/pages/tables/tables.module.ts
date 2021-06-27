@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BasicTablesComponent } from './basic-tables/basic-tables.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const routes = [
   { path: '', redirectTo: 'basic-tables', pathMatch: 'full'},
@@ -14,7 +15,9 @@ export const routes = [
   imports: [
     CommonModule,
     NgxDatatableModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     BasicTablesComponent

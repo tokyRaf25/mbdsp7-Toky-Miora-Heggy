@@ -1,13 +1,10 @@
-export class Champ {
-    _id:String;
-    idCategorie: String;
-    nomChamp: String;
-    valeur:String;
-    nomCategorie:String;
+export class Type {
+    _id:string;
+    typeParie:string;
 }
-export class ChampModele {
+export class TypeModele {
 	
-    docs : Champ[];
+    docs : Type[];
     hasPrevPage:boolean;
     hasNextPage:boolean;
     prevPage:Number;

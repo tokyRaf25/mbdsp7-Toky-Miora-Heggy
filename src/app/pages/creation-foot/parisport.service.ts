@@ -27,4 +27,8 @@ export class ParisportService {
   deletePariSport(id:String):Observable<any> {  
     return this.http.delete(this.uri+"/pari/" +id);
   }
+
+  getParisLastInsert():Observable<ParisportModele> {
+    return this.http.get<ParisportModele>(this.uri+"/pariOne");
+  }
 }

@@ -3,13 +3,13 @@ export interface Equipe {
 }
 export class Parisport {
     _id:String;
-    idTypePari: Number;
-    dateDebut: Date;
-    dateFin: Date;
+    idTypePari: String;
+    dateDuMatch: String;
     autres_info: String;
     status: String;
     equipes:Equipe[]; 
     total:Number;
+    type:String;
 }
 
 export class ParisportModele {
