@@ -76,6 +76,10 @@ app.route(prefix + '/champParCat')
 app.route(prefix + '/champParCat/:id')
   .delete(champ.deleteChamp);
   
+app.route(prefix + '/champParCat/Categorie/:id')
+  .delete(champ.deleteChampAvecCategorie);
+
+
 app.route(prefix + '/champParCat/trie')
   .get(champ.getChampParCategorie)
 
@@ -99,6 +103,9 @@ app.route(prefix + '/pari/type/:type')
   
 app.route(prefix + '/pariOne')
   .get(pari.getLastPari)
+  
+app.route(prefix +"/pariAvecCote/:id")
+   .get(pari.getDetailPari);
 
 /******************************************************************* */
 
@@ -159,6 +166,8 @@ app.route(prefix +"/categorie")
 app.route(prefix +"/categorie/:id")
   .delete(CategorieRoutes.deleteCategorie)
   .get(CategorieRoutes.getListCategorieParTp);
+  
+
 
 /******************************************************************* */  
 

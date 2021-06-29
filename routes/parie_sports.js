@@ -1,6 +1,8 @@
 let PariSport = require('../models/parie_sport');
-
-
+const CategorieService = require ('../service/categorie.service');
+const ChampService = require ('../service/champ_par_categorie_paris.service');
+const CoteService = require ('../service/cote.service');
+var ObjectId = require('mongodb').ObjectId; 
 //Récupérer tous les PariSports (GET), avec paggination
 function getPariSports(req, res){
     var aggregateQuery = PariSport.aggregate(); 
@@ -39,7 +41,7 @@ function getLastPari(req,res){
     PariSport.aggregatePaginate(
     aggregateQuery,
     {
-	  sort:{dateDebut:1},
+	  sort:{_id:-1},
       limit: 1,
     },
     (err, parisport) => {
@@ -108,6 +110,46 @@ function updatePariSport(req, res) {
       res.json(champ);
     });
   }
+  
+  getDetailPari = async(req,res)=>{
+	try { 
+		 var PariQuery = PariSport.aggregate([
+			{
+				$match : { 
+					_id : new ObjectId(req.params.id)
+				}
+			}
+		 ]);
+		 let resultPari = await PariSport.aggregatePaginate(
+			PariQuery
+		 );
+		 if(resultPari && resultPari.docs && resultPari.docs.length > 0) {
+			for (let i = 0 ; i< resultPari.docs.length ; i++) { 
+					let resultCategorie =  await CategorieService.getCategorie(resultPari.docs[i].idTypePari);
+					resultPari.docs[i].Categorie = resultCategorie;
+					for(let j = 0;j<resultPari.docs[i].Categorie.length;j++){
+						let tempCategorie = {...resultPari.docs[i].Categorie[j]._doc};
+						let resultChamp = await ChampService.getChampByIdCategorie(resultPari.docs[i].Categorie[j]._id);
+						tempCategorie.champ = resultChamp;
+						resultPari.docs[i].Categorie[j]=tempCategorie;
+						for(let count = 0; count<resultPari.docs[i].Categorie[j].champ.length;count++){
+							let tempChamp = {...resultPari.docs[i].Categorie[j].champ[count]._doc};
+							let resultCote = await CoteService.getCoteByIdChamp(resultPari.docs[i].Categorie[j].champ[count]._id,req.params.id);
+							tempChamp.cote = resultCote;
+							resultPari.docs[i].Categorie[j].champ[count] =tempChamp;
+						}
+						
+					}
+			}
+		 }
+		 res.send(resultPari);
+	}
+	catch (e) { 
+		res.send(e);
+		throw e ;
+	}
+ }
+
 
   module.exports = {
     getPariSports,
@@ -116,5 +158,6 @@ function updatePariSport(req, res) {
     updatePariSport,
     deletePariSport,
     getPariByType,
-	getLastPari
+	getLastPari,
+	getDetailPari
   };

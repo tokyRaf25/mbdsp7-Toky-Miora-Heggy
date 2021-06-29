@@ -24,7 +24,7 @@ listCategorie = async ( req , res ) => {
 insertCategorie =  async(req,res) =>{
    let insert = new categorie();
    insert.nomcategorie = req.body.nomcategorie;
-   insert.idTypeParis = req.body.idTypeParis;
+   insert.idTypePari = req.body.idTypePari;
    insert.save((err) => {
     if (err) {
       res.send("cant post categorie ", err);
@@ -87,15 +87,14 @@ getListCategorieParTp = async(req,res)=>{
 	}
 }
 
-
 function getNomByIdCategorie(idCategorie){
   var result = null;
   categorie.findOne({ _id: idCategorie }, (err, categorie) => {
     result = categorie.nomcategorie;
-    //console.log(result);
-  });
+   });
   return result;
 }
+
 
 module.exports = { 
   listCategorie,

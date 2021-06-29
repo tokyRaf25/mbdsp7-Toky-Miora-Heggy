@@ -137,6 +137,15 @@ function updateChamp(req, res) {
       });
   }
 
+  deleteChampAvecCategorie = async(req,res)=>{
+	Champ.deleteOne({idCategorie:req.params.id}, (err, champ) => {
+    if (err) {
+	 res.send(err);
+    }
+    res.json({ message: 'deleted' });
+	});
+  }
+
 
   module.exports = {
     getChamps,
@@ -145,5 +154,6 @@ function updateChamp(req, res) {
     updateChamp,
     deleteChamp,
     getChampByIdCategorie,
-    getChampParCategorie
+    getChampParCategorie,
+	deleteChampAvecCategorie
   };
