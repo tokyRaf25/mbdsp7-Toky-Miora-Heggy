@@ -66,6 +66,7 @@ export class TennisComponent implements OnInit {
             var categorie = new Categorie();
             categorie.idTypePari = this.typeParie;
             categorie.nomcategorie = this.nomParis;
+            categorie.token = localStorage.getItem("token");
             this.categorieService.addCategorie(categorie).subscribe(message => {
               this.showMsg= true;
               this.router.navigate(['/pages/creation-tennis'],{replaceUrl:true});
@@ -79,6 +80,7 @@ export class TennisComponent implements OnInit {
             var champ = new Champ();
             champ.idCategorie = this.categorie;
             champ.nomChamp = this.nomchamp;
+            champ.token = localStorage.getItem("token");
             this.champService.addChamp(champ).subscribe(message => {
               this.showMsg= true;
               this.router.navigate(['/pages/creation-tennis'],{replaceUrl:true});

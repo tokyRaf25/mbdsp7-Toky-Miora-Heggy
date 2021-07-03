@@ -21,7 +21,7 @@ export class CategorieService {
     return this.http.get<CategorieModele>(this.uri+"/categorie"+"?page="+page + "&limit="+limit);
   }
   deleteCategorie(id:String):Observable<any> {  
-    return this.http.delete(this.uri+"/categorie/" +id);
+    return this.http.delete(this.uri+"/categorie/" +id+"?token="+localStorage.getItem("token"));
   }
   addCategorie(categorie:Categorie):Observable<any> {
     return this.http.post(this.uri+"/categorie", categorie);

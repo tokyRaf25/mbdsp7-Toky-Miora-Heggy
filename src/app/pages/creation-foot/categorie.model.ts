@@ -6,6 +6,7 @@ export class Categorie {
     nomcategorie : String;
     Champ:Champ[];
     nomType;
+    token;
 }
 export class CategorieModele {
 	

@@ -59,5 +59,10 @@ export class HeaderComponent implements OnInit {
         this.showHorizontalMenu = true;
       }
   }
+
+  logout(){
+    console.log("Deconnexion");
+    localStorage.removeItem("token");
+  }
   
 }

@@ -4,6 +4,7 @@ export class Champ {
     nomChamp: String;
     valeur:String;
     nomCategorie:String;
+    token:String;
 }
 export class ChampModele {
 	

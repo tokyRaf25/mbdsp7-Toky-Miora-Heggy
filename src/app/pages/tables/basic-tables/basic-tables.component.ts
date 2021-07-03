@@ -25,7 +25,15 @@ export class BasicTablesComponent implements OnInit {
   hasNextPage: boolean;
   nextPage: Number;
   showMsg: boolean = false;
+  showMsgUpdate: boolean = false;
+  pariUpdated:Parisport;
   type:Type[];
+  equipeA:String;
+  equipeB:String;
+  date:String;
+  time:String;
+  typeParie:string = "";
+  idParis:String;
   constructor(
 	private pariSportService: ParisportService,
   private categorieService: CategorieService,
@@ -133,11 +141,50 @@ export class BasicTablesComponent implements OnInit {
       this.pariSportService.deletePariSport(parisport._id).subscribe(data=>{
         this.getPariSport();
         this.showMsg= true;
+        console.log(data);
         this.router.navigate(['/pages/tables/basic-tables'],{replaceUrl:true});
       });
     } 
   }
 
  
+  getInfo(paris:Parisport){
+    this.pariUpdated = paris;
+    this.equipeA = this.pariUpdated.equipes[0].nomEquipe;
+    this.equipeB = this.pariUpdated.equipes[1].nomEquipe;
+    this.date = this.pariUpdated.dateDuMatch.split(' ')[0];
+    this.time = this.pariUpdated.dateDuMatch.split(' ')[1];
+    this.idParis = this.pariUpdated._id;
+  }
+  getType(){
+    this.typeService.getAllTypePari().subscribe(data=>{
+      this.type = data.docs;
+      console.log(data.docs);
+    });
+  }
+  get gettypeParie() {
+    return this.typeParie;
+  }
+  set setCategorieSelect(value) {
+    this.categorie = value;
+  }
+
+  update(){
+    if(this.typeParie && this.equipeA && this.equipeB && this.date && this.time){
+      console.log(this.equipeA +"et"+ this.equipeB );
+      var paris =  new Parisport();
+      paris.dateDuMatch = ""+this.date+" "+this.time+"";
+      paris.equipes = [{nomEquipe:this.equipeA},{nomEquipe:this.equipeB}];
+      paris.idTypePari = this.typeParie;
+      paris._id = this.idParis;
+      paris.token = localStorage.getItem("token");
+      this.pariSportService.updateParis(paris).subscribe(data=>{
+        this.getPariSport();
+        this.showMsgUpdate = true;
+        this.showMsg = false;
+        this.router.navigate(['/pages/tables/basic-tables'],{replaceUrl:true});
+      });
+    }
+  }
   
 }

@@ -14,7 +14,7 @@ export class ParisportService {
   constructor( private http:HttpClient) { }
   
   addAssignment(pari_sport:Parisport):Observable<any> {
-	 return this.http.post(this.uri+"/pari", pari_sport);
+   return this.http.post(this.uri+"/pari", pari_sport);
   }
   
   getPariSport():Observable<Parisport[]> {
@@ -25,10 +25,14 @@ export class ParisportService {
   }
 
   deletePariSport(id:String):Observable<any> {  
-    return this.http.delete(this.uri+"/pari/" +id);
+    return this.http.delete(this.uri+"/pari/" +id+"?token="+localStorage.getItem("token"));
   }
 
   getParisLastInsert():Observable<ParisportModele> {
     return this.http.get<ParisportModele>(this.uri+"/pariOne");
+  }
+
+  updateParis(paris:Parisport):Observable<any>{
+    return this.http.put(this.uri+"/pari",paris);
   }
 }

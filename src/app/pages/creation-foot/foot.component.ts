@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Time } from '@angular/common';
 import { Timestamp } from 'rxjs-compat';
 
+
 @Component({
   selector: 'app-foot',
   templateUrl: './foot.component.html',
@@ -42,7 +43,6 @@ export class FootComponent implements OnInit {
 
   ngOnInit() {
     this.getType();
-    //this.createForm();
   }
 
   AddMatch() {
@@ -55,7 +55,7 @@ export class FootComponent implements OnInit {
 		  this.pariSport.idTypePari = this.typeParie ;
 		  this.pariSport.dateDuMatch = ""+this.date+" "+this.time+""; 
 		  this.pariSport.autres_info = "";
-		 
+      this.pariSport.token = localStorage.getItem("token");
 		  this.pariSportService.addAssignment(this.pariSport).subscribe(message => {
         this.showMsg= true;
         this.pariSportService.getParisLastInsert().subscribe(data => {
@@ -67,6 +67,7 @@ export class FootComponent implements OnInit {
                 this.cote.idChamp = result._id;
                 this.cote.idParieSport = this.pari[0]._id;
                 this.cote.cotes = Number(result.valeur);
+                this.cote.token = localStorage.getItem("token");
                 if(this.cote.cotes){
                   this.coteService.addCote(this.cote).subscribe(message=>{
                         console.log("Ato");
@@ -80,6 +81,7 @@ export class FootComponent implements OnInit {
 	  }
   }
   getType(){
+    console.log("Test",localStorage.getItem('token'));
     this.typeService.getAllTypePari().subscribe(data=>{
       this.type = data.docs;
       console.log(data);

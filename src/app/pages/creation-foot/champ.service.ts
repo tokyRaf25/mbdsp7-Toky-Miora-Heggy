@@ -19,7 +19,7 @@ export class ChampService {
   }
 
   deleteChamp(id:String):Observable<any> {  
-    return this.http.delete(this.uri+"/champParCat/" +id);
+    return this.http.delete(this.uri+"/champParCat/" +id+"?token="+localStorage.getItem("token"));
   }
 
   deleteChampParCategorie(id:String):Observable<any> {  

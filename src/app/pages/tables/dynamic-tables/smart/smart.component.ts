@@ -251,6 +251,9 @@ export class SmartComponent {
       categorie.idTypePari = this.typeParie;
       categorie.nomcategorie =  this.nomcategorie;
       categorie._id = this.idcategorie;
+      if(localStorage.getItem("token")){
+      categorie.token = localStorage.getItem("token");
+      }
       this.categorieService.updateCategorie(categorie).subscribe(data=>{
         this.getCategorie();
         this.showMsgDelete = false;

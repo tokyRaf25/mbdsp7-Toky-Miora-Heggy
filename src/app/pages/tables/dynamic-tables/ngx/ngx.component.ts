@@ -166,7 +166,8 @@ export class NgxComponent {
     if(confirm("Etes vous sur de vouloir supprimer ")) {
       this.champService.deleteChamp(champ._id).subscribe(data=>{
         this.getChamp();
-        this.showMsgDelete= true;
+        this.showMsg= false;
+        this.showMsgDelete = true;
         this.router.navigate(['/pages/tables/dynamic-tables/ngx'],{replaceUrl:true});
       });
     } 
@@ -200,6 +201,8 @@ export class NgxComponent {
       champ.nomChamp = this.nomchamp;
       champ._id = this.idchamp;
       champ.idCategorie = this.categorieSelected;
+      champ.token = localStorage.getItem("token");
+     
       this.champService.updateChamp(champ).subscribe(data=>{
         this.getChamp();
         this.showMsg= true;

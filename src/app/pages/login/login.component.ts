@@ -2,6 +2,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { AdministrateurService } from './../creation-foot/administrateur.service';
+import { Administrateur,AdministrateurModel } from './../creation-foot/administrateur.model';
+
 
 @Component({
   selector: 'app-login',
@@ -12,23 +15,32 @@ import { CustomValidators } from 'ng2-validation';
 export class LoginComponent {
   public router: Router;
   public form:FormGroup;
-  public email:AbstractControl;
+  public name:AbstractControl;
   public password:AbstractControl;
+  //public adminModel : AdministrateurModel;
 
-  constructor(router:Router, fb:FormBuilder) {
+  constructor(router:Router, fb:FormBuilder,private adminService:AdministrateurService) {
       this.router = router;
       this.form = fb.group({
-          'email': ['', Validators.compose([Validators.required, CustomValidators.email])],
-          'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+          'name': ['', Validators.compose([Validators.required])],
+          'password': ['', Validators.compose([Validators.required])]
       });
 
-      this.email = this.form.controls['email'];
+      this.name = this.form.controls['name'];
       this.password = this.form.controls['password'];
   }
 
   public onSubmit(values:Object):void {
       if (this.form.valid) {
-          this.router.navigate(['pages/dashboard']);
+          var admin = new Administrateur();
+          admin.login = this.form.controls['name'].value;
+          admin.password = this.form.controls['password'].value;
+          this.adminService.authentificate(admin).subscribe(data=>{
+            console.log("Acces authorize")
+            const datatoken = data.token;
+            localStorage.setItem('token', datatoken);
+            this.router.navigate(['/pages/creation-tennis'],{replaceUrl:true});
+          });
       }
   }
 
@@ -36,4 +48,5 @@ export class LoginComponent {
       document.getElementById('preloader').classList.add('hide');                 
   }
 
+ 
 }

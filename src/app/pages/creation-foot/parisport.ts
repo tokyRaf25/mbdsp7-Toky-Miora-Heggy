@@ -10,6 +10,7 @@ export class Parisport {
     equipes:Equipe[]; 
     total:Number;
     type:String;
+    token:String;
 }
 
 export class ParisportModele {

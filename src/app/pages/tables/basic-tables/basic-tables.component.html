@@ -15,25 +15,52 @@
         </div>
         <div class="modal-body">
             <form>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                          <label for="inputFirstName">Equipe A</label>
+                          <input type="text" class="form-control" [(ngModel)]="equipeA" name="equipeA" placeholder="--">
+                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                          <label for="inputLastName">Equipe B</label>
+                          <input type="text" class="form-control" id="inputLastName" [(ngModel)]="equipeB" name="equipeB" placeholder="--">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="input-12">Date</label>
+                              <input type="date" class="form-control" value="2011-08-19" [(ngModel)]="date" name="date"  id="input-12">
+                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="input-15">Time</label>
+                              <input type="time" class="form-control" value="13:45:00" [(ngModel)]="time" name="time"  id="input-15">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <div class="form-group">
+                              <label for="input-12">Type</label>
+                              <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="typeParie" name="typeParie" >
+                                  <option  *ngFor="let a of type" value={{a._id}} [ngValue]="a._id">{{a.typeParie}}</option>
+                              </select>
+                          </div>
+                      </div>
+                      
+                  </div>
+                  <input type="hidden" class="form-control" id="exampleInputPassword1"   [(ngModel)]="idParis" name="idParis">
                 <!--<button type="submit" class="btn btn-primary">Submit</button>-->
               </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary"  (click)="update()">Save changes</button>
         </div>
       </div>
     </div>
@@ -43,6 +70,14 @@
         <div class="col-xs-12">
           <p class="alert alert-success">
               <strong>Deleted Success!</strong> 
+
+          </p>
+        </div>
+      </div>
+      <div class="col-12 mb-4"  *ngIf="showMsgUpdate">
+        <div class="col-xs-12">
+          <p class="alert alert-success">
+              <strong>Updated Success!</strong> 
 
           </p>
         </div>
@@ -76,7 +111,7 @@
                                 <td>{{a.dateDuMatch}}</td>
                                 <td>{{a.autres_info}}</td>
                                 <td class="align-middle">
-                                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalLong">
+                                    <button type="button" (click)="getInfo(a)" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalLong">
                                         <i class="fa fa-edit"></i>
                                       </button>
                                       &nbsp;
