@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
       this.getPariSport();
       this.getCategorie();
     });
-    //console.log(this.pari_sport);
+    console.log(localStorage.getItem("token"));
   }
 	
   getPariSport() {

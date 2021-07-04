@@ -4,7 +4,7 @@ export interface Equipe {
 }
 export class Parisport {
     _id:String;
-    idTypePari: Number;
+    idTypePari: String;
     dateDuMatch : Date;
     autres_info: String;
     status: String;
