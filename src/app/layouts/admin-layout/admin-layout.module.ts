@@ -14,6 +14,7 @@ import { TennisComponent } from '../../pages/tennis/tennis.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FichefootComponent } from 'src/app/pages/fichefoot/fichefoot.component';
 // import { ToastrModule } from 'ngx-toastr';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { FichefootComponent } from 'src/app/pages/fichefoot/fichefoot.component'
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    QRCodeModule
   ],
   declarations: [
     DashboardComponent,
