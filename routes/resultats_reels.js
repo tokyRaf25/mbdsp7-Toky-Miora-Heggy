@@ -38,8 +38,6 @@ function postResultatReel(req, res) {
     let resultatReel = new ResultatReel();
     resultatReel.idPariSport = req.body.idPariSport;
     resultatReel.idChamp = req.body.idChamp;
-    resultatReel.cote = req.body.cote;
-    resultatReel.resultat = req.body.resultat;
     console.log("POST résultat réel reçu :");
     console.log(resultatReel);
   

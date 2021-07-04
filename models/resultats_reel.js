@@ -6,8 +6,6 @@ let Schema = mongoose.Schema;
 let ResultatReelSchema = Schema({
     idPariSport: Number,
     idChamp: Number,
-    cote: Number,
-    resultat: Number // Oui ou Non
 });
 
 ResultatReelSchema.plugin(aggregatePaginate);
