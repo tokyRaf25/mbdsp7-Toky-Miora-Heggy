@@ -17,8 +17,7 @@ function authenticate(req, res, next) {
         var token = jwt.sign({ id: user._id }, 'supersecret', {
             expiresIn: 86400 // expires in 24 hours
         });
-        console.log('>>>>>>>>>>>>>>>'+req.body.password);
-        res.status(200).send({ id: user.id, name: user.name,password: req.body.password, auth: true, token: token });
+        res.status(200).send({ id: user.id, name: user.name,password: user.password, auth: true, token: token });
     });
 }
 
