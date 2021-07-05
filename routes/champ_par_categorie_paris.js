@@ -1,4 +1,6 @@
+const Categorie = require('../models/Categorie');
 let Champ = require('../models/champ_par_categorie_pari');
+const categorie =  require("./categorie.route")
 
 
 //Récupérer tous les cotes (GET), avec paggination
@@ -56,7 +58,7 @@ function updateChamp(req, res) {
     console.log("UPDATE recu Champ : ");
     console.log(req.body);
     Champ.findByIdAndUpdate(
-      req.body.id,
+      req.body._id,
       req.body,
       { new: true },
       (err, champ) => {
@@ -72,6 +74,7 @@ function updateChamp(req, res) {
   
   // suppression d'un cote (DELETE)
   function deleteChamp(req, res) {
+    console.log("suppression champ "+req.params.id);
     Champ.findByIdAndRemove(req.params.id, (err, champ) => {
       if (err) {
         res.send(err);
@@ -82,9 +85,9 @@ function updateChamp(req, res) {
 
 
   //Avoir les champs à partir d'une categorie
-  function getChampByIdCategorie(){
-    let categorieId = req.params.idCategorie;
-    Champ.findOne({ idCategorie: categorieId }, (err, champ) => {
+  function getChampByIdCategorie(req, res){
+    let categorieId = req.params.id;
+    Champ.find({ idCategorie: categorieId }, (err, champ) => {
       if (err) {
         res.send(err);
       }
@@ -93,9 +96,56 @@ function updateChamp(req, res) {
   }
 
   //Avoir les champs par categories
-  function getChampParCategorie(){
-    
+  function getChampParCategorie(req,res){
+    var champQuery = Champ.aggregate();
+    var dataReturn;
+    Champ.aggregatePaginate(
+      champQuery,
+      {
+        page: parseInt(req.query.page) || 1,
+        limit: parseInt(req.query.limit) || 10,
+      }).then(function(results){
+        var tab = Array.from(results.docs);
+        var data = [];
+        tab.forEach(element => {
+          data.push(element);
+          //console.log(element);
+        });
+           var hash = data.reduce((p,c) => (p[c.idCategorie] ? p[c.idCategorie].push(c) : p[c.idCategorie] = [c],p) ,{});
+           var newData = Object.keys(hash).map(
+             function(k){
+             return {idCategorie: k, /*nomCategorie:categorie.getNomByIdCategorie(k),*/ champs: hash[k]}
+            });
+
+           //console.log(categorie.getNomByIdCategorie("60c8945b80e58a3b546df516"));
+
+        dataReturn = {
+          docs:newData,
+          totalDocs:results.totalDocs,
+          limit:results.limit,
+          page:results.page,
+          totalPages:results.totalPages,
+          pagingCounter:results.pagingCounter,
+          hasPrevPage:results.hasPrevPage,
+          hasNextPage:results.hasNextPage,
+          prevPage:results.prevPage,
+          nextPage:results.nextPage
+        }
+        res.send(dataReturn);
+      }).catch(function(err){
+        res.send(err);
+      });
   }
+
+  deleteChampAvecCategorie = async(req,res)=>{
+	Champ.deleteOne({idCategorie:req.params.id}, (err, champ) => {
+    if (err) {
+	 res.send(err);
+    }
+    res.json({ message: 'deleted' });
+	});
+  }
+
 
   module.exports = {
     getChamps,
@@ -104,5 +154,6 @@ function updateChamp(req, res) {
     updateChamp,
     deleteChamp,
     getChampByIdCategorie,
-    getChampParCategorie
+    getChampParCategorie,
+	deleteChampAvecCategorie
   };
