@@ -10,6 +10,7 @@ import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { FootComponent } from '../../pages/foot/foot.component';
+import { ChangeComponent } from '../../pages/change/change.component';
 import { TennisComponent } from '../../pages/tennis/tennis.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FichefootComponent } from 'src/app/pages/fichefoot/fichefoot.component';
@@ -32,6 +33,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     TablesComponent,
     FootComponent,
     TennisComponent,
+    ChangeComponent,
     FichefootComponent
   ]
 })

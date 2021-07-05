@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {LoggingService} from '../../clients/logging.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,10 +12,9 @@ export class UserProfileComponent {
   public titrelava: string = null;
   public elementType: string = null;
   public value: string = null;
-  constructor(private route:Router) {
-    this.titrelava = 'name : Miora\n';
-    this.titrelava = this.titrelava + 'password: Mioraiany\n';
-    this.titrelava = this.titrelava + 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjUxZWM3YTMyOWQ4MzMyMDQ0MTBkZiIsImlhdCI6MTYyNTE3MzgzMSwiZXhwIjoxNjI1MjYwMjMxfQ.tsP1Ycgwp5FOysxrV84Lz1KHZ_ZqLe-ZHqLkhYp8e-Y';
+  constructor(private route:Router, private authenticationService: LoggingService) {
+    const currentClients = this.authenticationService.currentClientsValue;
+    this.titrelava = ''+JSON.stringify(currentClients);
     this.value ='kfoze';
    }
 

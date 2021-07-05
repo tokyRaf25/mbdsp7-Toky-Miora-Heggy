@@ -4,6 +4,7 @@ import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { FootComponent } from '../../pages/foot/foot.component';
+import { ChangeComponent } from '../../pages/change/change.component';
 import { FichefootComponent } from '../../pages/fichefoot/fichefoot.component';
 import { TennisComponent } from '../../pages/tennis/tennis.component';
 
@@ -13,5 +14,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'foot',           component: FootComponent },
     { path: 'tennis',         component: TennisComponent },
+    { path: 'change',      component: ChangeComponent },
     { path: 'fiche-foot',      component: FichefootComponent }
 ];

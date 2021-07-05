@@ -6,10 +6,10 @@ import { Categorie } from '../dashboard/categorie.model';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-foot',
-  templateUrl: './fichefoot.component.html',
-  styleUrls: ['./fichefoot.component.scss']
+  templateUrl: './change.component.html',
+  styleUrls: ['./change.component.scss']
 })
-export class FichefootComponent implements OnInit {
+export class  ChangeComponent implements OnInit {
 
   id:String;
   pariSport: Parisport[];
@@ -24,7 +24,6 @@ export class FichefootComponent implements OnInit {
     private router: Router){}
 
   getDetailPariSport(arg:String) {
-    console.log(">>>>>>>>>>>>>>>>>>Ato>>>>>>>>"+ arg);
     this.pariSportService.getDetailPariSport(arg).subscribe(data=>{
       this.pariSport = data.docs;
       console.log("Ato");
