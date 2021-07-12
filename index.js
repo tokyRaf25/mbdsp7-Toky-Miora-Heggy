@@ -64,6 +64,9 @@ app.route(prefix + '/authentification')
 app.route(prefix + '/registration')
 .post(client.register)
 
+app.route(prefix + '/client/:id')
+  .get(client.getClientById)
+
 app.route("/authentification")
 .post(Admin.authenticate)
 

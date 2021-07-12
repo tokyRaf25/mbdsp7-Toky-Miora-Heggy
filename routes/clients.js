@@ -7,6 +7,7 @@ const clients = require('../models/clients');
 
 
 function authenticate(req, res, next) {
+        console.log(req.body);
         Client.findOne({ name: req.body.name }, function (err, user) {
         if (err) return res.status(500).send('Error on the server.');
         if (!user) return res.status(404).send('No user found.');
@@ -39,8 +40,20 @@ function register(req, res) {
     });
 }
 
+function getClientById(req, res){
+    let idClient = req.params.id;
+    
+    Client.findOne({ _id: idClient }, (err, champ) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(champ);
+    });
+  }
+
 
 module.exports = {
     authenticate,
     register,
+    getClientById
   };
