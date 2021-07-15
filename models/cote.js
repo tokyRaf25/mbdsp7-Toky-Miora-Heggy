@@ -6,9 +6,9 @@ let Schema = mongoose.Schema;
 let CoteSchema = Schema({
     idParieSport: String,
     idChamp: String,
-    cotes: String
+    cotes: Number
 });
 
 CoteSchema.plugin(aggregatePaginate);
 
-module.exports = mongoose.model('Cote',CoteSchema);
+module.exports = mongoose.model('Cote',CoteSchema,'cotes');

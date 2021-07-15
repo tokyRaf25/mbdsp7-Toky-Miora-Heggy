@@ -7,7 +7,6 @@ let PariSportSchema = Schema({
     idTypePari: String,
     dateDuMatch: String,
     autres_info: String,
-    status: String,
     equipes: [{
         nomEquipe: String
     }]
