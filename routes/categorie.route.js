@@ -2,6 +2,8 @@ const categorie =  require("../models/Categorie");
 const jwt = require('jsonwebtoken');
 let Champ = require('../models/champ_par_categorie_pari');
 const ChampService = require ('../service/champ_par_categorie_paris.service');
+const CoteService = require ('../service/cote.service');
+var ObjectId = require('mongodb').ObjectId;
 listCategorie = async ( req , res ) => { 
    var categorieQuery = categorie.aggregate();
   
@@ -109,8 +111,6 @@ getListCategorieParTp = async(req,res)=>{
 		 let resultCategorie = await categorie.aggregatePaginate(
 			ChampQuery
 		 );
-	
-		 //console.log(resultCategorie);
 		 if(resultCategorie && resultCategorie.docs && resultCategorie.docs.length > 0) { 
 			for (let i =0 ; i< resultCategorie.docs.length ; i++) { 
 					let resultChamp =  await ChampService.getChampByIdCategorie(resultCategorie.docs[i]._id);
@@ -132,13 +132,90 @@ function getNomByIdCategorie(idCategorie){
    });
   return result;
 }
+ getListCategoryById = async(req,res)=>{
+	 var categorieQuery = categorie.aggregate([
+			{
+				$match : { 
+					idTypePari : req.params.id
+				}
+			}
+	 ]);
+  
+	  categorie.aggregatePaginate(
+		categorieQuery,
+		{
+		  page: parseInt(req.query.page) || 1,
+		  limit: parseInt(req.query.limit) || 10,
+		},
+		(err, categories) => {
+		  if (err) {
+			res.send(err);
+		  }
+		  res.send(categories);
+		}
+	  );
+ }
 
-
+function getLastCategorie(req,res){
+	var categorieQuery = categorie.aggregate();
+  
+	  categorie.aggregatePaginate(
+		categorieQuery,
+		{
+		   sort:{_id:-1},
+		   limit: 1,
+		},
+		(err, categories) => {
+		  if (err) {
+			res.send(err);
+		  }
+		  res.send(categories);
+		}
+	  );
+}
+getListCoteParParie = async(req,res)=>{
+	try { 
+		 var ChampQuery = categorie.aggregate([
+			{
+				$match : { 
+					_id : new ObjectId(req.params.id)
+				}
+			}
+		 ]);
+		 let resultCategorie = await categorie.aggregatePaginate(
+			ChampQuery
+		 );
+		 
+		 if(resultCategorie && resultCategorie.docs && resultCategorie.docs.length > 0) { 
+			for (let i =0 ; i< resultCategorie.docs.length ; i++) { 
+					let resultChamp =  await ChampService.getChampByIdCategorie(resultCategorie.docs[i]._id);
+					resultCategorie.docs[i].Champ = resultChamp;
+					//console.log(resultCategorie);
+					for(let count = 0; count<resultCategorie.docs[i].Champ.length;count++){
+						let tempChamp = {...resultCategorie.docs[i].Champ[count]._doc};
+						let resultCote = await CoteService.getCoteByIdChamp(resultCategorie.docs[i].Champ[count]._id,req.params.idParie);
+						tempChamp.cote = resultCote;
+						resultCategorie.docs[i].Champ[count] =tempChamp;
+						//console.log(tempChamp);
+					
+					}
+			}
+		 }
+		 res.send(resultCategorie);
+	}
+	catch (e) { 
+		res.send(e);
+		throw e ;
+	}
+}
 module.exports = { 
   listCategorie,
   insertCategorie,
   deleteCategorie,
   updateCategorie,
   getListCategorieParTp,
-  getNomByIdCategorie
+  getNomByIdCategorie,
+  getListCategoryById,
+  getLastCategorie,
+  getListCoteParParie
 }

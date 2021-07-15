@@ -84,20 +84,32 @@ function updateCote(req, res) {
     );
   }
   
-  // suppression d'un cote (DELETE)
-  function deleteCote(req, res) {
+// suppression d'un cote (DELETE)
+function deleteCote(req, res) {
     Cote.findByIdAndRemove(req.params.id, (err, cote) => {
       if (err) {
         res.send(err);
       }
       res.json({ message: `${cote.coteId} deleted` });
     });
-  }
+}
 
+function deleteCoteBypari(req,res){
+	Cote.remove({idParieSport:req.params.id},
+      (err, cote) => {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          res.json({ message: "deleted" });
+        }
+      });
+}
   module.exports = {
     getCotes,
     postCote,
     getCote,
     updateCote,
-    deleteCote
+    deleteCote,
+	deleteCoteBypari
   };

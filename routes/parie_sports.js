@@ -167,6 +167,7 @@ function updatePariSport(req, res) {
 			PariQuery
 		 );
 		 if(resultPari && resultPari.docs && resultPari.docs.length > 0) {
+			let test = Array();
 			for (let i = 0 ; i< resultPari.docs.length ; i++) { 
 					let resultCategorie =  await CategorieService.getCategorie(resultPari.docs[i].idTypePari);
 					resultPari.docs[i].Categorie = resultCategorie;
@@ -178,11 +179,21 @@ function updatePariSport(req, res) {
 						for(let count = 0; count<resultPari.docs[i].Categorie[j].champ.length;count++){
 							let tempChamp = {...resultPari.docs[i].Categorie[j].champ[count]._doc};
 							let resultCote = await CoteService.getCoteByIdChamp(resultPari.docs[i].Categorie[j].champ[count]._id,req.params.id);
+							
 							tempChamp.cote = resultCote;
-							resultPari.docs[i].Categorie[j].champ[count] =tempChamp;
+							if(tempChamp.cote.length>0){
+								resultPari.docs[i].Categorie[j].champ[count] =tempChamp;
+							}else{
+								test.push(j);
+							}
+							
 						}
 						
 					}
+			}
+			//console.log(test.length);
+			for(let a = 0;a<test.length;a++){
+				resultPari.docs[0].Categorie.splice(test[a]);
 			}
 		 }
 		 res.send(resultPari);

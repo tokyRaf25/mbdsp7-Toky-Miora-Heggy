@@ -4,9 +4,9 @@ var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
 let Schema = mongoose.Schema;
 
 let CoteSchema = Schema({
-    idParieSport: Number,
-    idChamp: Number,
-    cotes: Number
+    idParieSport: String,
+    idChamp: String,
+    cotes: String
 });
 
 CoteSchema.plugin(aggregatePaginate);

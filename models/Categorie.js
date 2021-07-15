@@ -3,7 +3,8 @@ var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
 const Schema = mongoose.Schema;
 
 let CategorieSchema = new Schema({
-   nomcategorie : String
+   nomcategorie : String,
+   idTypePari:String
 });
 
 CategorieSchema.plugin(aggregatePaginate);
