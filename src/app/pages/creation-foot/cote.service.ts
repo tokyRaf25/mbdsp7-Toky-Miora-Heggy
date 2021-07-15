@@ -12,4 +12,10 @@ export class CoteService {
   addCote(cote:Cote):Observable<any> {
     return this.http.post(this.uri+"/cote", cote);
    }
+  updateCote(cote:Cote):Observable<any>{
+    return this.http.put(this.uri+"/cote", cote);
+  }
+  deleteCote(id:String):Observable<any> {  
+    return this.http.delete("http://localhost:4000/cote/pari/"+id);
+  }
 }

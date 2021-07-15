@@ -35,6 +35,7 @@ export class NgxComponent {
   categorieList:Categorie[];
   categorieSelected : string;
   showMsgDelete: boolean = false;
+  select:String;
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
   columns = [
@@ -92,7 +93,7 @@ export class NgxComponent {
   ngOnInit() {
     this.route.queryParams.subscribe(queryParams => {
       this.page = +queryParams.page || 1;
-      this.limit = +queryParams.limit || 2;
+      this.limit = +queryParams.limit || 10;
       this.getChamp();
       this.getCategorie();
     });
@@ -162,22 +163,21 @@ export class NgxComponent {
   }
 
   deleteChamp(champ:Champ){
-
-    if(confirm("Etes vous sur de vouloir supprimer ")) {
-      this.champService.deleteChamp(champ._id).subscribe(data=>{
-        this.getChamp();
-        this.showMsg= false;
-        this.showMsgDelete = true;
-        this.router.navigate(['/pages/tables/dynamic-tables/ngx'],{replaceUrl:true});
-      });
-    } 
+      if(confirm("Etes vous sur de vouloir supprimer ")) {
+        this.champService.deleteChamp(champ._id).subscribe(data=>{
+          this.getChamp();
+          this.showMsg= false;
+          this.showMsgDelete = true;
+          this.router.navigate(['/pages/tables/dynamic-tables/ngx'],{replaceUrl:true});
+        });
+      } 
   }
 
   getInfo(champ:Champ){
     this.champUpdated = champ;
     this.nomchamp = this.champUpdated.nomChamp;
     this.idchamp = this.champUpdated._id;
-   
+    this.select = this.champUpdated.idCategorie;
   }
 
   getCategorie(){
@@ -195,21 +195,22 @@ export class NgxComponent {
   }
 
   update(){
-    if(this.categorieSelected && this.nomchamp && this.idchamp){
-      console.log(this.categorieSelected +"et" + this.nomchamp + "et"+this.idchamp);
-      var champ =  new Champ();
-      champ.nomChamp = this.nomchamp;
-      champ._id = this.idchamp;
-      champ.idCategorie = this.categorieSelected;
-      champ.token = localStorage.getItem("token");
-     
-      this.champService.updateChamp(champ).subscribe(data=>{
-        this.getChamp();
-        this.showMsg= true;
-        this.showMsgDelete = false;
-        this.router.navigate(['/pages/tables/dynamic-tables/ngx'],{replaceUrl:true});
-      });
-    }
+      if(this.categorieSelected && this.nomchamp && this.idchamp){
+        console.log(this.categorieSelected +"et" + this.nomchamp + "et"+this.idchamp);
+        var champ =  new Champ();
+        champ.nomChamp = this.nomchamp;
+        champ._id = this.idchamp;
+        champ.idCategorie = this.categorieSelected;
+        champ.token = localStorage.getItem("token");
+      
+        this.champService.updateChamp(champ).subscribe(data=>{
+          this.getChamp();
+          this.showMsg= true;
+          this.showMsgDelete = false;
+          this.router.navigate(['/pages/tables/dynamic-tables/ngx'],{replaceUrl:true});
+        });
+      }
+    
   }
 
 }

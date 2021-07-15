@@ -33,4 +33,7 @@ export class ChampService {
   updateChamp(champ:Champ):Observable<any>{
     return this.http.put(this.uri+"/champParCat",champ);
   }
+  getChampByCategorie(id:String):Observable<Champ[]> {
+    return this.http.get<Champ[]>(this.uri+"/champParCat/"+id);
+  }
 }

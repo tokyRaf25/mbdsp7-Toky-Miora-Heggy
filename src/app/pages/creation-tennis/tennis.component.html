@@ -23,7 +23,7 @@
             <div class="card-body widget-body">
 
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
                         <label for="inputFirstName">Type De  Pari</label>
                         <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="typeParie" name="typeParie">
@@ -31,16 +31,22 @@
                         </select>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
                         <label for="inputLastName">Nom de categorie</label>
                         <input type="text" class="form-control" id="inputLastName" placeholder="--" [(ngModel)]="nomParis" name="nomParis">
                         </div>
                     </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                        <label for="inputLastName">Nom champ</label>
+                        <input type="text" class="form-control" id="inputLastName" placeholder="--" [(ngModel)]="nomChampMoyen" name="nomChampMoyen">
+                        </div>
+                    </div>
                 </div>       
             </div>
             <div class="row col-lg-12 mb-4 justify-content-center">
-                <button type="submit" class="btn btn-secondary" (click)="AddCategorie()">Créé categorie</button>
+                <button type ="submit" [disabled]="!(typeParie && nomParis && nomChampMoyen)" class="btn btn-secondary" (click)="AddCategorie()">Créé categorie</button>
             </div>   
         </div>
 
@@ -78,7 +84,7 @@
                 </div>       
             </div>
             <div class="row col-lg-12 mb-4 justify-content-center">
-                <button type="submit" class="btn btn-secondary" (click)="AddChamp()">Créé champ</button>
+                <button [disabled]="!(categorie && nomchamp)"type="submit" class="btn btn-secondary" (click)="AddChamp()">Créé champ</button>
             </div>   
         </div>
 

@@ -1,14 +1,84 @@
 <h2>Liste</h2>
 <!--<p class="text-muted">Just add the base class <code>.table</code> to any <code>&lt;table&gt;</code>, then extend with custom styles or our various included modifier classes.</p>-->
 
-
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Detail Pari</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+              <div class="col-sm-12">
+                
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" [(ngModel)]="cote" name="cote">
+                  <label class="form-check-label" for="inlineCheckbox1">Cote</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" [(ngModel)]="resultat" name="resultat">
+                  <label class="form-check-label" for="inlineCheckbox2">Resultat</label>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-group">
+                <label for="inputFirstName">Categorie</label>
+                <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="categorieSelected" name="categorieSelected" (change)="onChange($event.target.value)">
+                    <option  *ngFor="let a of categorieReel" value={{a._id}} [ngValue]="a._id">{{a.nomcategorie}}</option>
+                </select>
+              </div>
+              <label for="inputFirstName" *ngIf="(champ && resultat)">Champ</label>
+              <div class="col-sm-12" *ngIf="(champ && resultat)">
+                
+                <div class="form-check form-check-inline" *ngFor="let a of champ">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1"  [(ngModel)]="a.valeur" name="{{a.valeur}}">
+                  <label class="form-check-label" for="inlineCheckbox1">{{a.nomChamp}}</label>
+                </div>
+              </div>
+              <label for="inputFirstName" *ngIf="(categorieCote && cote)">Cote</label>
+              <div class="col-sm-12" *ngFor="let a of categorieCote" >
+                <p *ngIf="(categorieCote && cote && a.Champ[0].cote[0]==undefined)">Modification indisponible</p>
+                <div widget class="card border-0 box-shadow" *ngIf="(categorieCote && cote && a.Champ[0].cote[0]!=undefined)">
+                    <div class="card-header transparent border-0 text-muted" >
+                        <h5 class="mb-0">{{a.nomcategorie}}</h5>
+                        <div class="widget-controls"> 
+                            <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+                            <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>                          
+                            <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
+                        </div>        
+                    </div>
+                    <div class="card-body widget-body">
+        
+                            <div class="form-group row text-sm-right" *ngFor="let e of a.Champ">
+                                <label for="email-h-f" class="col-sm-3 form-control-label mt-1">{{e.nomChamp}}</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" id="email-h-t" [(ngModel)]="e.valeur" name="{{e.valeur}}" [ngModelOptions]="{standalone: true}" value ="{{e.cote[0].cotes}}" placeholder="{{e.cote[0].cotes}}">
+                                </div>
+                            </div>
+                                     
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-danger"  (click)="insert()">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
   
-  <!-- Modal -->
+  <!-- Modif match -->
   <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Modification Match</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -44,27 +114,34 @@
                       </div>
                   </div>
                   <div class="row">
-                      <div class="col-sm-12">
+                      <div class="col-sm-6">
                           <div class="form-group">
                               <label for="input-12">Type</label>
                               <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="typeParie" name="typeParie" >
-                                  <option  *ngFor="let a of type" value={{a._id}} [ngValue]="a._id">{{a.typeParie}}</option>
+                                  <option  *ngFor="let a of type" value={{a._id}} [ngValue]="a._id" [selected]="a._id==select">{{a.typeParie}}</option>
                               </select>
                           </div>
                       </div>
-                      
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="input-12">autres_info</label>
+                            <input type="text" class="form-control" value="13:45:00" [(ngModel)]="autres_info" name="autres_info"  id="input-15">
+                        </div>
+                    </div>
                   </div>
                   <input type="hidden" class="form-control" id="exampleInputPassword1"   [(ngModel)]="idParis" name="idParis">
                 <!--<button type="submit" class="btn btn-primary">Submit</button>-->
               </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary"  (click)="update()">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-danger"  (click)="update()">Enregistrer</button>
         </div>
       </div>
     </div>
   </div>
+  
+  
 <div class="row">
     <div class="col-12 mb-4"  *ngIf="showMsg">
         <div class="col-xs-12">
@@ -82,6 +159,7 @@
           </p>
         </div>
       </div>
+     
     <div class="col-12 mb-4">
         <div widget class="card border-0 box-shadow">
             <div class="card-header transparent border-0 text-muted">
@@ -117,6 +195,10 @@
                                       &nbsp;
                                     <button type="button"  (click)="deletePari(a)" class="btn btn-dark">
                                       <i class="fa fa-trash"></i>
+                                    </button>
+                                    &nbsp;
+                                    <button type="button" (click)="insertReel(a)" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+                                      <i class="fa fa-plus"></i>
                                     </button>
                                 </td>
                             </tr>

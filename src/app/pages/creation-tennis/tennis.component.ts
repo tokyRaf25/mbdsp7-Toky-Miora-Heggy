@@ -3,7 +3,7 @@ import { TypeService } from './../creation-foot/type.service';
 import { Type } from './../creation-foot/type';
 import { ChampService } from './../creation-foot/champ.service';
 import { Champ } from './../creation-foot/champ.model';
-import { Categorie } from '../creation-foot/categorie.model';
+import { Categorie, CategorieModele } from '../creation-foot/categorie.model';
 import { CategorieService } from '../creation-foot/categorie.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -20,7 +20,9 @@ export class TennisComponent implements OnInit {
   nomParis:string;
   categorie:string;
   nomchamp:string;
+  nomChampMoyen:string;
   showMsg: boolean = false;
+  temp:Categorie[];
   constructor(
     private typeService: TypeService,
     private categorieService: CategorieService,
@@ -62,30 +64,41 @@ export class TennisComponent implements OnInit {
   }
 
   AddCategorie(){
-        if(this.typeParie && this.nomParis){
+        if(this.typeParie && this.nomParis && this.nomChampMoyen){
             var categorie = new Categorie();
             categorie.idTypePari = this.typeParie;
             categorie.nomcategorie = this.nomParis;
             categorie.token = localStorage.getItem("token");
             this.categorieService.addCategorie(categorie).subscribe(message => {
-              this.showMsg= true;
-              this.router.navigate(['/pages/creation-tennis'],{replaceUrl:true});
-            });
-            
+              this.categorieService.getParisLastInsert().subscribe(data=>{
+                this.temp = data.docs;
+                 console.log(this.temp);
+                 let champ = new Champ();
+                 champ.idCategorie = this.temp[0]._id;
+                 champ.nomChamp = this.nomChampMoyen;
+                 champ.token = localStorage.getItem("token");
+                 this.champService.addChamp(champ).subscribe(message => {
+                  this.showMsg= true;
+                    setTimeout(()=> { 
+                      window.location.reload()
+                    },1000);
+                  });
+              });
+              
+            });     
         }
   }
   AddChamp(){
-    //console.log(this.categorie + " et " + this.nomchamp);
-    if(this.categorie && this.nomchamp){
-            var champ = new Champ();
-            champ.idCategorie = this.categorie;
-            champ.nomChamp = this.nomchamp;
-            champ.token = localStorage.getItem("token");
-            this.champService.addChamp(champ).subscribe(message => {
-              this.showMsg= true;
-              this.router.navigate(['/pages/creation-tennis'],{replaceUrl:true});
-            });
-    }
+      if(this.categorie && this.nomchamp){
+              var champ = new Champ();
+              champ.idCategorie = this.categorie;
+              champ.nomChamp = this.nomchamp;
+              champ.token = localStorage.getItem("token");
+              this.champService.addChamp(champ).subscribe(message => {
+                this.showMsg= true;
+                this.router.navigate(['/pages/creation-tennis'],{replaceUrl:true});
+              });
+      }
   }
 
 }

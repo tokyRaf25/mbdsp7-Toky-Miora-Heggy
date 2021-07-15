@@ -5,20 +5,20 @@
                 <i class="fa fa-sign-in" aria-hidden="true"></i>
             </div>
             <div class="card-body text-center pb-1">
-                <h2>Member login</h2>
-                <a routerLink="/register" class="transition">Don't have an account? Sign up now!</a>
+                <h2>Authentification des membres</h2>
+                <a routerLink="/register" class="transition">Inscription</a>
 
                 <form  (ngSubmit)="onSubmit(form.value)" class="text-left mt-4">
                     <div class="form-group">
-                        <input [formControl]="name" class="form-control validation-field" placeholder="Name" type="text">                      
-                        <small class="text-danger" *ngIf="form.get('name').touched && form.get('name').hasError('required')">Name is required</small>                              
+                        <input [formControl]="name" class="form-control validation-field" placeholder="Nom" type="text">                      
+                        <small class="text-danger" *ngIf="form.get('name').touched && form.get('name').hasError('required')">Nom obligatoire</small>                              
                     </div>
                     <div class="form-group">
-                        <input [formControl]="password" class="form-control validation-field" placeholder="Password" type="password">
-                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('required')">Password is required</small>                              
+                        <input [formControl]="password" class="form-control validation-field" placeholder="Mot de Passe" type="password">
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('required')">Mot de passe obligatoire</small>                              
                     </div>
                     <div class="form-group">
-                        <button [disabled]="!form.valid" class="btn btn-block" type="submit">Sign in</button>
+                        <button [disabled]="!form.valid" class="btn btn-block" type="submit">Connexion</button>
                     </div>
                 </form>
             </div>

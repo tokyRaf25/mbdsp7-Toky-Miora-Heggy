@@ -1,3 +1,5 @@
+import { Cote } from "./cote.model";
+
 export class Champ {
     _id:String;
     idCategorie: String;
@@ -5,6 +7,7 @@ export class Champ {
     valeur:String;
     nomCategorie:String;
     token:String;
+    cote:Cote;
 }
 export class ChampModele {
 	

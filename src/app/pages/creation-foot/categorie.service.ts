@@ -37,4 +37,16 @@ export class CategorieService {
   getAllCategorieModel():Observable<CategorieModele> {
     return this.http.get<CategorieModele>(this.uri+"/categorie");
   }
+
+  getCategorieParType(id:String):Observable<CategorieModele>{
+    return this.http.get<CategorieModele>(this.uri+"/categorie/list/"+id);
+  }
+
+  getParisLastInsert():Observable<CategorieModele> {
+    return this.http.get<CategorieModele>("http://localhost:4000/categorie/last");
+  }
+
+  getChampEtCotePari(id:String,idParie:String):Observable<CategorieModele>{
+    return this.http.get<CategorieModele>(this.uri+"/categorie/cote/"+id+"/"+idParie);
+  }
 }

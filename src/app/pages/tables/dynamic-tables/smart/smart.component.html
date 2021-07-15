@@ -11,8 +11,9 @@
            <!--<form [formGroup] = "modalformGroup">-->
                 <div class="form-group">
                   <label for="exampleInputEmail1">Type De Pari</label>
-                  <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="typeParie" name="typeParie">
-                    <option  *ngFor="let a of type" [ngValue]="a._id">{{a.typeParie}}</option>
+                  <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="select" name="typeParie">
+                    
+                    <option  *ngFor="let a of type"  [ngValue]="a._id" [selected]="a._id===select">{{a.typeParie}} </option>
                   </select>
                   
                 </div>
@@ -25,8 +26,8 @@
              
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" (click)="update()">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-danger" (click)="update()">Enregistrer</button>
         </div>
       </div>
     </div>
@@ -42,11 +43,11 @@
   <div class="col-12 mb-4"  *ngIf="showMsg">
     <div class="col-xs-12">
       <p class="alert alert-success">
-          <strong>Update Success!</strong> 
-  
+          <strong>Update Success!</strong>  
       </p>
     </div>
   </div>
+  
 <div widget class="card border-0 box-shadow">
     <div class="card-header transparent border-0 text-muted">
         <h5 class="mb-0">Listes  des Categories</h5>

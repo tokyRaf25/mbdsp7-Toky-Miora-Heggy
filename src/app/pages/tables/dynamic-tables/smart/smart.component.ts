@@ -34,6 +34,8 @@ export class SmartComponent {
   modalformGroup:FormGroup;
   nomcategorie:String;
   idcategorie:String;
+  select:String;
+  auth:boolean = false;
   public settings = {
     selectMode: 'single',  //single|multi
     hideHeader: false,
@@ -168,10 +170,9 @@ export class SmartComponent {
   ngOnInit() {
     this.route.queryParams.subscribe(queryParams => {
       this.page = +queryParams.page || 1;
-      this.limit = +queryParams.limit || 2;
+      this.limit = +queryParams.limit || 10;
       this.getCategorie();
     });
-    
   }
   premierePage() {
     this.router.navigate(['/pages/tables/dynamic-tables/smart'], {
@@ -212,16 +213,15 @@ export class SmartComponent {
   }
 
   deleteCategorie(categorie:Categorie){
-
-    if(confirm("Etes vous sur de vouloir supprimer ")) {
-      this.categorieService.deleteCategorie(categorie._id).subscribe(data=>{
-        this.champService.deleteChampParCategorie(categorie._id).subscribe(data=>{
-          this.getCategorie();
-          this.showMsgDelete= true;  
-          this.router.navigate(['/pages/tables/dynamic-tables/smart'],{replaceUrl:true});
+      if(confirm("Etes vous sur de vouloir supprimer ")) {
+        this.categorieService.deleteCategorie(categorie._id).subscribe(data=>{
+          this.champService.deleteChampParCategorie(categorie._id).subscribe(data=>{
+            this.getCategorie();
+            this.showMsgDelete= true;  
+            this.router.navigate(['/pages/tables/dynamic-tables/smart'],{replaceUrl:true});
+          });
         });
-      });
-    } 
+      } 
   }
 	
   getType(){
@@ -241,26 +241,26 @@ export class SmartComponent {
       this.categorieUpdated = categorie;
       this.nomcategorie = this.categorieUpdated.nomcategorie;
       this.idcategorie = this.categorieUpdated._id;
-     
+      this.select = this.categorieUpdated.idTypePari;
   }
 
   update(){
-    if(this.typeParie && this.nomcategorie && this.idcategorie){
-      console.log(this.typeParie+ " et "+this.nomcategorie + " et "+this.idcategorie);
-      var categorie =  new Categorie();
-      categorie.idTypePari = this.typeParie;
-      categorie.nomcategorie =  this.nomcategorie;
-      categorie._id = this.idcategorie;
-      if(localStorage.getItem("token")){
-      categorie.token = localStorage.getItem("token");
+      if(this.select && this.nomcategorie && this.idcategorie){
+        console.log(this.select+ " et "+this.nomcategorie + " et "+this.idcategorie);
+        var categorie =  new Categorie();
+        categorie.idTypePari = this.select;
+        categorie.nomcategorie =  this.nomcategorie;
+        categorie._id = this.idcategorie;
+        if(localStorage.getItem("token")){
+        categorie.token = localStorage.getItem("token");
+        }
+        this.categorieService.updateCategorie(categorie).subscribe(data=>{
+          this.getCategorie();
+          this.showMsgDelete = false;
+          this.showMsg= true;
+          this.router.navigate(['/pages/tables/dynamic-tables/smart'],{replaceUrl:true});
+        });
       }
-      this.categorieService.updateCategorie(categorie).subscribe(data=>{
-        this.getCategorie();
-        this.showMsgDelete = false;
-        this.showMsg= true;
-        this.router.navigate(['/pages/tables/dynamic-tables/smart'],{replaceUrl:true});
-      });
-    }
   }
 
  
