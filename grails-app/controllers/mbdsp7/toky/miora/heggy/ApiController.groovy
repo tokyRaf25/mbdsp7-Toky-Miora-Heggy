@@ -121,10 +121,10 @@ class ApiController {
                         mb.somme = request.JSON.somme
                         mb.typeMouvement = MouvementBancaire.TypeMouvement.valueOf(request.JSON.typeMouvement)
                         mb.compteBancaire = cb
-                        mouvementBancaireService.save(mb)
                         if (mb.typeMouvement.name().equals("DEBIT")) {
                             if (cb.soldeencours > mb.somme) {
                                 cb.soldeencours -= mb.somme
+                                mouvementBancaireService.save(mb)
                             } else {
                                 def json = builder.build {
                                     message = " Votre solde est insuffisant"
