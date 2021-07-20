@@ -36,13 +36,15 @@ function getResultatPredit(req, res) {
 // Ajout d'un assignment (POST)
 function postResultatPredit(req, res) {
     let resultatPredit = new ResultatPredit();
-    resultatPredit.idClient = req.body.idResultatsReel;
+    console.log(req);
+    resultatPredit.idClient = req.body.idClient;
     resultatPredit.idChamp = req.body.idChamp;
     resultatPredit.idPariSport = req.body.idPariSport;
     resultatPredit.cotes = req.body.cotes;
     resultatPredit.mise = req.body.mise;
     resultatPredit.gain = req.body.gain;
     resultatPredit.status = req.body.status;
+    resultatPredit.dateDePari = req.body.dateDePari;
     console.log("POST résultat prédit reçu :");
     console.log(resultatPredit);
   

@@ -112,43 +112,54 @@ function updatePariSport(req, res) {
   }
   
   getDetailPari = async(req,res)=>{
-	try { 
-		 var PariQuery = PariSport.aggregate([
-			{
-				$match : { 
-					_id : new ObjectId(req.params.id)
-				}
-			}
-		 ]);
-		 let resultPari = await PariSport.aggregatePaginate(
-			PariQuery
-		 );
-		 if(resultPari && resultPari.docs && resultPari.docs.length > 0) {
-			for (let i = 0 ; i< resultPari.docs.length ; i++) { 
-					let resultCategorie =  await CategorieService.getCategorie(resultPari.docs[i].idTypePari);
-					resultPari.docs[i].Categorie = resultCategorie;
-					for(let j = 0;j<resultPari.docs[i].Categorie.length;j++){
-						let tempCategorie = {...resultPari.docs[i].Categorie[j]._doc};
-						let resultChamp = await ChampService.getChampByIdCategorie(resultPari.docs[i].Categorie[j]._id);
-						tempCategorie.champ = resultChamp;
-						resultPari.docs[i].Categorie[j]=tempCategorie;
-						for(let count = 0; count<resultPari.docs[i].Categorie[j].champ.length;count++){
-							let tempChamp = {...resultPari.docs[i].Categorie[j].champ[count]._doc};
-							let resultCote = await CoteService.getCoteByIdChamp(resultPari.docs[i].Categorie[j].champ[count]._id,req.params.id);
-							tempChamp.cote = resultCote;
-							resultPari.docs[i].Categorie[j].champ[count] =tempChamp;
-						}
-						
-					}
-			}
-		 }
-		 res.send(resultPari);
-	}
-	catch (e) { 
-		res.send(e);
-		throw e ;
-	}
- }
+    try { 
+       var PariQuery = PariSport.aggregate([
+        {
+          $match : { 
+            _id : new ObjectId(req.params.id)
+          }
+        }
+       ]);
+       let resultPari = await PariSport.aggregatePaginate(
+        PariQuery
+       );
+       if(resultPari && resultPari.docs && resultPari.docs.length > 0) {
+        let test = Array();
+        for (let i = 0 ; i< resultPari.docs.length ; i++) { 
+            let resultCategorie =  await CategorieService.getCategorie(resultPari.docs[i].idTypePari);
+            resultPari.docs[i].Categorie = resultCategorie;
+            for(let j = 0;j<resultPari.docs[i].Categorie.length;j++){
+              let tempCategorie = {...resultPari.docs[i].Categorie[j]._doc};
+              let resultChamp = await ChampService.getChampByIdCategorie(resultPari.docs[i].Categorie[j]._id);
+              tempCategorie.champ = resultChamp;
+              resultPari.docs[i].Categorie[j]=tempCategorie;
+              for(let count = 0; count<resultPari.docs[i].Categorie[j].champ.length;count++){
+                let tempChamp = {...resultPari.docs[i].Categorie[j].champ[count]._doc};
+                let resultCote = await CoteService.getCoteByIdChamp(resultPari.docs[i].Categorie[j].champ[count]._id,req.params.id);
+                
+                tempChamp.cote = resultCote;
+                if(tempChamp.cote.length>0){
+                  resultPari.docs[i].Categorie[j].champ[count] =tempChamp;
+                }else{
+                  test.push(j);
+                }
+                
+              }
+              
+            }
+        }
+        //console.log(test.length);
+        for(let a = 0;a<test.length;a++){
+          resultPari.docs[0].Categorie.splice(test[a]);
+        }
+       }
+       res.send(resultPari);
+    }
+    catch (e) { 
+      res.send(e);
+      throw e ;
+    }
+  }
 
 
   module.exports = {
