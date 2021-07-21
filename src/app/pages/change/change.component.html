@@ -17,38 +17,29 @@
         </div>
         <div class="card-body">
           <form>
-            <h6 class="heading-small text-muted mb-4">Nomre de jetons a  disposition: 6</h6>
+            <h6 class="heading-small text-muted mb-4">Nomre de jetons a  disposition:</h6>
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-username">Jetons actuels</label>
-                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="6" disabled>
+                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="{{nombrejeton}}" disabled>
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-email">Solde en banque</label>
-                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="6000 AR" disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-first-name">Faire un achat de</label>
-                    <input type="number" min="1" id="input-first-name" class="form-control form-control-alternative" placeholder="Saisir nombre jeton" >
+                    <input [formControl]="jeton" type="number" min="1" id="input-first-name" class="form-control form-control-alternative" placeholder="Saisir nombre jeton" >
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col text-center">
-                  <a href="#!" class="btn btn-sm btn-primary">ACHETER</a>
+                  <button class="btn btn-primary btn-sm" (click)="open(content)"><i class="fa fa-pencil"></i>ACHETER</button>
                 </div>
               </div>
             </div>
             <hr class="my-4" />
-          
           </form>
         </div>
       </div>
@@ -57,3 +48,39 @@
 
 
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Entrer vos informations ici</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form role="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <div class="form-group">
+        <label>Numero de compte</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+          </div>
+          <input  [formControl]="numerosdecompte" type="text" class="form-control" placeholder="Numero de compte">
+          
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Mot de passe</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+          </div>
+          <input [formControl]="password" type="password" class="form-control" placeholder="Password" >
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" data-dismiss="modal" class="btn btn-outline-dark" >Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -16,4 +16,21 @@ export class ClientService {
   authentificate(client:Client):Observable<ClientModel> {
     return this.http.post<ClientModel>(this.uri+"/authentification", client);
   }
+
+  registration(client:Client):Observable<ClientModel> {
+    return this.http.post<ClientModel>(this.uri+"/registration", client);
+  }
+
+  updateJeton(client:Client):Observable<ClientModel> {
+    return this.http.post<ClientModel>(this.uri+"/updateJeton", client);
+  }
+
+  updateClient(client:Client):Observable<ClientModel> {
+    return this.http.post<ClientModel>(this.uri+"/updateClient", client);
+  }
+
+  getJeton(id:String):Observable<ClientModel> {
+    return this.http.get<ClientModel>(this.uri+"/getJeton/"+id);
+  }
+
 }
