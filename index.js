@@ -60,6 +60,7 @@ const prefix = '/api';
 
 app.route(prefix + '/authentification')
   .post(client.authenticate)
+  .put(client.updateClient);
 
 app.route(prefix + '/registration')
 .post(client.register)
@@ -67,6 +68,11 @@ app.route(prefix + '/registration')
 app.route("/authentification")
 .post(Admin.authenticate)
 
+app.route(prefix +"/clients")
+.get(client.listClient)
+
+app.route(prefix +"/clients/:id")
+.delete(client.deleteClient)
 //Champ par categorie
 app.route(prefix + '/champParCat')
   .get(champ.getChamps)
@@ -147,7 +153,8 @@ app.route(prefix + '/resultats_predit')
   
 app.route(prefix +"/resultats_predit/:id")
 .get(resultatPredit.getResultatPredit)
-  .delete(resultatPredit.deleteResultatPredit);
+  .delete(resultatPredit.deleteResultatPredit)
+  .put(resultatPredit.updateOne);
 
 /******************************************************************* */  
 

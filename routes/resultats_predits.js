@@ -36,10 +36,13 @@ function getResultatPredit(req, res) {
 // Ajout d'un assignment (POST)
 function postResultatPredit(req, res) {
     let resultatPredit = new ResultatPredit();
-    resultatPredit.idResultatsReel = req.body.idResultatsReel;
-    resultatPredit.idClient = req.body.idClient;
+    resultatPredit.idClient = req.body.idResultatsReel;
+    resultatPredit.idChamp = req.body.idChamp;
+    resultatPredit.idPariSport = req.body.idPariSport;
+    resultatPredit.cotes = req.body.cotes;
     resultatPredit.mise = req.body.mise;
-    resultatPredit.montant = req.body.montant;
+    resultatPredit.gain = req.body.gain;
+    resultatPredit.status = req.body.status;
     console.log("POST résultat prédit reçu :");
     console.log(resultatPredit);
   
@@ -90,6 +93,18 @@ function updateResultatPredit(req, res) {
       res.json(champ);
     });
   }
+  
+  function updateOne(req,res){
+	  ResultatPredit.updateMany(
+			{ "idPariSport" : req.params.id}, 
+			{ "$set" : { "status" : "1" } }, 
+			{ "upsert" : true },(err,rep)=>{
+				if (err) {
+					res.send(err);
+				  }
+				res.json(rep);			
+	  });
+  }
 
   module.exports = {
     getResultatPredits,
@@ -98,4 +113,5 @@ function updateResultatPredit(req, res) {
     updateResultatPredit,
     deleteResultatPredit,
     getPariByType,
+	updateOne
   };
