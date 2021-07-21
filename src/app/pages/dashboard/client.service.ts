@@ -29,6 +29,10 @@ export class ClientService {
     return this.http.post<ClientModel>(this.uri+"/updateClient", client);
   }
 
+  updateClientPassword(client:Client):Observable<ClientModel> {
+    return this.http.post<ClientModel>(this.uri+"/updateClientPassword", client);
+  }
+
   getJeton(id:String):Observable<ClientModel> {
     return this.http.get<ClientModel>(this.uri+"/getJeton/"+id);
   }

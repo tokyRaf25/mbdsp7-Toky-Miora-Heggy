@@ -26,6 +26,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     NgbModule,
     ClipboardModule,
     ReactiveFormsModule,
+
     QRCodeModule
   ],
   declarations: [

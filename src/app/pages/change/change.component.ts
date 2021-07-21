@@ -11,6 +11,7 @@ import { Clients} from '../../Clients/Clients';
 import {LoggingService} from '../../clients/logging.service';
 import { ClientService } from '../dashboard/client.service';
 import { Client } from '../dashboard/client.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-foot',
