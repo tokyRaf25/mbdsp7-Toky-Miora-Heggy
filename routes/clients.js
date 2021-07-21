@@ -58,6 +58,26 @@ function updateClient(req, res) {
   );
 }
 
+//update Client password
+function updateClientPassword(req, res) {
+  var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+  req.body.password = hashedPassword;
+  console.log(req.body);
+  Client .findByIdAndUpdate(
+    req.body._id,
+    req.body,
+    { new: true },
+    (err, client ) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        res.json({ message: "updated" });
+      }
+    }
+  );
+}
+
 //Récupérer jeton client par son id (GET)
 function getJetonClient(req, res) {
     console.log("get jeton client by id "+req.params.id)
@@ -96,5 +116,6 @@ module.exports = {
     register,
     updateJeton,
     getJetonClient,
-    updateClient
+    updateClient,
+    updateClientPassword
   };

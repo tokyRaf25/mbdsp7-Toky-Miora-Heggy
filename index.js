@@ -62,6 +62,9 @@ app.route(prefix + '/updateJeton')
 app.route(prefix + '/updateClient')
 .post(client.updateClient)
 
+app.route(prefix + '/updateClientPassword')
+.post(client.updateClientPassword)
+
 app.route(prefix + '/getJeton/:id')
 .get(client.getJetonClient)
 
