@@ -4,7 +4,7 @@ var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
 let Schema = mongoose.Schema;
 
 let ChampParCategorieSchema = Schema({
-    idCategorie: String,
+    idCategorie: Number,
     nomChamp: String
 });
 

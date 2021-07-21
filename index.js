@@ -2,21 +2,17 @@ var express = require('express');
 var app = express();
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
-let cote = require('./routes/cotes');
 
 //Déclaration des objets
 let champ = require('./routes/champ_par_categorie_paris');
 let pari = require('./routes/parie_sports');
 const ParieRoutes = require('./routes/typeParie.route'); 
 const CategorieRoutes = require('./routes/categorie.route');
-const resultatReel = require('./routes/resultats_reels');
-const resultatPredit = require('./routes/resultats_predits');
-const pointDeVente = require('./routes/point_de_ventes');
 const client = require('./routes/clients');
 const Admin = require('./routes/administrateurs');
 const jwt = require('./_helpers/jwt');
-const errorHandler = require('./_helpers/error-handler');
 const cors = require('cors');
+const errorHandler = require('./_helpers/error-handler');
 
 mongoose.Promise = global.Promise;
 
@@ -40,8 +36,8 @@ mongoose.connect(uri, options)
     err => {
       console.log('Erreur de connexion: ', err);
     });
-
-    app.use(cors());
+// Pour accepter les connexions cross-domain (CORS)
+app.use(cors());
 
 // '/' est la route racine
 app.get('/', function (req, res) {
@@ -60,6 +56,15 @@ app.route(prefix + '/authentification')
 app.route(prefix + '/registration')
 .post(client.register)
 
+app.route(prefix + '/updateJeton')
+.post(client.updateJeton)
+
+app.route(prefix + '/updateClient')
+.post(client.updateClient)
+
+app.route(prefix + '/getJeton/:id')
+.get(client.getJetonClient)
+
 app.route("/authentification")
 .post(Admin.authenticate)
 
@@ -69,22 +74,11 @@ app.route(prefix + '/champParCat')
   .post(champ.postChamp)
   .put(champ.updateChamp);
 
-app.route(prefix + '/champParCat/:id')
-  .delete(champ.deleteChamp);
   
-app.route(prefix + '/champParCat/Categorie/:id')
-  .delete(champ.deleteChampAvecCategorie);
-
-
 app.route(prefix + '/champParCat/trie')
   .get(champ.getChampParCategorie)
 
-app.route(prefix + '/champParCat/:id')
-  .get(champ.getChampByIdCategorie)
-  .delete(champ.deleteChamp)
-/******************************************************************* */  
-
-/************************Routes API PariSport************************************** */
+//Champ par categorie
 app.route(prefix + '/pari')
   .get(pari.getPariSports)
   .post(pari.postPariSport)
@@ -96,89 +90,24 @@ app.route(prefix + '/pari/:id')
 
 app.route(prefix + '/pari/type/:type')
   .get(pari.getPariByType)
-  
-app.route(prefix + '/pariOne')
-  .get(pari.getLastPari)
-  
-app.route(prefix +"/pariAvecCote/:id")
-   .get(pari.getDetailPari);
 
-/******************************************************************* */
-
-/************************Routes API Cote************************************** */
-app.route(prefix + '/cote')
-  .get(cote.getCotes) 
-  .post(cote.postCote)
-  .put(cote.updateCote);
-  
-app.route("/cote/:id")
-  .get(cote.getCote)
-  .delete(cote.deleteCote);
-
-/******************************************************************* */ 
-
-/************************Routes API Résultats réels************************************** */
-app.route(prefix + '/resultats_reel')
-  .get(resultatReel.getResultatReels) 
-  .post(resultatReel.postResultatReel)
-  .put(resultatReel.updateResultatReel);
-  
-app.route("/resultats_reel/:id")
-.get(resultatReel.getResultatReel)
-  .delete(resultatReel.deleteResultatReel);
-
-/******************************************************************* */  
-
-/************************Routes API Résultats prédites************************************** */
-app.route(prefix + '/resultats_predit')
-  .get(resultatPredit.getResultatPredits) 
-  .post(resultatPredit.postResultatPredit)
-  .put(resultatPredit.updateResultatPredit);
-  
-app.route(prefix +"/resultats_predit/:id")
-.get(resultatPredit.getResultatPredit)
-  .delete(resultatPredit.deleteResultatPredit);
-
-/******************************************************************* */  
-
-/************************Routes API Type de parie************************************** */
-app.route(prefix +"/typeParie")
+app.route("/typeParie")
   .get(ParieRoutes.listTypeParie) 
   .post(ParieRoutes.insertTypeParie)
   .put(ParieRoutes.updateTypeParie);
   
-app.route(prefix +"/typeParie/:id")
+app.route("/typeParie/:id")
   .delete(ParieRoutes.deleteTypeParie);
-
-/******************************************************************* */  
-
-/************************Routes API Type de categorie************************************** */
-
-app.route(prefix +"/categorie")
+  
+app.route("/categorie")
   .get(CategorieRoutes.listCategorie)
   .post(CategorieRoutes.insertCategorie)
   .put(CategorieRoutes.updateCategorie);
   
-app.route(prefix +"/categorie/:id")
-  .delete(CategorieRoutes.deleteCategorie)
-  .get(CategorieRoutes.getListCategorieParTp);
-  
+app.route("/categorie/:id")
+  .delete(CategorieRoutes.deleteCategorie);
 
-
-/******************************************************************* */  
-
-/************************Routes API Points de ventes************************************** */
-app.route(prefix + '/point_de_vente')
-  .get(pointDeVente.getPointDeVentes) 
-  .post(pointDeVente.postPointDeVente)
-  .put(pointDeVente.updatePointDeVente);
-  
-app.route(prefix +"/point_de_vente/:id")
-  .get(pointDeVente.getPointDeVente)
-  .delete(pointDeVente.deletePointDeVente);
-
-/******************************************************************* */  
-
+  app.use(errorHandler);
 
 app.listen(4000, function () {
   console.log("Application d'exemple écoutant sur le port 4000 !");

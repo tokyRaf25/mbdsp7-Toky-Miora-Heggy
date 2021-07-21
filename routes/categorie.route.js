@@ -1,6 +1,5 @@
-const categorie =  require("../models/Categorie");
-let Champ = require('../models/champ_par_categorie_pari');
-const ChampService = require ('../service/champ_par_categorie_paris.service');
+const categorie =  require("../models/Categorie")
+
 listCategorie = async ( req , res ) => { 
    /*const val = await categorie.find();
    res.send(val);*/
@@ -24,7 +23,6 @@ listCategorie = async ( req , res ) => {
 insertCategorie =  async(req,res) =>{
    let insert = new categorie();
    insert.nomcategorie = req.body.nomcategorie;
-   insert.idTypePari = req.body.idTypePari;
    insert.save((err) => {
     if (err) {
       res.send("cant post categorie ", err);
@@ -59,48 +57,9 @@ updateCategorie = async (req,res) => {
   );
 }
 
-getListCategorieParTp = async(req,res)=>{
-	try { 
-		 var ChampQuery = categorie.aggregate([
-			{
-				$match : { 
-					idTypePari : req.params.id
-				}
-			}
-		 ]);
-		 let resultCategorie = await categorie.aggregatePaginate(
-			ChampQuery
-		 );
-	
-		 //console.log(resultCategorie);
-		 if(resultCategorie && resultCategorie.docs && resultCategorie.docs.length > 0) { 
-			for (let i =0 ; i< resultCategorie.docs.length ; i++) { 
-					let resultChamp =  await ChampService.getChampByIdCategorie(resultCategorie.docs[i]._id);
-					resultCategorie.docs[i].Champ = resultChamp;
-			}
-		 }
-		 res.send(resultCategorie);
-	}
-	catch (e) { 
-		res.send(e);
-		throw e ;
-	}
-}
-
-function getNomByIdCategorie(idCategorie){
-  var result = null;
-  categorie.findOne({ _id: idCategorie }, (err, categorie) => {
-    result = categorie.nomcategorie;
-   });
-  return result;
-}
-
-
 module.exports = { 
   listCategorie,
   insertCategorie,
   deleteCategorie,
-  updateCategorie,
-  getListCategorieParTp,
-  getNomByIdCategorie
+  updateCategorie
 }

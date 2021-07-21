@@ -17,7 +17,8 @@ function authenticate(req, res, next) {
         var token = jwt.sign({ id: user._id }, 'supersecret', {
             expiresIn: 86400 // expires in 24 hours
         });
-        res.status(200).send({ id: user.id, name: user.name,password: user.password, auth: true, token: token });
+
+        res.status(200).send({ id: user.id, name: user.name, jetons: user.jetons, auth: true, token: token });
     });
 }
 
@@ -38,8 +39,62 @@ function register(req, res) {
     });
 }
 
+// Update information client (PUT)
+function updateClient(req, res) {
+  console.log("UPDATE client : ");
+  console.log(req.body);
+  Client.findByIdAndUpdate(
+    req.body._id,
+    req.body,
+    { new: true },
+    (err, client) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        res.json({ message: "updated" });
+      }
+    }
+  );
+}
+
+//Récupérer jeton client par son id (GET)
+function getJetonClient(req, res) {
+    console.log("get jeton client by id "+req.params.id)
+    let clientId = req.params.id;
+  
+    Client.findOne({ _id: clientId }, (err, client) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(client);
+    });
+}
+
+// Update jeton client (PUT)
+function updateJeton(req, res) {
+    console.log("UPDATE jeton : ");
+    console.log(req.body);
+    Client.findByIdAndUpdate(
+      req.body._id,
+      req.body,
+      { new: true },
+      (err, client) => {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          res.json({ message: "updated" });
+        }
+      }
+    );
+  }
+
 
 module.exports = {
     authenticate,
     register,
+    updateJeton,
+    getJetonClient,
+    updateClient
   };
