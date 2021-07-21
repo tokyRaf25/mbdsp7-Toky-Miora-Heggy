@@ -17,10 +17,10 @@
           <form>
             <h6 class="heading-small text-muted mb-4">{{fiche.nomcategorie}}</h6>
             <div class="pl-lg-4">
-              <div class="row" *ngFor="let fiche of pariSport[0].Categorie">
+              <div class="row" >
                 <div class="col-lg-4" *ngFor="let champ of fiche.champ">
                   <div class="form-group">
-                    <button type="button" class="form-control form-control-alternative btn btn-primary2">
+                    <button type="button" class="form-control form-control-alternative btn btn-primary2" (click)="getPanier(champ)">
                       {{champ.nomChamp}} <span class="badge2 badge-light2">{{champ.cote[0].cotes}}</span>
                     </button>
                   </div>
@@ -45,68 +45,39 @@
             </div>
           </div>
         </div>
-        <div class="card-body">
-            <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body" *ngIf="panier">
+          <p *ngIf="message" style="color:{{color}}">{{message}}</p>
+            <div class="card card-stats mb-4 mb-xl-0" *ngFor="let p of panier">
               <div class="card-body">
                 <div class="row">
                   <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0"><i class="far fa-futbol"></i>Allemagne VS France</h5>
-                    <span class="h4 font-weight-bold mb-0">Résultat du match : 1</span>
+                    <h5 class="card-title text-uppercase text-muted mb-0"><i class="far fa-futbol"></i>{{pariSport[0].equipes[0].nomEquipe}} VS {{pariSport[0].equipes[1].nomEquipe}}</h5>
+                    <span class="h4 font-weight-bold mb-0">{{p.nomCategorie}}:{{p.nomChamp}}</span>
+                    <input type="number"  [(ngModel)]="p.valeur" name="{{p.valeur}}" [ngModelOptions]="{standalone: true}" value="0" (change)="onChange(p)"/>
                   </div>
                   <div class="col-auto">
                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                      <i class="ni ni-fat-remove"></i>
+                      <i class="ni ni-fat-remove" (click)="remove(p._id)"></i>
                     </div>
                   </div>
                 </div>
                 <p class=" mb-0 text-muted text-sm">
-                  <span class="text-success mr-2">Cote <i class="fa fa-arrow-up"></i> 2.5</span>
+                  <span class="text-success mr-2">Cote <i class="fa fa-arrow-up"></i> {{p.cote[0].cotes}}</span>
                 </p>
+                <p *ngIf="p.valeur">Gain potentiel : {{p.cote[0].cotes*p.valeur}}</p>
+                <p *ngIf="!p.valeur">Gain potentiel : 0</p>
               </div>
             </div>
-            <div class="card card-stats mb-4 mb-xl-0">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0"><i class="far fa-futbol"></i>Allemagne VS France</h5>
-                    <span class="h4 font-weight-bold mb-0">Résultat du match : 1</span>
-                  </div>
-                  <div class="col-auto">
-                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                      <i class="ni ni-fat-remove"></i>
-                    </div>
-                  </div>
-                </div>
-                <p class=" mb-0 text-muted text-sm">
-                  <span class="text-success mr-2">Cote <i class="fa fa-arrow-up"></i> 2.5</span>
-                </p>
-              </div>
-            </div>
-            <div class="card card-stats mb-4 mb-xl-0">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-xl-4 text-center">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Cote: </h5>
-                    <span class="h4 font-weight-bold mb-0">5</span>
-                  </div>
-                  <div class="col-lg-8">
-                    <div class="form-group">
-                      <input type="number" id="input-postal-code" min="200" class="form-control form-control-alt" placeholder="Placer mise" value="200">
-                    </div>
-                  </div>
-                </div>
-                <p class="text-center mb-0 text-muted text-sm">
-                  <span class="mr-2">Mise totale</span>
-                  <span class="mr-2">200 MGA</span>
-                </p>
-                <p class="text-center mb-0 text-muted text-sm">
-                  <span class="mr-2">Gains Potentiels</span>
-                  <span class="mr-2">10000 MGA</span>
-                </p>
-                <div class="col text-center">
-                  <a href="#!" class="btn btn-sm btn-danger">PLACER MON PARI</a>
-                </div>
-              </div>
+            <p class="text-center mb-0 text-muted text-sm">
+              <span class="mr-2">Mise totale</span>
+              <span class="mr-2">{{misetotal}}</span>
+            </p>
+            <p class="text-center mb-0 text-muted text-sm">
+              <span class="mr-2">Gains Potentiels</span>
+              <span class="mr-2">{{gainpotentieltotal}}</span>
+            </p>
+            <div class="col text-center">
+              <button class="btn btn-sm btn-danger" (click)="parier()">PLACER MON PARI</button>
             </div>
         </div>
       </div>

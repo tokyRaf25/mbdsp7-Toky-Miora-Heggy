@@ -1,4 +1,5 @@
 export class Client {
+    id:String;
     name: String;
     email: String;
     jetons: Number;

@@ -1,4 +1,5 @@
 import { Cote } from "./cote.model";
+import { Equipe } from "./parisport";
 export class Champ {
     _id:String;
     idCategorie: String;
@@ -6,6 +7,7 @@ export class Champ {
     valeur:String;
     nomCategorie:String;
     cote:Cote[];
+    detail:Equipe[];
 }
 export class ChampModele {
 	
