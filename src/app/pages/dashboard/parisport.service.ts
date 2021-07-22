@@ -36,4 +36,8 @@ export class ParisportService {
   getDetailPariSport(id:String):Observable<ParisportModele>{
     return this.http.get<ParisportModele>(this.uri+"/pariAvecCote/"+id);
   }
+
+  getParisSportById(id:String):Observable<Parisport> {  
+    return this.http.get<Parisport>(this.uri+"/pari/" +id);
+  }
 }

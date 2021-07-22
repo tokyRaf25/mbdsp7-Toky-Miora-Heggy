@@ -32,5 +32,9 @@ export class NavbarComponent implements OnInit {
     }
     return 'Accueil';
   }
+  logout(){
+    localStorage.removeItem("currentClients");
+    localStorage.removeItem("panier");
+  }
 
 }
