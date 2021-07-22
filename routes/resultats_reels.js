@@ -88,6 +88,17 @@ function updateResultatReel(req, res) {
       res.json(champ);
     });
   }
+  function deleteResultBypari(req,res){
+	ResultatReel.remove({idPariSport:req.params.id},
+      (err, rs) => {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          res.json({ message: "deleted" });
+        }
+      });
+}
 
   module.exports = {
     getResultatReels,
@@ -96,4 +107,5 @@ function updateResultatReel(req, res) {
     updateResultatReel,
     deleteResultatReel,
     getPariByType,
+	deleteResultBypari
   };

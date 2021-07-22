@@ -95,6 +95,18 @@ function updateResultatPredit(req, res) {
       res.json(champ);
     });
   }
+  
+  function updateOne(req,res){
+	  ResultatPredit.updateMany(
+			{ "idPariSport" : req.params.id}, 
+			{ "$set" : { "status" : "1" } }, 
+			{ "upsert" : true },(err,rep)=>{
+				if (err) {
+					res.send(err);
+				  }
+				res.json(rep);			
+	  });
+  }
 
   module.exports = {
     getResultatPredits,
@@ -103,4 +115,5 @@ function updateResultatPredit(req, res) {
     updateResultatPredit,
     deleteResultatPredit,
     getPariByType,
+	updateOne
   };

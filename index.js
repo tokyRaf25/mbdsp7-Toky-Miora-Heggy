@@ -60,6 +60,7 @@ const prefix = '/api';
 
 app.route(prefix + '/authentification')
   .post(client.authenticate)
+  .put(client.updateClient);
 
 app.route(prefix + '/registration')
 .post(client.register)
@@ -70,6 +71,11 @@ app.route(prefix + '/client/:id')
 app.route("/authentification")
 .post(Admin.authenticate)
 
+app.route(prefix +"/clients")
+.get(client.listClient)
+
+app.route(prefix +"/clients/:id")
+.delete(client.deleteClient)
 //Champ par categorie
 app.route(prefix + '/champParCat')
   .get(champ.getChamps)
@@ -121,6 +127,9 @@ app.route(prefix + '/cote')
 app.route("/cote/:id")
   .get(cote.getCote)
   .delete(cote.deleteCote);
+  
+app.route("/cote/pari/:id")
+  .delete(cote.deleteCoteBypari);
 
 /******************************************************************* */ 
 
@@ -133,6 +142,9 @@ app.route(prefix + '/resultats_reel')
 app.route("/resultats_reel/:id")
 .get(resultatReel.getResultatReel)
   .delete(resultatReel.deleteResultatReel);
+  
+app.route("/resultats_reel/pari/:id")
+  .delete(resultatReel.deleteResultBypari);
 
 /******************************************************************* */  
 
@@ -144,7 +156,8 @@ app.route(prefix + '/resultats_predit')
   
 app.route(prefix +"/resultats_predit/:id")
 .get(resultatPredit.getResultatPredit)
-  .delete(resultatPredit.deleteResultatPredit);
+  .delete(resultatPredit.deleteResultatPredit)
+  .put(resultatPredit.updateOne);
 
 /******************************************************************* */  
 
@@ -170,7 +183,14 @@ app.route(prefix +"/categorie/:id")
   .delete(CategorieRoutes.deleteCategorie)
   .get(CategorieRoutes.getListCategorieParTp);
   
+app.route(prefix +"/categorie/list/:id")
+  .get(CategorieRoutes.getListCategoryById);
+  
+ app.route("/categorie/last")
+  .get(CategorieRoutes.getLastCategorie);
 
+ app.route(prefix +"/categorie/cote/:id/:idParie")
+  .get(CategorieRoutes.getListCoteParParie);
 
 /******************************************************************* */  
 

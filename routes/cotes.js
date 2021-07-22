@@ -1,5 +1,5 @@
 let Cote = require('../models/cote');
-
+const jwt = require('jsonwebtoken');
 
 //Récupérer tous les cotes (GET), avec paggination
 function getCotes(req, res){
@@ -34,21 +34,34 @@ function getCote(req, res) {
 
 // Ajout d'un assignment (POST)
 function postCote(req, res) {
-    let cote = new Cote();
-    cote.id = req.body.id;
-    cote.idParieSport = req.body.idParieSport;
-    cote.idChamp = req.body.idChamp;
-    cote.cotes = req.body.cotes;
-  
-    console.log("POST cote reçu :");
-    console.log(cote);
-  
-    cote.save((err) => {
-      if (err) {
-        res.send("cant post cote ", err);
-      }
-      res.json({ message: `${cote.idChamp} saved!` });
-    });
+	try { 
+		const token = req.body.token; 
+		console.log("token",token);
+		if(!token || typeof token ==='undefined') res.status(403).send("token error");
+	   
+		const user =  jwt.verify(token,'supersecret');
+		let cote = new Cote();
+		cote.id = req.body.id;
+		cote.idParieSport = req.body.idParieSport;
+		cote.idChamp = req.body.idChamp;
+		cote.cotes = req.body.cotes;
+	  
+		console.log("POST cote reçu :");
+		console.log(cote);
+	  
+		cote.save((err) => {
+		  if (err) {
+			res.send("cant post cote ", err);
+		  }
+		  res.json({ message: `${cote.idChamp} saved!` });
+		});
+	}
+	catch(e) { 
+		if(e.name==='TokenExpiredError') { 
+			res.status(403).send({error:"Veuillez se reconnecter , votre session a expiré"});
+		}
+		res.send(e);
+    }
   }
 
 
@@ -71,20 +84,32 @@ function updateCote(req, res) {
     );
   }
   
-  // suppression d'un cote (DELETE)
-  function deleteCote(req, res) {
+// suppression d'un cote (DELETE)
+function deleteCote(req, res) {
     Cote.findByIdAndRemove(req.params.id, (err, cote) => {
       if (err) {
         res.send(err);
       }
       res.json({ message: `${cote.coteId} deleted` });
     });
-  }
+}
 
+function deleteCoteBypari(req,res){
+	Cote.remove({idParieSport:req.params.id},
+      (err, cote) => {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          res.json({ message: "deleted" });
+        }
+      });
+}
   module.exports = {
     getCotes,
     postCote,
     getCote,
     updateCote,
-    deleteCote
+    deleteCote,
+	deleteCoteBypari
   };

@@ -9,6 +9,7 @@ async function getCoteByIdChamp( idChamp ,idParie ){
 		throw e 
 	}
 }
+
 module.exports = { 
 	getCoteByIdChamp
 }

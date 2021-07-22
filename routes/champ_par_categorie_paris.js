@@ -1,7 +1,7 @@
 const Categorie = require('../models/Categorie');
 let Champ = require('../models/champ_par_categorie_pari');
 const categorie =  require("./categorie.route")
-
+const jwt = require('jsonwebtoken');
 
 //Récupérer tous les cotes (GET), avec paggination
 function getChamps(req, res){
@@ -36,51 +36,89 @@ function getChamp(req, res) {
 
 // Ajout d'un champ (POST)
 function postChamp(req, res) {
-  console.log("execution d'une requete POST!");
-    let champ = new Champ();
-    champ.idCategorie = req.body.idCategorie;
-    champ.nomChamp = req.body.nomChamp;
-  
-    console.log("POST champ reçu :");
-    console.log(champ);
-  
-    champ.save((err) => {
-      if (err) {
-        res.send("cant post champ ", err);
-      }
-      res.json({ message: `${champ.nomChamp} saved!` });
-    });
-  }
+	try { 
+	   const token = req.body.token; 
+	   console.log("token",token);
+	   if(!token || typeof token ==='undefined') res.status(403).send("token error");
+	   
+	   const user =  jwt.verify(token,'supersecret');
+	   console.log("execution d'une requete POST!");
+		let champ = new Champ();
+		champ.idCategorie = req.body.idCategorie;
+		champ.nomChamp = req.body.nomChamp;
+	  
+		console.log("POST champ reçu :");
+		console.log(champ);
+	  
+		champ.save((err) => {
+		  if (err) {
+			res.send("cant post champ ", err);
+		  }
+		  res.json({ message: `${champ.nomChamp} saved!` });
+		});
+	}
+	catch(e) { 
+		if(e.name==='TokenExpiredError') { 
+			res.status(403).send({error:"Veuillez se reconnecter , votre session a expiré"});
+		}
+		res.send(e);
+    }
+ }
 
 
 // Update d'un cote (PUT)
 function updateChamp(req, res) {
-    console.log("UPDATE recu Champ : ");
-    console.log(req.body);
-    Champ.findByIdAndUpdate(
-      req.body._id,
-      req.body,
-      { new: true },
-      (err, champ) => {
-        if (err) {
-          console.log(err);
-          res.send(err);
-        } else {
-          res.json({ message: "updated" });
-        }
-      }
-    );
+	try { 
+		const token = req.body.token; 
+		console.log("token",token);
+		if(!token || typeof token ==='undefined') res.status(403).send("token error");
+		const user =  jwt.verify(token,'supersecret');
+			console.log("UPDATE recu Champ : ");
+			console.log(req.body);
+			Champ.findByIdAndUpdate(
+			  req.body._id,
+			  req.body,
+			  { new: true },
+			  (err, champ) => {
+				if (err) {
+				  console.log(err);
+				  res.send(err);
+				} else {
+				  res.json({ message: "updated" });
+				}
+			  }
+			);
+	}
+	catch(e) { 
+		if(e.name==='TokenExpiredError') { 
+			res.status(403).send({error:"Veuillez se reconnecter , votre session a expiré"});
+		}
+		res.send(e);
+    }
   }
   
   // suppression d'un cote (DELETE)
   function deleteChamp(req, res) {
-    console.log("suppression champ "+req.params.id);
-    Champ.findByIdAndRemove(req.params.id, (err, champ) => {
-      if (err) {
-        res.send(err);
+	  try { 
+	    const token = req.query.token; 
+	    console.log("token",token);
+	    if(!token || typeof token ==='undefined') res.status(403).send("token error");
+	   
+	    const user =  jwt.verify(token,'supersecret');
+		console.log("suppression champ "+req.params.id);
+		Champ.findByIdAndRemove(req.params.id, (err, champ) => {
+		  if (err) {
+			res.send(err);
+		  }
+		  res.json({ message: `${champ.nomChamp} deleted` });
+		});
+	  }
+	  catch(e) { 
+		if(e.name==='TokenExpiredError') { 
+			res.status(403).send({error:"Veuillez se reconnecter , votre session a expiré"});
+		}
+		res.send(e);
       }
-      res.json({ message: `${champ.nomChamp} deleted` });
-    });
   }
 
 

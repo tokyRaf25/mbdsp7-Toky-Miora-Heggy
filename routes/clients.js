@@ -19,7 +19,7 @@ function authenticate(req, res, next) {
             expiresIn: 86400 // expires in 24 hours
         });
 
-        res.status(200).send({ id: user.id, name: user.name, auth: true, token: token });
+        res.status(200).send({ id: user.id, name: user.name, auth: true, token: token,jetons:user.jetons,password:user.password,email:user.email });
     });
 }
 
@@ -51,9 +51,56 @@ function getClientById(req, res){
     });
   }
 
+updateClient = async (req,res) => {
+	
+		Client.findByIdAndUpdate(
+		req.body.id,
+		req.body,
+		{ new: true },
+		(err, client) => {
+			console.log("POST résultat prédit reçu :");
+			console.log(req.body);
+		  if (err) {
+			console.log(err);
+			res.send(err);
+		  } else {
+			res.json({ message: "updated" });
+		  }
+		});
+	
+	
+}
+listClient = async ( req , res ) => { 
+   var clientQuery = Client.aggregate();
+  
+	  Client.aggregatePaginate(
+		clientQuery,
+		{
+		  page: parseInt(req.query.page) || 1,
+		  limit: parseInt(req.query.limit) || 10,
+		},
+		(err, clients) => {
+		  if (err) {
+			res.send(err);
+		  }
+		  res.send(clients);
+		}
+	  );
+}
+deleteClient =  async(req,res) =>{
+	Client.findByIdAndRemove(req.params.id, (err, client) => {
+		if (err) {
+			res.send(err);
+		}
+		res.json({ message: `${client.name} deleted` });
+	});
+}
 
 module.exports = {
     authenticate,
     register,
-    getClientById
-  };
+    getClientById,
+	updateClient,
+	listClient,
+	deleteClient
+  }
