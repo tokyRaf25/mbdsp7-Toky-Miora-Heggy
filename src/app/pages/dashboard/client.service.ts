@@ -16,7 +16,7 @@ export class ClientService {
   authentificate(client:Client):Observable<ClientModel> {
     return this.http.post<ClientModel>(this.uri+"/authentification", client);
   }
-  updateClient(client:Client):Observable<ClientModel> {
+  updateJetonsClient(client:Client):Observable<ClientModel> {
     return this.http.put<ClientModel>(this.uri+"/authentification", client);
   }
  

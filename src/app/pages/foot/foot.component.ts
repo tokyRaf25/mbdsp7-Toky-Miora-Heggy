@@ -162,6 +162,7 @@ export class FootComponent implements OnInit {
     this.panier = JSON.parse(localStorage.getItem("panier"));
     for(let i =0;i<this.panier.length;i++){
       var rp =  new ResultatsPredict();
+      rp.idClient = this.user["id"];
       rp.idChamp = this.panier[i]._id;
       rp.cotes = this.panier[i].cote[0].cotes;
       rp.gain = Number(this.panier[i].cote[0].cotes) * Number(this.panier[i].valeur);
@@ -169,20 +170,20 @@ export class FootComponent implements OnInit {
       rp.mise = Number(this.panier[i].valeur);
       rp.status = 0;
       rp.dateDePari = Date.now().toString();
-      rp.idClient = this.user.id;
+      rp.idClient = this.user._id;
       this.resultatpreditService.addParie(rp).subscribe(data=>{
         console.log(data);
       });
     }
     var client =  new Client();
     client.name = this.user.name;
-    client.id = this.user.id;
+    client._id = this.user["id"];
     client.password = this.user.password;
     client.jetons = Number(this.user.jetons) - Number(this.misetotal);
     client.email = this.user.email;
     this.user.jetons =  client.jetons;
     localStorage.setItem("currentClients",JSON.stringify(this.user));
-    this.clientservice.updateClient(client).subscribe(data=>{
+    this.clientservice.updateJetonsClient(client).subscribe(data=>{
        localStorage.removeItem("panier");
        this.panier = [];
        this.color = "green";
