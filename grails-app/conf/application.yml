@@ -36,6 +36,8 @@ management:
 
 ---
 grails:
+    cors:
+        enabled:true
     mime:
         disable:
             accept:
@@ -101,8 +103,8 @@ dataSource:
     pooled: true
     jmxExport: true
     driverClassName: oracle.jdbc.OracleDriver
-    username: ZaoraMI2021
-    password: ZaoraMI202101
+    username: RafidimananaMI2021
+    password: RafidimananaMI202101
     #driverClassName: org.h2.Driver
     #username: sa
     #password: ''
