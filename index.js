@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
 });
 
 // use JWT auth to secure the api
-//app.use(jwt());
+app.use(jwt());
 // les routes
 const prefix = '/api';
 
@@ -77,8 +77,9 @@ app.route(prefix +"/clients")
 app.route(prefix +"/clients/:id")
 .delete(client.deleteClient)
 //Champ par categorie
+app.route(prefix + '/champParCats')
+  .get(champ.getChamps);
 app.route(prefix + '/champParCat')
-  .get(champ.getChamps)
   .post(champ.postChamp)
   .put(champ.updateChamp);
 
@@ -98,8 +99,9 @@ app.route(prefix + '/champParCat/:id')
 /******************************************************************* */  
 
 /************************Routes API PariSport************************************** */
+app.route(prefix + '/paris')
+  .get(pari.getPariSports);
 app.route(prefix + '/pari')
-  .get(pari.getPariSports)
   .post(pari.postPariSport)
   .put(pari.updatePariSport);
 
@@ -140,7 +142,7 @@ app.route(prefix + '/resultats_reel')
   .put(resultatReel.updateResultatReel);
   
 app.route("/resultats_reel/:id")
-.get(resultatReel.getResultatReel)
+  .get(resultatReel.getResultatReel)
   .delete(resultatReel.deleteResultatReel);
   
 app.route("/resultats_reel/pari/:id")
@@ -162,8 +164,9 @@ app.route(prefix +"/resultats_predit/:id")
 /******************************************************************* */  
 
 /************************Routes API Type de parie************************************** */
+app.route(prefix +"/typeParies")
+  .get(ParieRoutes.listTypeParie);
 app.route(prefix +"/typeParie")
-  .get(ParieRoutes.listTypeParie) 
   .post(ParieRoutes.insertTypeParie)
   .put(ParieRoutes.updateTypeParie);
   
@@ -174,8 +177,10 @@ app.route(prefix +"/typeParie/:id")
 
 /************************Routes API Type de categorie************************************** */
 
+app.route(prefix +"/categories")
+  .get(CategorieRoutes.listCategorie);
+  
 app.route(prefix +"/categorie")
-  .get(CategorieRoutes.listCategorie)
   .post(CategorieRoutes.insertCategorie)
   .put(CategorieRoutes.updateCategorie);
   

@@ -54,7 +54,7 @@ function getClientById(req, res){
 updateClient = async (req,res) => {
 	
 		Client.findByIdAndUpdate(
-		req.body.id,
+		req.body._id,
 		req.body,
 		{ new: true },
 		(err, client) => {
