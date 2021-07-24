@@ -1,5 +1,6 @@
 let ResultatReel = require('../models/resultats_reel');
-
+let ResultatPredit = require('./resultats_predits');
+let Client = require('./clients')
 
 //Récupérer tous les ResultatReels (GET), avec paggination
 function getResultatReels(req, res){
@@ -34,14 +35,23 @@ function getResultatReel(req, res) {
 }
 
 // Ajout d'un assignment (POST)
-function postResultatReel(req, res) {
+let postResultatReel = async(req, res)=> {
     let resultatReel = new ResultatReel();
     resultatReel.idPariSport = req.body.idPariSport;
     resultatReel.idChamp = req.body.idChamp;
     console.log("POST résultat réel reçu :");
-    console.log(resultatReel);
   
-    resultatReel.save((err) => {
+    var resultatPredit_vrai = await ResultatPredit.getResultatPreditsWithoutPagginate(resultatReel.idPariSport,resultatReel.idChamp);
+    await ResultatPredit.updateToOne(resultatReel.idPariSport, resultatReel.idChamp, res);
+
+    
+    resultatPredit_vrai.forEach(async(element)=>{
+      console.log(element);
+      await Client.updateJetonsClient(element.idClient, element.gain);
+    });
+
+
+    await resultatReel.save((err) => {
       if (err) {
         res.send("cant post resultatReel ", err);
       }

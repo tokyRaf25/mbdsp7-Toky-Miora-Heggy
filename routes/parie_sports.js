@@ -36,6 +36,58 @@ function getPariSport(req, res) {
     });
 }
 
+let getPariSportValide = async(req, res)=>{
+    var aggregateQuery = PariSport.aggregate(); 
+
+	var liste_pari = await PariSport.aggregatePaginate(
+		aggregateQuery,
+		{
+		  page: parseInt(req.query.page) || 1,
+		  limit: parseInt(req.query.limit) || 10,
+		}
+	  );
+
+	var resultat = {
+		docs: [],
+		totalDocs: liste_pari.totalDocs,
+		limit: liste_pari.limit,
+		page: liste_pari.page,
+		totalPages: liste_pari.totalPages,
+		pagingCounter: liste_pari.pagingCounter,
+		hasPrevPage: liste_pari.hasPrevPage,
+		hasNextPage: liste_pari.hasNextPage,
+		prevPage: liste_pari.prevPage,
+		nextPage: liste_pari.nextPage
+	}
+	var date = new Date().toISOString()
+		.replace(/T/, ' ')
+		.replace(/\..+/, '')  ;
+	console.log(date.toString());	
+	liste_pari.docs.forEach(function callback(element) {
+		if(element.dateDuMatch>date.toString()){
+			resultat.docs.push(element);
+		}
+	});
+	res.send(resultat);
+}
+
+ let getPariSportAsync = async(pariSport)=> {
+	 try{
+		//console.log("each pari!"+pariSport);
+		//return await PariSport.findOne({ _id: pariSport  });
+		return await PariSport.find().where('_id').in(pariSport).exec();
+	}catch(err){
+		 throw err;
+	 }
+	
+    /*PariSport.findOne({ _id: pariSportId }, (err, pariSport) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(pariSport);
+    });*/
+}
+
 function getLastPari(req,res){
 	var aggregateQuery = PariSport.aggregate(); 
     
@@ -213,5 +265,7 @@ function updatePariSport(req, res) {
     deletePariSport,
     getPariByType,
 	getLastPari,
-	getDetailPari
+	getDetailPari,
+	getPariSportAsync,
+	getPariSportValide
   };

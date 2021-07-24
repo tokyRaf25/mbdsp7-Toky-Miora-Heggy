@@ -5,7 +5,7 @@ let Schema = mongoose.Schema;
 
 let ResultatReelSchema = Schema({
     idPariSport: String,
-    idChamp: String
+    idChamp: String,
 });
 
 ResultatReelSchema.plugin(aggregatePaginate);

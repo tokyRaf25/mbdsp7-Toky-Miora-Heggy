@@ -9,7 +9,9 @@ function jwt() {
             // public routes that don't require authentication
             '/api/authentification',
             '/api/registration',
-            '/authentification'
+            '/authentification',
+            '/api/categorie',
+            {url: /^\/api\/categorie\/.*/, methods: ['GET', 'PUT', 'POST']}
         ]
     });
 }

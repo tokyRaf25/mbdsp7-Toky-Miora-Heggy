@@ -1,5 +1,5 @@
 let ResultatPredit = require('../models/resultats_predit');
-
+let PariSport = require('./parie_sports')
 
 //Récupérer tous les ResultatPredits (GET), avec paggination
 function getResultatPredits(req, res){
@@ -18,6 +18,17 @@ function getResultatPredits(req, res){
       res.send(resultatPredit);
     }
   );
+}
+
+let getResultatPreditsWithoutPagginate = async(idPariSport,idChamp) =>{
+  try{
+    return await ResultatPredit
+    .find()
+    .where('idPariSport').equals(idPariSport)
+    .where('idChamp').equals(idChamp);
+  }catch(err){
+    throw err;
+  }
 }
 
 //Récupérer un ResultatPredit par son id (GET)
@@ -108,6 +119,52 @@ function updateResultatPredit(req, res) {
 	  });
   }
 
+  let updateToOne = async(idPariSport, idChamp, res)=>{
+    ResultatPredit.updateMany(
+			{ 
+        "idPariSport" : idPariSport,
+        "idChamp":idChamp
+      }, 
+			{ "$set" : { "status" : "1" } }, 
+			{ "upsert" : true },(err,rep)=>{
+				if (err) {
+					res.send(err);
+				  }		
+	  });
+  }
+
+  function deleteResultatPreditByPariSportIdAndUser(req, res){
+    console.log("suppression d'un pari sport!");
+    let idPariSport = req.params.idPariSport;
+    let userId = req.params.userId;
+    ResultatPredit.deleteMany({ 
+      idPariSport: idPariSport
+     }, (err, pari) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json({ message: `${idPariSport} deleted` });
+    });
+  }
+
+  let getAllPariByUserId = async(req, res)=>{
+    console.log("tonga ato ver lery!");
+    let userId = req.params.userId;
+    console.log("userId "+userId);
+    const setPari = new Set()
+    const listPariSportDuplicated = await ResultatPredit.find({ idClient: userId }).select('idPariSport');
+    //.distinct('idPariSport');
+    if(listPariSportDuplicated && listPariSportDuplicated.length>0){
+      listPariSportDuplicated.forEach(element => setPari.add(
+        element.idPariSport
+      ));
+    }
+    let array = Array.from(setPari);
+    let les_paris = await PariSport.getPariSportAsync(array);
+    console.log(les_paris);
+    return res.send(les_paris);
+  }
+
   module.exports = {
     getResultatPredits,
     postResultatPredit,
@@ -115,5 +172,9 @@ function updateResultatPredit(req, res) {
     updateResultatPredit,
     deleteResultatPredit,
     getPariByType,
-	updateOne
+	  updateOne,
+    deleteResultatPreditByPariSportIdAndUser,
+    getAllPariByUserId,
+    getResultatPreditsWithoutPagginate,
+    updateToOne
   };
