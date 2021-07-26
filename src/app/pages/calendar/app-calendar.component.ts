@@ -3,6 +3,9 @@ import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent } fr
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs/Subject';
+import { PointDeVentes } from '../creation-foot/point-de-ventes.model';
+import { PointDeVentesService } from '../creation-foot/point-de-ventes.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const colors: any = {
   red: {
@@ -31,101 +34,125 @@ export class AppCalendarComponent {
   view: string = 'month';
 
   viewDate: Date = new Date();
+  public pointdeventes: PointDeVentes[];
+  page: Number=1;
+  limit: Number=10;
+  totalDocs: Number;
+  totalPages: Number;
+  hasPrevPage: boolean;
+  prevPage: Number;
+  hasNextPage: boolean;
+  nextPage: Number;
+  message:String;
+  lieu:String;
+  latitude:Number;
+  longitude:Number;
+  lieuUpdated:String;
+  latitudeUpdated:Number;
+  longitudeUpdated:Number;
+  info:PointDeVentes;
+  constructor(public pointdeventeService:PointDeVentesService, private route: ActivatedRoute,
+    private router: Router ) {}
 
-  modalData: {
-    action: string,
-    event: CalendarEvent
-  };
-
-  actions: CalendarEventAction[] = [{
-    label: '<i class="fa fa-fw fa-pencil"></i>',
-    onClick: ({event}: {event: CalendarEvent}): void => {
-      this.handleEvent('Edited', event);
-    }
-  }, {
-    label: '<i class="fa fa-fw fa-times"></i>',
-    onClick: ({event}: {event: CalendarEvent}): void => {
-      this.events = this.events.filter(iEvent => iEvent !== event);
-      this.handleEvent('Deleted', event);
-    }
-  }];
-
-  refresh: Subject<any> = new Subject();
-
-  events: CalendarEvent[] = [{
-    start: subDays(startOfDay(new Date()), 1),
-    end: addDays(new Date(), 1),
-    title: 'A 3 day event',
-    color: colors.red,
-    actions: this.actions
-  }, {
-    start: startOfDay(new Date()),
-    title: 'An event with no end date',
-    color: colors.yellow,
-    actions: this.actions
-  }, {
-    start: subDays(endOfMonth(new Date()), 3),
-    end: addDays(endOfMonth(new Date()), 3),
-    title: 'A long event that spans 2 months',
-    color: colors.blue
-  }, {
-    start: addHours(startOfDay(new Date()), 2),
-    end: new Date(),
-    title: 'A draggable and resizable event',
-    color: colors.yellow,
-    actions: this.actions,
-    resizable: {
-      beforeStart: true,
-      afterEnd: true
-    },
-    draggable: true
-  }];
-
-  activeDayIsOpen: boolean = true;
-
-  constructor(private modal: NgbModal) {}
-
-  dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
-
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-        this.viewDate = date;
-      }
-    }
+  ngOnInit() {
+    this.route.queryParams.subscribe(queryParams => {
+      console.log("Dans le subscribe des queryParams")
+      this.page = +queryParams.page || 1;
+      this.limit = +queryParams.limit || 10;
+      this.getPointDeventes();
+    });
   }
-
-  eventTimesChanged({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
-    event.start = newStart;
-    event.end = newEnd;
-    this.handleEvent('Dropped or resized', event);
-    this.refresh.next();
+  public getPointDeventes(): void {
+    /*this.membershipService.getUsers().subscribe( users => 
+      this.users = users
+    );*/ 
+    this.pointdeventeService.getAllPointDeVentesPagine(this.page, this.limit).subscribe(data=>{
+      this.pointdeventes = data.docs;
+      this.page = data.page;
+      this.limit = data.limit;
+      this.totalDocs = data.totalDocs;
+      this.totalPages = data.totalPages;
+      this.hasPrevPage = data.hasPrevPage;
+      this.prevPage = data.prevPage;
+      this.hasNextPage = data.hasNextPage;
+      this.nextPage = data.nextPage;
+      console.log(data);
+    });   
   }
-
-  handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = {event, action};
-    this.modal.open(this.modalContent, {size: 'lg'});
-  }
-
-  addEvent(): void {
-    this.events.push({
-      title: 'New event',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      color: colors.red,
-      draggable: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
+  premierePage() {
+    this.router.navigate(['/pages/point-de-ventes'], {
+      queryParams: {
+        page:1,
+        limit:this.limit,
       }
     });
-    this.refresh.next();
+  }
+
+  pageSuivante() {
+   
+    this.router.navigate(['/pages/point-de-ventes'], {
+      queryParams: {
+        page:this.nextPage,
+        limit:this.limit,
+      }
+    });
   }
 
 
+  pagePrecedente() {
+    this.router.navigate(['/pages/point-de-ventes'], {
+      queryParams: {
+        page:this.prevPage,
+        limit:this.limit,
+      }
+    });
+  }
+
+  dernierePage() {
+    this.router.navigate(['/pages/point-de-ventes'], {
+      queryParams: {
+        page:this.totalPages,
+        limit:this.limit,
+      }
+    });
+  }
+
+  public deletePointDeVentes(pv:PointDeVentes){
+    if(confirm("Etes vous sur de vouloir supprimer ")) {
+      this.pointdeventeService.deletePointDeVentes(pv._id).subscribe(result=>{
+            this.message = result.message;
+            this.getPointDeventes(); 
+      });
+    }
+  }
+  insert(){
+    //console.log(this.lieu+" et "+this.latitude+" et "+this.longitude);
+    var pv = new PointDeVentes();
+    pv.nomDuLieu = this.lieu;
+    pv.latitude = this.latitude;
+    pv.longitude = this.longitude;
+    this.pointdeventeService.addPointDeVentes(pv).subscribe(data=>{
+      this.message =  data.message;
+      this.getPointDeventes();
+    });
+
+  }
+  update(){
+      var news =  new PointDeVentes();
+      news._id = this.info._id;
+      news.latitude = this.latitudeUpdated;
+      news.longitude = this.longitudeUpdated;
+      news.nomDuLieu = this.lieuUpdated;
+      this.pointdeventeService.updatePointDeVentes(news).subscribe(data=>{
+          this.message = data.message;
+          this.getPointDeventes();
+      });
+  }
+
+  getInfo(pv:PointDeVentes){
+    this.info = pv;
+    this.latitudeUpdated = pv.latitude;
+    this.longitudeUpdated = pv.longitude;
+    this.lieuUpdated = pv.nomDuLieu
+  }
 }

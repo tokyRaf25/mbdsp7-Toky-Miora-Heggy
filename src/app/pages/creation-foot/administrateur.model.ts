@@ -7,5 +7,6 @@ export class AdministrateurModel {
     login: String;
     auth: boolean;
     token:string;
+    message:string;
 }
 

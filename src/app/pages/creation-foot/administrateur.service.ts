@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Administrateur,AdministrateurModel} from "./administrateur.model";
 import {Observable} from 'rxjs';
-import { HttpClient,HttpHeaders } from "@angular/common/http"; 
+import { HttpClient,HttpErrorResponse,HttpHeaders } from "@angular/common/http"; 
 import { catchError } from 'rxjs/operators';
 
 @Injectable({

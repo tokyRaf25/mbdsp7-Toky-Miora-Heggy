@@ -1,4 +1,3 @@
-<h2>Liste</h2>
 <!--<p class="text-muted">Just add the base class <code>.table</code> to any <code>&lt;table&gt;</code>, then extend with custom styles or our various included modifier classes.</p>-->
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -15,11 +14,11 @@
               <div class="col-sm-12">
                 
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" [(ngModel)]="cote" name="cote">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" [(ngModel)]="cote" name="cote" [disabled]="resultat">
                   <label class="form-check-label" for="inlineCheckbox1">Cote</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" [(ngModel)]="resultat" name="resultat">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" [(ngModel)]="resultat" name="resultat" [disabled]="cote">
                   <label class="form-check-label" for="inlineCheckbox2">Resultat</label>
                 </div>
               </div>
@@ -67,7 +66,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-          <button type="button" class="btn btn-danger"  (click)="insert()">Enregistrer</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="insert()">Enregistrer</button>
         </div>
       </div>
     </div>
@@ -135,7 +134,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-          <button type="submit" class="btn btn-danger"  (click)="update()">Enregistrer</button>
+          <button type="submit" class="btn btn-danger"  data-dismiss="modal" (click)="update()">Enregistrer</button>
         </div>
       </div>
     </div>
@@ -146,7 +145,7 @@
     <div class="col-12 mb-4"  *ngIf="showMsg">
         <div class="col-xs-12">
           <p class="alert alert-success">
-              <strong>Deleted Success!</strong> 
+              <strong>{{showMsg}}</strong> 
 
           </p>
         </div>
@@ -154,7 +153,7 @@
       <div class="col-12 mb-4"  *ngIf="showMsgUpdate">
         <div class="col-xs-12">
           <p class="alert alert-success">
-              <strong>Updated Success!</strong> 
+              <strong>{{showMsgUpdate}}</strong> 
 
           </p>
         </div>
@@ -163,7 +162,7 @@
     <div class="col-12 mb-4">
         <div widget class="card border-0 box-shadow">
             <div class="card-header transparent border-0 text-muted">
-                <h5 class="mb-0">Matches</h5>
+                <h5 class="mb-0"> Liste des Matches</h5>
                 <div class="widget-controls"> 
                     <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
                     <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
@@ -206,7 +205,7 @@
                     </table>
                 </div>
             </div>
-          <nav aria-label="Page navigation example">
+          <nav aria-label="Page navigation example" *ngIf="(hasNextPage && hasPrevPage)">
             <ul class="pagination justify-content-center">
               <li class="page-item"><a class="page-link" (click)="premierePage()">Première</a></li>
               <li class="page-item"><a class="page-link" (click)="pagePrecedente()"   [class.disabled]="!hasPrevPage">Prev</a></li>

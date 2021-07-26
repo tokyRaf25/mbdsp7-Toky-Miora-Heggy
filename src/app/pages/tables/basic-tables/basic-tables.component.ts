@@ -12,6 +12,8 @@ import { ResultatsReelService } from './../../creation-foot/resultats-reel.servi
 import { ResultatsReel } from './../../creation-foot/resultats-reel.model';
 import { Cote } from 'app/pages/creation-foot/cote.model';
 import { CoteService } from 'app/pages/creation-foot/cote.service';
+import { ResultatsPreditService } from 'app/pages/creation-foot/resultats-predit.service';
+
 @Component({
   selector: 'app-basic-tables',
   templateUrl: './basic-tables.component.html',
@@ -30,8 +32,8 @@ export class BasicTablesComponent implements OnInit {
   prevPage: Number;
   hasNextPage: boolean;
   nextPage: Number;
-  showMsg: boolean = false;
-  showMsgUpdate: boolean = false;
+  showMsg: String;
+  showMsgUpdate: String;
   pariUpdated:Parisport;
   type:Type[];
   equipeA:String;
@@ -41,6 +43,7 @@ export class BasicTablesComponent implements OnInit {
   typeParie:string = "";
   idParis:String;
   categorieSelected:string;
+  typeSelected:string;
   champ:Champ[];
   idParieSport:String;
   champSelected:String;
@@ -56,6 +59,7 @@ export class BasicTablesComponent implements OnInit {
   private champService: ChampService,
   private coteService: CoteService,
   private resultatreelService: ResultatsReelService,
+  private resultatPreditService:ResultatsPreditService,
   private route: ActivatedRoute,
   private typeService: TypeService,
   private router: Router
@@ -165,7 +169,7 @@ export class BasicTablesComponent implements OnInit {
        if(confirm("Etes vous sur de vouloir supprimer ")) {
         this.pariSportService.deletePariSport(parisport._id).subscribe(data=>{
           this.getPariSport();
-          this.showMsg= true;
+          this.showMsg= data.message;
           this.coteService.deleteCote(parisport._id).subscribe(message=>{
             this.resultatreelService.deleteResultatsReel(parisport._id).subscribe(rs=>{
                 this.router.navigate(['/pages/tables/basic-tables'],{replaceUrl:true});
@@ -196,12 +200,16 @@ export class BasicTablesComponent implements OnInit {
   get gettypeParie() {
     return this.typeParie;
   }
-  set setCategorieSelect(value) {
-    this.categorie = value;
+  set settypeParie(value) {
+    this.typeParie =value;
   }
+  /*set setCategorieSelect(value) {
+    this.categorie = value;
+  }*/
 
   update(){
       if(this.typeParie && this.equipeA && this.equipeB && this.date && this.time){
+        console.log("Update");
         console.log(this.equipeA +"et"+ this.equipeB );
         var paris =  new Parisport();
         paris.dateDuMatch = ""+this.date+" "+this.time+"";
@@ -212,8 +220,8 @@ export class BasicTablesComponent implements OnInit {
         paris.token = localStorage.getItem("token");
         this.pariSportService.updateParis(paris).subscribe(data=>{
           this.getPariSport();
-          this.showMsgUpdate = true;
-          this.showMsg = false;
+          this.showMsgUpdate = data.message;
+          this.showMsg = null;
           this.router.navigate(['/pages/tables/basic-tables'],{replaceUrl:true});
         });
       }
@@ -232,13 +240,13 @@ export class BasicTablesComponent implements OnInit {
   }
 
   onChange(deviceValue) {
-    if(this.resultat){
+    if(this.resultat ){
       this.champService.getChampByCategorie(deviceValue).subscribe(data=>{
         this.champ = data;
       });
     }
     if(this.cote){
-      console.log(this.idParieSport + " et "+deviceValue);
+     console.log(this.idParieSport + " et "+deviceValue);
       this.categorieService.getChampEtCotePari(deviceValue,this.idParieSport).subscribe(data=>{
         console.log(data.docs);
         this.categorieCote = data.docs;
@@ -258,7 +266,6 @@ export class BasicTablesComponent implements OnInit {
       insert.idChamp = this.champId;
       insert.idPariSport = this.idParieSport;
       this.resultatreelService.addResultatsReel(insert).subscribe(data=>{
-        console.log(data);
       });
     }
     if(this.cote){
@@ -271,7 +278,8 @@ export class BasicTablesComponent implements OnInit {
           cote.cotes = Number(this.categorieCote[0].Champ[i].valeur);
           cote.token = localStorage.getItem("token");
           this.coteService.updateCote(cote).subscribe(data=>{
-              console.log(data);
+            this.showMsgUpdate = null;
+            this.showMsg = data.message;
           });
         }
       }

@@ -6,8 +6,8 @@
             </div>
             <div class="card-body text-center pb-1">
                 <h2>Authentification des membres</h2>
-                <a routerLink="/register" class="transition">Inscription</a>
-
+                <!--<a routerLink="/register" class="transition">Inscription</a>-->
+                <h6 *ngIf="message">{{message}}</h6>
                 <form  (ngSubmit)="onSubmit(form.value)" class="text-left mt-4">
                     <div class="form-group">
                         <input [formControl]="name" class="form-control validation-field" placeholder="Nom" type="text">                      

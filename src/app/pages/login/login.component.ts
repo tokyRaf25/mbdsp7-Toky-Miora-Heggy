@@ -17,6 +17,7 @@ export class LoginComponent {
   public form:FormGroup;
   public name:AbstractControl;
   public password:AbstractControl;
+  public message:String;
   //public adminModel : AdministrateurModel;
 
   constructor(router:Router, fb:FormBuilder,private adminService:AdministrateurService) {
@@ -36,10 +37,21 @@ export class LoginComponent {
           admin.login = this.form.controls['name'].value;
           admin.password = this.form.controls['password'].value;
           this.adminService.authentificate(admin).subscribe(data=>{
-            console.log("Acces authorize")
-            const datatoken = data.token;
-            localStorage.setItem('token', datatoken);
-            this.router.navigate(['/pages/creation-tennis'],{replaceUrl:true});
+            if(data){
+              const datatoken = data.token;
+              localStorage.setItem('token', datatoken);
+              this.router.navigate(['/pages/creation-categorie-champ'],{replaceUrl:true});
+            }else{
+              this.message = "Pas d'utilisateur correspondant";
+            }
+          },error=>{
+            //console.log('oups',error.error);
+            if(error.status=== 404){
+              this.message = error.error;
+            }else if(error.status=== 401){
+              this.message = "Veillez reverifier votre mot de passe";
+            }
+            
           });
       }
   }

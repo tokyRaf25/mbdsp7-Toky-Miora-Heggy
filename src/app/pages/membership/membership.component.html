@@ -1,20 +1,25 @@
 
-
+<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="message">
+    <strong>{{message}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 <div *ngIf="type=='list'" class="row">
     <div class="col-12">
         <div class="table-responsive bg-white box-shadow">
             <table class="table table-hover">
                 <thead>
                     <tr> 
-                        <th>Match</th>                      
-                        <th>Date</th>                        
-                        <th>Heure</th>
-                        <th>Status</th>
+                        <th>Nom</th>                      
+                        <th>Email</th>                        
+                        <th>Jetons</th>
+                        <th>Mot de passe</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of users | UserSearchPipe : searchText | paginate: { itemsPerPage: 6, currentPage: p }">                        
+                    <!--<tr *ngFor="let user of users | UserSearchPipe : searchText | paginate: { itemsPerPage: 6, currentPage: p }">                        
                         <td class="align-middle text-truncate">{{user.profile.name}} {{user.profile.surname}}</td>
                         <td class="align-middle text-truncate">{{user.work.position}}</td>                        
                         <td class="align-middle text-truncate">{{user.contacts.email}}</td>
@@ -28,17 +33,43 @@
                                 <button class="btn btn-secondary btn-sm" (click)="openModal(modalContent, user)"><i class="fa fa-pencil"></i></button>
                             </div>
                         </td>
+                    </tr>-->
+                    <tr *ngFor="let c of clients">
+                        <td class="align-middle text-truncate">{{c.name}}</td>
+                        <td class="align-middle text-truncate">{{c.email}}</td>                        
+                        <td class="align-middle text-truncate">{{c.jetons}}</td>
+                        <td class="align-middle text-truncate">{{c.password}}</td>
+                        <td class="align-middle">
+                            <button type="button"  (click)="deleteUser(c)" class="btn btn-dark">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item"><a class="page-link" (click)="premierePage()">Première</a></li>
+                  <li class="page-item"><a class="page-link" (click)="pagePrecedente()"   [class.disabled]="!hasPrevPage">Prev</a></li>
+                  <li class="page-item"><a class="page-link" (click)="pageSuivante()" [class.disabled]="!hasNextPage">Suiv</a></li>
+                  <li class="page-item"><a class="page-link" (click)="dernierePage()">Dernière</a></li>
+                </ul>
+              </nav>
         </div>
     </div>
 </div>
 
-<div class="row">
+<!--<div class="row">
     <div class="col-12">
         <div class="bg-white text-center">
-            <pagination-controls autoHide="true" (pageChange)="p = $event" maxSize="3"></pagination-controls>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item"><a class="page-link" (click)="premierePage()">Première</a></li>
+                  <li class="page-item"><a class="page-link" (click)="pagePrecedente()"   [class.disabled]="!hasPrevPage">Prev</a></li>
+                  <li class="page-item"><a class="page-link" (click)="pageSuivante()" [class.disabled]="!hasNextPage">Suiv</a></li>
+                  <li class="page-item"><a class="page-link" (click)="dernierePage()">Dernière</a></li>
+                </ul>
+              </nav>
         </div>        
     </div>
-</div>
+</div>-->

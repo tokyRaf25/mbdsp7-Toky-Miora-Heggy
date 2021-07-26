@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   public showInfoContent:boolean = false;
   public settings: Settings;
   public menuItems:Array<any>;
+  public token:String;
   constructor(public appSettings:AppSettings, public menuService:MenuService) {
       this.settings = this.appSettings.settings;
       this.menuItems = this.menuService.getHorizontalMenuItems();
@@ -32,6 +33,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     if(window.innerWidth <= 768) 
       this.showHorizontalMenu = false;
+
+      this.token = localStorage.getItem('token');
   }
 
 

@@ -6,6 +6,9 @@ import { ToastrService } from 'ngx-toastr';
 import { User, UserProfile, UserWork, UserContacts, UserSocial, UserSettings } from './membership.model';
 import { MembershipService } from './membership.service';
 import { MenuService } from '../../theme/components/menu/menu.service';
+import { ClientService } from '../creation-foot/client.service';
+import { Client } from '../creation-foot/client.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -19,6 +22,7 @@ export class MembershipComponent implements OnInit {
 
   public menuItems:Array<any>;  
   public users: User[];
+  public clients: Client[];
   public user: User;
   public searchText: string;
   public p:any;
@@ -27,6 +31,15 @@ export class MembershipComponent implements OnInit {
   public form:FormGroup;
   public genders = ['male', 'female'];
   public genderOption:string;
+  page: Number=1;
+  limit: Number=10;
+  totalDocs: Number;
+  totalPages: Number;
+  hasPrevPage: boolean;
+  prevPage: Number;
+  hasNextPage: boolean;
+  nextPage: Number;
+  message:String;
  
   public menuSelectSettings: IMultiSelectSettings = {
       enableSearch: true,
@@ -51,7 +64,10 @@ export class MembershipComponent implements OnInit {
   constructor(public fb:FormBuilder, 
               public toastrService: ToastrService,
               public membershipService:MembershipService,
-              public menuService:MenuService, 
+              public clientService:ClientService,
+              public menuService:MenuService,
+              private route: ActivatedRoute,
+              private router: Router, 
               public modalService: NgbModal) {
 
     this.menuItems = this.menuService.getVerticalMenuItems();
@@ -100,12 +116,30 @@ export class MembershipComponent implements OnInit {
         }),
         menuIds: null
     });
+    this.route.queryParams.subscribe(queryParams => {
+      console.log("Dans le subscribe des queryParams")
+      this.page = +queryParams.page || 1;
+      this.limit = +queryParams.limit || 10;
+      this.getUsers();
+    });
   }
 
   public getUsers(): void {
-    this.membershipService.getUsers().subscribe( users => 
+    /*this.membershipService.getUsers().subscribe( users => 
       this.users = users
-    );    
+    );*/ 
+    this.clientService.getAllClientPagine(this.page, this.limit).subscribe(data=>{
+      this.clients = data.docs;
+      this.page = data.page;
+      this.limit = data.limit;
+      this.totalDocs = data.totalDocs;
+      this.totalPages = data.totalPages;
+      this.hasPrevPage = data.hasPrevPage;
+      this.prevPage = data.prevPage;
+      this.hasNextPage = data.hasNextPage;
+      this.nextPage = data.nextPage;
+      console.log(data);
+    });   
   }
 
   public addUser(user:User){
@@ -120,10 +154,16 @@ export class MembershipComponent implements OnInit {
     });
   }
 
-  public deleteUser(user:User){
-    this.membershipService.deleteUser(user.id).subscribe(result => 
+  public deleteUser(client:Client){
+    /*this.membershipService.deleteUser(user.id).subscribe(result => 
       this.getUsers()
-    );
+    );*/
+    if(confirm("Etes vous sur de vouloir supprimer ")) {
+      this.clientService.deleteClient(client._id).subscribe(result=>{
+            this.message = result.message;
+            this.getUsers(); 
+      });
+    }
   }
 
   public toggle(type){
@@ -200,6 +240,42 @@ export class MembershipComponent implements OnInit {
       this.modalRef.close();    
     }
   } 
-  
+  premierePage() {
+    this.router.navigate(['/pages/client'], {
+      queryParams: {
+        page:1,
+        limit:this.limit,
+      }
+    });
+  }
+
+  pageSuivante() {
+   
+    this.router.navigate(['/pages/client'], {
+      queryParams: {
+        page:this.nextPage,
+        limit:this.limit,
+      }
+    });
+  }
+
+
+  pagePrecedente() {
+    this.router.navigate(['/pages/client'], {
+      queryParams: {
+        page:this.prevPage,
+        limit:this.limit,
+      }
+    });
+  }
+
+  dernierePage() {
+    this.router.navigate(['/pages/client'], {
+      queryParams: {
+        page:this.totalPages,
+        limit:this.limit,
+      }
+    });
+  }
 
 }

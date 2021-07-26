@@ -96,7 +96,7 @@ export class TennisComponent implements OnInit {
               champ.token = localStorage.getItem("token");
               this.champService.addChamp(champ).subscribe(message => {
                 this.showMsg= true;
-                this.router.navigate(['/pages/creation-tennis'],{replaceUrl:true});
+                this.router.navigate(['/pages/creation-categorie-champ'],{replaceUrl:true});
               });
       }
   }

@@ -75,7 +75,7 @@ export class FootComponent implements OnInit {
         element.Champ.forEach(result=>{
               if(!result.valeur){
                   this.message = true;
-                  this.router.navigate(['/pages/creation-foot'],{replaceUrl:true});
+                  this.router.navigate(['/pages/creation-paris'],{replaceUrl:true});
               }
               if(result.valeur){
                 this.message = false;
@@ -139,7 +139,7 @@ export class FootComponent implements OnInit {
     this.categorieService.createForm(deviceValue).subscribe(data=>{
       this.categorieform = data.docs;
       console.log(data);
-      this.router.navigate(['/pages/creation-foot'],{replaceUrl:true});
+      this.router.navigate(['/pages/creation-paris'],{replaceUrl:true});
     });
   }
 

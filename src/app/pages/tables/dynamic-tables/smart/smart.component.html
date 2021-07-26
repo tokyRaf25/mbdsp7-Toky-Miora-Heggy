@@ -27,7 +27,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-          <button type="submit" class="btn btn-danger" (click)="update()">Enregistrer</button>
+          <button type="submit" class="btn btn-danger" data-dismiss="modal" (click)="update()">Enregistrer</button>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
   <div class="col-12 mb-4"  *ngIf="showMsgDelete">
     <div class="col-xs-12">
       <p class="alert alert-success">
-          <strong>Deleted Success!</strong> 
+          <strong>Suppression réussi!</strong> 
   
       </p>
     </div>
@@ -43,7 +43,7 @@
   <div class="col-12 mb-4"  *ngIf="showMsg">
     <div class="col-xs-12">
       <p class="alert alert-success">
-          <strong>Update Success!</strong>  
+          <strong>Mise à jour réussi!</strong>  
       </p>
     </div>
   </div>
@@ -87,7 +87,7 @@
                 </tbody>
             </table>
         </div>  
-        <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example" *ngIf="(hasNextPage && hasPrevPage)">
             <ul class="pagination justify-content-center">
               <li class="page-item"><a class="page-link" (click)="premierePage()">Première</a></li>
               <li class="page-item"><a class="page-link" (click)="pagePrecedente()"   [class.disabled]="!hasPrevPage">Prev</a></li>
