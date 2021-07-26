@@ -37,7 +37,7 @@ insertCategorie =  async(req,res) =>{
 		if (err) {
 		  res.send("cant post categorie ", err);
 		}
-		res.json({ message: `${insert.nomcategorie} saved!` });
+		res.json({ message: `${insert.nomcategorie} enregistrer!` });
 	  });
    }
 	catch(e) { 
@@ -59,7 +59,7 @@ deleteCategorie =  async(req,res) =>{
 		if (err) {
 		 res.send(err);
 		}
-		res.json({ message: `${categorie.nomcategorie} deleted` });
+		res.json({ message: `${categorie.nomcategorie} supprimer` });
 		});
 	}
 	catch(e) { 
@@ -87,7 +87,7 @@ updateCategorie = async (req,res) => {
 			console.log(err);
 			res.send(err);
 		  } else {
-			res.json({ message: "updated" });
+			res.json({ message: "Mise à jour" });
 		  }
 		});
 	}

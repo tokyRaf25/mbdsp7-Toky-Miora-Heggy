@@ -75,7 +75,7 @@ function postPariSport(req, res) {
 		  if (err) {
 			res.send("cant post pariSport ", err);
 		  }
-		  res.json({ message: `${pariSport._id} saved!` });
+		  res.json({ message: `${pariSport._id} enregistrer!` });
 		});
 	}
 	catch(e) { 
@@ -106,7 +106,7 @@ function updatePariSport(req, res) {
 			  console.log(err);
 			  res.send(err);
 			} else {
-			  res.json({ message: "updated" });
+			  res.json({ message: "Mise à jour" });
 			}
 		  }
 		);
@@ -133,7 +133,7 @@ function updatePariSport(req, res) {
 			if (err) {
 			res.send(err);
 		  }
-		  res.json({ message: `${pariSport.autres_info} deleted` });
+		  res.json({ message: `${pariSport.autres_info} supprimer` });
 		});
 	}
 	catch(e) { 

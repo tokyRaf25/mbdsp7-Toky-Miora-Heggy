@@ -53,7 +53,7 @@ function postCote(req, res) {
 		  if (err) {
 			res.send("cant post cote ", err);
 		  }
-		  res.json({ message: `${cote.idChamp} saved!` });
+		  res.json({ message: `${cote.idChamp} enregistrer!` });
 		});
 	}
 	catch(e) { 
@@ -78,7 +78,7 @@ function updateCote(req, res) {
           console.log(err);
           res.send(err);
         } else {
-          res.json({ message: "updated" });
+          res.json({ message: "Mise à jour" });
         }
       }
     );
@@ -90,7 +90,7 @@ function deleteCote(req, res) {
       if (err) {
         res.send(err);
       }
-      res.json({ message: `${cote.coteId} deleted` });
+      res.json({ message: `${cote.coteId} supprimer` });
     });
 }
 
@@ -101,7 +101,7 @@ function deleteCoteBypari(req,res){
           console.log(err);
           res.send(err);
         } else {
-          res.json({ message: "deleted" });
+          res.json({ message: "Supprimer" });
         }
       });
 }

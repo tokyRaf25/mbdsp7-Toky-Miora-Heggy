@@ -52,7 +52,7 @@ function postResultatPredit(req, res) {
       if (err) {
         res.send("cant post resultatPredit ", err);
       }
-      res.json({ message: `${resultatPredit._id} saved!` });
+      res.json({ message: `${resultatPredit._id} enregistrer!` });
     });
   }
 
@@ -82,7 +82,7 @@ function updateResultatPredit(req, res) {
       if (err) {
         res.send(err);
       }
-      res.json({ message: `${resultatPredit.autres_info} deleted` });
+      res.json({ message: `${resultatPredit.autres_info} supprimer` });
     });
   }
 
@@ -107,6 +107,30 @@ function updateResultatPredit(req, res) {
 				res.json(rep);			
 	  });
   }
+  let getResultatPreditsWithoutPagginate = async(idPariSport,idChamp) =>{
+	  try{
+		return await ResultatPredit
+		.find()
+		.where('idPariSport').equals(idPariSport)
+		.where('idChamp').equals(idChamp);
+	  }catch(err){
+		throw err;
+	  }
+  }
+  let updateToOne = async(idPariSport, idChamp, res)=>{
+    ResultatPredit.updateMany(
+			{ 
+        "idPariSport" : idPariSport,
+        "idChamp":idChamp
+      }, 
+			{ "$set" : { "status" : "1" } }, 
+			{ "upsert" : true },(err,rep)=>{
+				if (err) {
+					res.send(err);
+				  }		
+	  });
+  }
+
 
   module.exports = {
     getResultatPredits,
@@ -115,5 +139,7 @@ function updateResultatPredit(req, res) {
     updateResultatPredit,
     deleteResultatPredit,
     getPariByType,
-	updateOne
+	updateOne,
+	getResultatPreditsWithoutPagginate,
+	updateToOne
   };

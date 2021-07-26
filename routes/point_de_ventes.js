@@ -46,7 +46,7 @@ function postPointDeVente(req, res) {
       if (err) {
         res.send("cant post pointDeVente ", err);
       }
-      res.json({ message: `${pointDeVente._id} saved!` });
+      res.json({ message: `${pointDeVente._id} enregistrer!` });
     });
   }
 
@@ -64,7 +64,7 @@ function updatePointDeVente(req, res) {
           console.log(err);
           res.send(err);
         } else {
-          res.json({ message: "updated" });
+          res.json({ message: "Mise à jour" });
         }
       }
     );
@@ -76,7 +76,7 @@ function updatePointDeVente(req, res) {
       if (err) {
         res.send(err);
       }
-      res.json({ message: `${pointDeVente.autres_info} deleted` });
+      res.json({ message: `${pointDeVente.nomDuLieu} supprimer` });
     });
   }
 

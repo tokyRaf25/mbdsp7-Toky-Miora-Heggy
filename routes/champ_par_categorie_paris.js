@@ -54,7 +54,7 @@ function postChamp(req, res) {
 		  if (err) {
 			res.send("cant post champ ", err);
 		  }
-		  res.json({ message: `${champ.nomChamp} saved!` });
+		  res.json({ message: `${champ.nomChamp} enregistrer!` });
 		});
 	}
 	catch(e) { 
@@ -84,7 +84,7 @@ function updateChamp(req, res) {
 				  console.log(err);
 				  res.send(err);
 				} else {
-				  res.json({ message: "updated" });
+				  res.json({ message: "Mise à jour" });
 				}
 			  }
 			);
@@ -110,7 +110,7 @@ function updateChamp(req, res) {
 		  if (err) {
 			res.send(err);
 		  }
-		  res.json({ message: `${champ.nomChamp} deleted` });
+		  res.json({ message: `${champ.nomChamp} supprimer` });
 		});
 	  }
 	  catch(e) { 

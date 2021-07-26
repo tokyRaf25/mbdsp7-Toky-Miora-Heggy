@@ -10,7 +10,7 @@ function authenticate(req, res, next) {
         console.log(req.body);
         Client.findOne({ name: req.body.name }, function (err, user) {
         if (err) return res.status(500).send('Error on the server.');
-        if (!user) return res.status(404).send('No user found.');
+        if (!user) return res.status(404).send('Aucun utilisateur correspondant.');
 
         var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
         if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
@@ -36,7 +36,7 @@ function register(req, res) {
             console.log(err);
             res.status(404).json({ err });
         }
-        res.json({ message: `saved!` });
+        res.json({ message: `Enregistrer!` });
     });
 }
 
@@ -64,7 +64,7 @@ updateClient = async (req,res) => {
 			console.log(err);
 			res.send(err);
 		  } else {
-			res.json({ message: "updated" });
+			res.json({ message: "Mise à jour" });
 		  }
 		});
 	
@@ -92,9 +92,33 @@ deleteClient =  async(req,res) =>{
 		if (err) {
 			res.send(err);
 		}
-		res.json({ message: `${client.name} deleted` });
+		res.json({ message: `${client.name} supprimer` });
 	});
 }
+let getJetonClient = async(idClient)=>{
+  var jetons = 0
+  let client = await Client.findOne({ _id: idClient}, (err,client)=> {
+    if(err){
+      console.log(err); 
+    }
+  });
+  return client.jetons;
+}
+let updateJetonsClient = async (idClient,jetons) =>{
+  let jetons_bef = await getJetonClient(idClient);
+  console.log("le nombre de jetons initiale "+jetons_bef);
+  await Client.updateMany(
+    { 
+      "_id" : idClient
+    }, 
+    { "$set" : { "jetons" : jetons_bef+jetons } }, 
+    { "upsert" : true },(err,rep)=>{
+      if (err) {
+        res.send(err);
+        }		
+  });
+}
+
 
 module.exports = {
     authenticate,
@@ -102,5 +126,7 @@ module.exports = {
     getClientById,
 	updateClient,
 	listClient,
-	deleteClient
+	deleteClient,
+	updateJetonsClient,
+	getJetonClient
   }

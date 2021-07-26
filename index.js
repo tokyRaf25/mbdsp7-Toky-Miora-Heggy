@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var cors = require('cors');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
 let cote = require('./routes/cotes');
@@ -31,7 +32,7 @@ const options = {
 // Pour les formulaires
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
+app.use(cors());
 mongoose.connect(uri, options)
   .then(() => {
     console.log("Connecté à la base MongoDB assignments dans le cloud !");
@@ -77,9 +78,10 @@ app.route(prefix +"/clients")
 app.route(prefix +"/clients/:id")
 .delete(client.deleteClient)
 //Champ par categorie
-app.route(prefix + '/champParCats')
-  .get(champ.getChamps);
+/*app.route(prefix + '/champParCats')
+  .get(champ.getChamps);*/
 app.route(prefix + '/champParCat')
+  .get(champ.getChamps)
   .post(champ.postChamp)
   .put(champ.updateChamp);
 
@@ -99,9 +101,10 @@ app.route(prefix + '/champParCat/:id')
 /******************************************************************* */  
 
 /************************Routes API PariSport************************************** */
-app.route(prefix + '/paris')
-  .get(pari.getPariSports);
+/*app.route(prefix + '/paris')
+  .get(pari.getPariSports);*/
 app.route(prefix + '/pari')
+  .get(pari.getPariSports)
   .post(pari.postPariSport)
   .put(pari.updatePariSport);
 
@@ -164,9 +167,10 @@ app.route(prefix +"/resultats_predit/:id")
 /******************************************************************* */  
 
 /************************Routes API Type de parie************************************** */
-app.route(prefix +"/typeParies")
-  .get(ParieRoutes.listTypeParie);
+/*app.route(prefix +"/typeParies")*/
+  
 app.route(prefix +"/typeParie")
+  .get(ParieRoutes.listTypeParie)
   .post(ParieRoutes.insertTypeParie)
   .put(ParieRoutes.updateTypeParie);
   
@@ -177,10 +181,11 @@ app.route(prefix +"/typeParie/:id")
 
 /************************Routes API Type de categorie************************************** */
 
-app.route(prefix +"/categories")
-  .get(CategorieRoutes.listCategorie);
+/*app.route(prefix +"/categories")
+  .get(CategorieRoutes.listCategorie);*/
   
 app.route(prefix +"/categorie")
+  .get(CategorieRoutes.listCategorie)
   .post(CategorieRoutes.insertCategorie)
   .put(CategorieRoutes.updateCategorie);
   
@@ -205,7 +210,7 @@ app.route(prefix + '/point_de_vente')
   .post(pointDeVente.postPointDeVente)
   .put(pointDeVente.updatePointDeVente);
   
-app.route(prefix +"/point_de_vente/:id")
+app.route(prefix + '/point_de_vente/:id')
   .get(pointDeVente.getPointDeVente)
   .delete(pointDeVente.deletePointDeVente);
 

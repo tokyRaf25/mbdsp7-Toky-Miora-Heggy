@@ -27,7 +27,7 @@ insertTypeParie =  async(req,res) =>{
     if (err) {
       res.send("cant post typeParie ", err);
     }
-    res.json({ message: `${insert.typeParie} saved!` });
+    res.json({ message: `${insert.typeParie} enregistrer!` });
   });
 }
 
@@ -36,7 +36,7 @@ deleteTypeParie =  async(req,res) =>{
     if (err) {
 	 res.send(err);
     }
-    res.json({ message: `${typeParie.typeParie} deleted` });
+    res.json({ message: `${typeParie.typeParie} supprimer` });
 	});
 
 }
@@ -51,7 +51,7 @@ updateTypeParie = async (req,res) => {
         console.log(err);
         res.send(err);
       } else {
-        res.json({ message: "updated" });
+        res.json({ message: "Mise à jour" });
       }
     }
   );

@@ -8,7 +8,7 @@ var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 function authenticate(req, res, next) {
     Admin.findOne({ login: req.body.login }, function (err, user) {
     if (err) return res.status(500).send('Error on the server.');
-    if (!user) return res.status(404).send('No user found.');
+    if (!user) return res.status(404).send('Aucun utilisateur correspondant.');
 
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
     if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
