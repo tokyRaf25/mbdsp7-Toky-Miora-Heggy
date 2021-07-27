@@ -6,7 +6,6 @@ let bodyParser = require('body-parser');
 let cote = require('./routes/cotes');
 
 //Déclaration des objets
-let MouvementJeton = require('./routes/historique_mouvement_jeton');
 let champ = require('./routes/champ_par_categorie_paris');
 let pari = require('./routes/parie_sports');
 const ParieRoutes = require('./routes/typeParie.route'); 
@@ -55,7 +54,7 @@ app.get('/', function (req, res) {
 });
 
 // use JWT auth to secure the api
-//app.use(jwt());
+app.use(jwt());
 // les routes
 const prefix = '/api';
 
@@ -69,17 +68,6 @@ app.route(prefix + '/registration')
 
 app.route(prefix + '/client/:id')
   .get(client.getClientById)
-app.route(prefix + '/updateJeton')
-.post(client.updateJeton)
-
-app.route(prefix + '/updateClient')
-.post(client.updateClient)
-
-app.route(prefix + '/updateClientPassword')
-.post(client.updateClientPassword)
-
-app.route(prefix + '/getJeton/:id')
-.get(client.getJetonClient)
 
 app.route("/authentification")
 .post(Admin.authenticate)
@@ -89,11 +77,6 @@ app.route(prefix +"/clients")
 
 app.route(prefix +"/clients/:id")
 .delete(client.deleteClient)
-/************************Routes API Mouvement Jeton ************************************** */
-app.route(prefix + '/mouvementJeton')
-  .get(MouvementJeton.getMouvementJeton)
-  .post(MouvementJeton.insertMouvementJeton)
-
 //Champ par categorie
 /*app.route(prefix + '/champParCats')
   .get(champ.getChamps);*/

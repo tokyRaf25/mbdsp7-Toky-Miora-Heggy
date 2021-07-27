@@ -88,33 +88,6 @@ let updateJetonsClient = async (idClient,jetons) =>{
     { "$set" : { "jetons" : jetons_bef+jetons } }, 
     { "upsert" : true },(err,rep)=>{
       /*if (err) {
-//update Client password
-function updateClientPassword(req, res) {
-  var hashedPassword = bcrypt.hashSync(req.body.password, 8);
-  req.body.password = hashedPassword;
-  console.log(req.body);
-  Client .findByIdAndUpdate(
-    req.body._id,
-    req.body,
-    { new: true },
-    (err, client ) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else {
-        res.json({ message: "updated" });
-      }
-    }
-  );
-}
-
-//Récupérer jeton client par son id (GET)
-function getJetonClient(req, res) {
-    console.log("get jeton client by id "+req.params.id)
-    let clientId = req.params.id;
-  
-    Client.findOne({ _id: clientId }, (err, client) => {
-      if (err) {
         res.send(err);
         }*/		
   });
@@ -155,7 +128,5 @@ module.exports = {
 	listClient,
 	deleteClient,
 	updateJetonsClient,
-	getJetonClient,
-    updateJeton,
-    updateClientPassword
-  };
+	getJetonClient
+  }
