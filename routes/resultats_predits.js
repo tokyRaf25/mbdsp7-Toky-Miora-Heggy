@@ -202,8 +202,11 @@ function updateResultatPredit(req, res) {
       }
     );
     let pariSport = await PariSport.getPariSportByIdAsync(idPariSport);
+    
+    console.log(resultat);
     for (const rePred of resultat){
        let champ = await Champ.getChampByIdAsync(rePred.idChamp);
+       console.log(champ);
        let cat = await Categorie.getCategorieByIdAsync(champ.idCategorie);
            let temp = {
             _id: rePred._id,
