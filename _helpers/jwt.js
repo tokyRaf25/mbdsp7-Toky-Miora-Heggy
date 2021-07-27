@@ -24,8 +24,8 @@ function jwt() {
 			'/api/cote',
 			'/api/resultats_reel',
 			'/resultats_reel/:id',
-			'/resultats_reel/pari/:id',
-			
+			{url: /^\/resultats_reel\/.*\/.*/,methods:['GET','PUT','POST','DELETE']},
+			{url: /^\/resultats_reel\/pari\/.*/,methods:['GET','PUT','POST','DELETE']},
 			{url: /^\/api\/categorie\/.*/,methods:['GET','PUT','POST','DELETE']},
 			{url: /^\/api\/categorie\/list\/.*/,methods:['GET','PUT','POST','DELETE']},
 			'/categorie/last',
@@ -33,6 +33,7 @@ function jwt() {
 			'/api/cote',
 			{url: /^\/cote\/.*/,methods:['GET','PUT','POST','DELETE']},
 			{url: /^\/cote\/pari\/.*/,methods:['GET','PUT','POST','DELETE']},
+			{url: /^\/cote\/champ\/.*/,methods:['GET','PUT','POST','DELETE']},
 			{url: /^\/api\/pari\/.*/,methods:['GET','PUT','POST','DELETE']},
 			{url: /^\/api\/pari\/type\/.*/,methods:['GET','PUT','POST','DELETE']},
 			'/api/pariOne',

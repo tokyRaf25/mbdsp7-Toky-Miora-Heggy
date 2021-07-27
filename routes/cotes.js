@@ -94,6 +94,15 @@ function deleteCote(req, res) {
     });
 }
 
+function deleteCoteByIdChamp(req,res){
+	Cote.deleteOne({ "idChamp" : req.params.id }, (err, cote) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json({ message: `${cote.coteId} supprimer` });
+    });
+}
+
 function deleteCoteBypari(req,res){
 	Cote.remove({idParieSport:req.params.id},
       (err, cote) => {
@@ -111,5 +120,6 @@ function deleteCoteBypari(req,res){
     getCote,
     updateCote,
     deleteCote,
-	deleteCoteBypari
+	deleteCoteBypari,
+	deleteCoteByIdChamp
   };

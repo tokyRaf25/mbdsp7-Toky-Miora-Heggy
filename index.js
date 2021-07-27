@@ -133,6 +133,9 @@ app.route("/cote/:id")
   .get(cote.getCote)
   .delete(cote.deleteCote);
   
+app.route("/cote/champ/:id")
+  .delete(cote.deleteCoteByIdChamp);
+  
 app.route("/cote/pari/:id")
   .delete(cote.deleteCoteBypari);
 
@@ -150,6 +153,9 @@ app.route("/resultats_reel/:id")
   
 app.route("/resultats_reel/pari/:id")
   .delete(resultatReel.deleteResultBypari);
+  
+app.route("/resultats_reel/:idPariSport/:idChamp")
+  .get(resultatReel.getPariByParisAndChamp);
 
 /******************************************************************* */  
 

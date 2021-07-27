@@ -121,8 +121,17 @@ function updateResultatReel(req, res) {
           res.json({ message: "Supprimer" });
         }
       });
-}
-
+ }
+  function getPariByParisAndChamp(req,res){
+    let idPariSport = req.params.idPariSport;
+	let idChamp = req.params.idChamp;
+    ResultatReel.find({ idPariSport: idPariSport,idChamp:idChamp }, (err, rs) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(rs);
+    });
+  }
   module.exports = {
     getResultatReels,
     postResultatReel,
@@ -130,5 +139,6 @@ function updateResultatReel(req, res) {
     updateResultatReel,
     deleteResultatReel,
     getPariByType,
-	deleteResultBypari
+	deleteResultBypari,
+	getPariByParisAndChamp
   };
