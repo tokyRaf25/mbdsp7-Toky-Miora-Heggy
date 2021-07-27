@@ -24,17 +24,6 @@ function getResultatPredits(req, res){
   );
 }
 
-let getResultatPreditsWithoutPagginate = async(idPariSport,idChamp) =>{
-  try{
-    return await ResultatPredit
-    .find()
-    .where('idPariSport').equals(idPariSport)
-    .where('idChamp').equals(idChamp);
-  }catch(err){
-    throw err;
-  }
-}
-
 //Récupérer un ResultatPredit par son id (GET)
 function getResultatPredit(req, res) {
     console.log("get résultat prédit by id "+req.params.id)
@@ -172,21 +161,6 @@ function updateResultatPredit(req, res) {
 		throw err;
 	  }
   }
-  let updateToOne = async(idPariSport, idChamp, res)=>{
-    ResultatPredit.updateMany(
-			{ 
-        "idPariSport" : idPariSport,
-        "idChamp":idChamp
-      }, 
-			{ "$set" : { "status" : "1" } }, 
-			{ "upsert" : true },(err,rep)=>{
-				if (err) {
-					res.send(err);
-				  }		
-	  });
-  }
-
-
   let updateToOne = async(idPariSport, idChamp, res)=>{
     ResultatPredit.updateMany(
 			{ 

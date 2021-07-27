@@ -118,30 +118,6 @@ deleteClient =  async(req,res) =>{
 		res.json({ message: `${client.name} supprimer` });
 	});
 }
-let getJetonClient = async(idClient)=>{
-  var jetons = 0
-  let client = await Client.findOne({ _id: idClient}, (err,client)=> {
-    if(err){
-      console.log(err); 
-    }
-  });
-  return client.jetons;
-}
-let updateJetonsClient = async (idClient,jetons) =>{
-  let jetons_bef = await getJetonClient(idClient);
-  console.log("le nombre de jetons initiale "+jetons_bef);
-  await Client.updateMany(
-    { 
-      "_id" : idClient
-    }, 
-    { "$set" : { "jetons" : jetons_bef+jetons } }, 
-    { "upsert" : true },(err,rep)=>{
-      if (err) {
-        res.send(err);
-        }		
-  });
-}
-
 
 
 module.exports = {

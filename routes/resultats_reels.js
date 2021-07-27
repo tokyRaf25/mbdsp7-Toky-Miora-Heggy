@@ -55,29 +55,6 @@ let postResultatReel = async(req, res)=> {
       if (err) {
         res.send("cant post resultatReel ", err);
       }
-      res.json({ message: `${resultatReel._id} saved!` });
-    });
-  }
-let postResultatReel = async(req, res)=> {
-    let resultatReel = new ResultatReel();
-    resultatReel.idPariSport = req.body.idPariSport;
-    resultatReel.idChamp = req.body.idChamp;
-    console.log("POST résultat réel reçu :");
-  
-    var resultatPredit_vrai = await ResultatPredit.getResultatPreditsWithoutPagginate(resultatReel.idPariSport,resultatReel.idChamp);
-    await ResultatPredit.updateToOne(resultatReel.idPariSport, resultatReel.idChamp, res);
-
-    
-    resultatPredit_vrai.forEach(async(element)=>{
-      console.log(element);
-      await Client.updateJetonsClient(element.idClient, element.gain);
-    });
-
-
-    await resultatReel.save((err) => {
-      if (err) {
-        res.send("cant post resultatReel ", err);
-      }
       res.json({ message: `${resultatReel._id} enregistrer!` });
     });
   }
