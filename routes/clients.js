@@ -164,25 +164,6 @@ deleteClient =  async(req,res) =>{
 	});
 }
 
-// Update jeton client (PUT)
-function updateJeton(req, res) {
-  console.log("UPDATE jeton : ");
-  console.log(req.body);
-  Client.findByIdAndUpdate(
-    req.body._id,
-    req.body,
-    { new: true },
-    (err, client) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else {
-        res.json({ message: "updated" });
-      }
-    }
-  );
-}
-
 
 module.exports = {
     authenticate,
