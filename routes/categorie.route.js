@@ -156,6 +156,11 @@ function getNomByIdCategorie(idCategorie){
 	  );
  }
 
+ let getCategorieByIdAsync = async(categorieId)=>{
+	let resultat = await categorie.findOne({ _id: categorieId });
+	return resultat;
+}
+
 function getLastCategorie(req,res){
 	var categorieQuery = categorie.aggregate();
   
@@ -217,5 +222,6 @@ module.exports = {
   getNomByIdCategorie,
   getListCategoryById,
   getLastCategorie,
-  getListCoteParParie
+  getListCoteParParie,
+  getCategorieByIdAsync
 }

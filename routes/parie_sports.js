@@ -3,6 +3,7 @@ const CategorieService = require ('../service/categorie.service');
 const ChampService = require ('../service/champ_par_categorie_paris.service');
 const CoteService = require ('../service/cote.service');
 var ObjectId = require('mongodb').ObjectId; 
+const ResultatPredit_model = require('../models/resultats_predit');
 const jwt = require('jsonwebtoken');
 //Récupérer tous les PariSports (GET), avec paggination
 function getPariSports(req, res){
@@ -34,6 +35,93 @@ function getPariSport(req, res) {
       }
       res.json(pariSport);
     });
+}
+
+let getPariSportByIdAsync = async(pariSportId)=>{
+	let resultat = await PariSport.findOne({ _id: pariSportId });
+	return resultat;
+}
+
+let getAllPariByUserId2 = async(userId)=>{
+    const setPari = new Set();
+    const listPariSportDuplicated = await ResultatPredit_model.find({ idClient: userId }).select('idPariSport');
+    //.distinct('idPariSport');
+    if(listPariSportDuplicated && listPariSportDuplicated.length>0){
+      listPariSportDuplicated.forEach(element => setPari.add(
+        element.idPariSport
+      ));
+    }
+    let array = Array.from(setPari);
+    return getPariSportAsync(array);
+  }
+
+let getPariSportValide = async(req, res)=>{
+    var aggregateQuery = PariSport.aggregate(); 
+	let userId = req.params.userId;
+	let pariUser = await getAllPariByUserId2(userId);	
+	var liste_pari = await PariSport.aggregatePaginate(
+		aggregateQuery,
+		{
+		  page: parseInt(req.query.page) || 1,
+		  limit: parseInt(req.query.limit) || 10,
+		}
+	  );
+
+	var resultat = {
+		docs: [],
+		totalDocs: liste_pari.totalDocs,
+		limit: liste_pari.limit,
+		page: liste_pari.page,
+		totalPages: liste_pari.totalPages,
+		pagingCounter: liste_pari.pagingCounter,
+		hasPrevPage: liste_pari.hasPrevPage,
+		hasNextPage: liste_pari.hasNextPage,
+		prevPage: liste_pari.prevPage,
+		nextPage: liste_pari.nextPage
+	}
+	var date = new Date().toISOString()
+		.replace(/T/, ' ')
+		.replace(/\..+/, '');
+	await liste_pari.docs.forEach(async(element)=> {
+		if(element.dateDuMatch>date.toString()){
+			//let reponse = await ifObjectIsInArray(pariUser, element);
+			await ifObjectIsInArray(pariUser, element).then(function callBack(reponse){
+				if(!reponse){
+					resultat.docs.push(element);
+				}
+			});
+		}
+	});
+	res.send(resultat);
+}
+
+
+let ifObjectIsInArray = async(tab, pari)=>{
+	var reponse = false;
+	tab.forEach(async(element)=>{
+		if(JSON.stringify(element._id)===JSON.stringify(pari._id)){
+			reponse = true;
+		}
+						
+	});
+	return reponse;
+}
+
+ let getPariSportAsync = async(pariSport)=> {
+	 try{
+		//console.log("each pari!"+pariSport);
+		//return await PariSport.findOne({ _id: pariSport  });
+		return await PariSport.find().where('_id').in(pariSport).exec();
+	}catch(err){
+		 throw err;
+	 }
+	
+    /*PariSport.findOne({ _id: pariSportId }, (err, pariSport) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(pariSport);
+    });*/
 }
 
 function getLastPari(req,res){
@@ -213,5 +301,8 @@ function updatePariSport(req, res) {
     deletePariSport,
     getPariByType,
 	getLastPari,
-	getDetailPari
+	getDetailPari,
+	getPariSportAsync,
+	getPariSportValide,
+	getPariSportByIdAsync
   };

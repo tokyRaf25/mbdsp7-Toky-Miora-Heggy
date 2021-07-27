@@ -41,6 +41,8 @@ function jwt() {
 			{url: /^\/api\/champParCat\/.*/,methods:['GET','PUT','POST','DELETE']},
 			{url: /^\/api\/champParCat\/Categorie\/.*/,methods:['GET','PUT','POST','DELETE']},
 			'/api/champParCat/trie',
+            '/api/categorie',
+            {url: /^\/api\/categorie\/.*/, methods: ['GET', 'PUT', 'POST']}
         ]
     });
 }

@@ -43,15 +43,24 @@ function register(req, res) {
 function getClientById(req, res){
     let idClient = req.params.id;
     
-    Client.findOne({ _id: idClient }, (err, champ) => {
+    Client.findOne({ _id: idClient }, (err, client) => {
       if (err) {
         res.send(err);
       }
-      res.json(champ);
+      res.json(client);
     });
   }
+let getJetonClient = async(idClient)=>{
+  var jetons = 0
+  let client = await Client.findOne({ _id: idClient}, (err,client)=> {
+    if(err){
+      console.log(err); 
+    }
+  });
+  return client.jetons;
+}
 
-updateClient = async (req,res) => {
+let updateClient = async (req,res) => {
 	
 		Client.findByIdAndUpdate(
 		req.body._id,
@@ -67,9 +76,23 @@ updateClient = async (req,res) => {
 			res.json({ message: "Mise à jour" });
 		  }
 		});
-	
-	
 }
+
+let updateJetonsClient = async (idClient,jetons) =>{
+  let jetons_bef = await getJetonClient(idClient);
+  console.log("le nombre de jetons initiale "+jetons_bef);
+  await Client.updateMany(
+    { 
+      "_id" : idClient
+    }, 
+    { "$set" : { "jetons" : jetons_bef+jetons } }, 
+    { "upsert" : true },(err,rep)=>{
+      /*if (err) {
+        res.send(err);
+        }*/		
+  });
+}
+
 listClient = async ( req , res ) => { 
    var clientQuery = Client.aggregate();
   
@@ -118,6 +141,7 @@ let updateJetonsClient = async (idClient,jetons) =>{
         }		
   });
 }
+
 
 
 module.exports = {
