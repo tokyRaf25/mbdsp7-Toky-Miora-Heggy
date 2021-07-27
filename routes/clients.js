@@ -60,7 +60,7 @@ let getJetonClient = async(idClient)=>{
   return client.jetons;
 }
 
-updateClient = async (req,res) => {
+let updateClient = async (req,res) => {
 	
 		Client.findByIdAndUpdate(
 		req.body.id,
@@ -87,9 +87,9 @@ let updateJetonsClient = async (idClient,jetons) =>{
     }, 
     { "$set" : { "jetons" : jetons_bef+jetons } }, 
     { "upsert" : true },(err,rep)=>{
-      if (err) {
+      /*if (err) {
         res.send(err);
-        }		
+        }*/		
   });
 }
 
@@ -118,6 +118,7 @@ deleteClient =  async(req,res) =>{
 		res.json({ message: `${client.name} deleted` });
 	});
 }
+
 
 module.exports = {
     authenticate,

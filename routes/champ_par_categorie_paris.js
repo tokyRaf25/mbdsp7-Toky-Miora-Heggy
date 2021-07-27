@@ -34,6 +34,10 @@ function getChamp(req, res) {
     });
 }
 
+let getChampByIdAsync = async(champId)=>{
+  let resultat = await Champ.findOne({ _id: champId });
+  return resultat;
+}
 // Ajout d'un champ (POST)
 function postChamp(req, res) {
 	try { 
@@ -193,5 +197,6 @@ function updateChamp(req, res) {
     deleteChamp,
     getChampByIdCategorie,
     getChampParCategorie,
-	deleteChampAvecCategorie
+	  deleteChampAvecCategorie,
+    getChampByIdAsync
   };

@@ -107,7 +107,7 @@ app.route(prefix + '/pari/:id')
   .get(pari.getPariSport)
   .delete(pari.deletePariSport);
 
-app.route(prefix + '/pariValide')
+app.route(prefix + '/pariValide/:userId')
   .get(pari.getPariSportValide);
 
 app.route(prefix + '/pari/type/:type')
@@ -157,8 +157,11 @@ app.route(prefix + '/resultats_predit')
   .post(resultatPredit.postResultatPredit)
   .put(resultatPredit.updateResultatPredit);
   
-app.route(prefix+"/resultats_predit/user/:userId")
+app.route(prefix+"/resultats_predit/user_en_cours/:userId")
   .get(resultatPredit.getAllPariByUserId);
+
+  app.route(prefix+"/resultats_predit/user_termine/:userId")
+  .get(resultatPredit.getAllPariByUserIdEnd);
 
 app.route(prefix +"/resultats_predit/:id")
   .get(resultatPredit.getResultatPredit)
@@ -166,7 +169,8 @@ app.route(prefix +"/resultats_predit/:id")
   .put(resultatPredit.updateOne);
 
   app.route(prefix +"/resultats_predit/pariSport/:idPariSport/:userId")
-  .delete(resultatPredit.deleteResultatPreditByPariSportIdAndUser);
+  .delete(resultatPredit.deleteResultatPreditByPariSportIdAndUser)
+  .get(resultatPredit.getResultatPariAndUser);
 
 /******************************************************************* */  
 
