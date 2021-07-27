@@ -60,24 +60,6 @@ let getJetonClient = async(idClient)=>{
   return client.jetons;
 }
 
-/*function updateClient(req, res) {
-  console.log("UPDATE client : ");
-  console.log(req.body);
-  Client.findByIdAndUpdate(
-    req.body._id,
-    req.body,
-    { new: true },
-    (err, client) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else {
-        res.json({ message: "updated" });
-      }
-    }
-  );
-}*/
-
 let updateClient = async (req,res) => {
 	
 		Client.findByIdAndUpdate(
