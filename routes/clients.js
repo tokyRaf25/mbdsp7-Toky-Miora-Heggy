@@ -124,9 +124,9 @@ module.exports = {
     authenticate,
     register,
     getClientById,
-	updateClient,
-	listClient,
-	deleteClient,
-	updateJetonsClient,
-	getJetonClient
+    updateClient,
+    listClient,
+    deleteClient,
+    updateJetonsClient,
+    getJetonClient
   }
