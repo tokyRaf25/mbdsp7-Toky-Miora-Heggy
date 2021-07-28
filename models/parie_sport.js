@@ -5,9 +5,8 @@ let Schema = mongoose.Schema;
 
 let PariSportSchema = Schema({
     idTypePari: String,
-    dateDuMatch: Date,
+    dateDuMatch: String,
     autres_info: String,
-    status: String,
     equipes: [{
         nomEquipe: String
     }]

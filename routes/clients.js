@@ -7,9 +7,10 @@ const clients = require('../models/clients');
 
 
 function authenticate(req, res, next) {
+        console.log(req.body);
         Client.findOne({ name: req.body.name }, function (err, user) {
         if (err) return res.status(500).send('Error on the server.');
-        if (!user) return res.status(404).send('No user found.');
+        if (!user) return res.status(404).send('Aucun utilisateur correspondant.');
 
         var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
         if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
@@ -18,7 +19,7 @@ function authenticate(req, res, next) {
             expiresIn: 86400 // expires in 24 hours
         });
 
-        res.status(200).send({ id: user.id, name: user.name, jetons: user.jetons, auth: true, token: token });
+        res.status(200).send({ id: user.id, name: user.name, auth: true, token: token,jetons:user.jetons,password:user.password,email:user.email });
     });
 }
 
@@ -35,12 +36,91 @@ function register(req, res) {
             console.log(err);
             res.status(404).json({ err });
         }
-        res.json({ message: `saved!` });
+        res.json({ message: `Enregistrer!` });
     });
 }
 
-// Update information client (PUT)
-function updateClient(req, res) {
+function getClientById(req, res){
+    let idClient = req.params.id;
+    
+    Client.findOne({ _id: idClient }, (err, client) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(client);
+    });
+  }
+let getJetonClient = async(idClient)=>{
+  var jetons = 0
+  let client = await Client.findOne({ _id: idClient}, (err,client)=> {
+    if(err){
+      console.log(err); 
+    }
+  });
+  return client.jetons;
+}
+
+let updateClient = async (req,res) => {
+	
+		Client.findByIdAndUpdate(
+		req.body._id,
+		req.body,
+		{ new: true },
+		(err, client) => {
+			console.log("POST résultat prédit reçu :");
+			console.log(req.body);
+		  if (err) {
+			console.log(err);
+			res.send(err);
+		  } else {
+			res.json({ message: "Mise à jour" });
+		  }
+		});
+}
+
+let updateJetonsClient = async (idClient,jetons) =>{
+  let jetons_bef = await getJetonClient(idClient);
+  console.log("le nombre de jetons initiale "+jetons_bef);
+  await Client.updateMany(
+    { 
+      "_id" : idClient
+    }, 
+    { "$set" : { "jetons" : jetons_bef+jetons } }, 
+    { "upsert" : true },(err,rep)=>{
+      /*if (err) {
+        res.send(err);
+        }*/		
+  });
+}
+
+listClient = async ( req , res ) => { 
+   var clientQuery = Client.aggregate();
+  
+	  Client.aggregatePaginate(
+		clientQuery,
+		{
+		  page: parseInt(req.query.page) || 1,
+		  limit: parseInt(req.query.limit) || 10,
+		},
+		(err, clients) => {
+		  if (err) {
+			res.send(err);
+		  }
+		  res.send(clients);
+		}
+	  );
+}
+deleteClient =  async(req,res) =>{
+	Client.findByIdAndRemove(req.params.id, (err, client) => {
+		if (err) {
+			res.send(err);
+		}
+		res.json({ message: `${client.name} supprimer` });
+	});
+}
+
+//Heggy Update information client (PUT)
+function updateClientInformation(req, res) {
   console.log("UPDATE client : ");
   console.log(req.body);
   Client.findByIdAndUpdate(
@@ -79,7 +159,7 @@ function updateClientPassword(req, res) {
 }
 
 //Récupérer jeton client par son id (GET)
-function getJetonClient(req, res) {
+function getClientJeton(req, res) {
     console.log("get jeton client by id "+req.params.id)
     let clientId = req.params.id;
   
@@ -110,12 +190,17 @@ function updateJeton(req, res) {
     );
   }
 
-
 module.exports = {
     authenticate,
     register,
-    updateJeton,
-    getJetonClient,
+    getClientById,
     updateClient,
-    updateClientPassword
-  };
+    listClient,
+    deleteClient,
+    updateJetonsClient,
+    getJetonClient,
+    getClientJeton,
+    updateClientInformation,
+    updateClientPassword,
+    updateJeton
+  }

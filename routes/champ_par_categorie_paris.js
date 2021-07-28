@@ -1,5 +1,7 @@
+const Categorie = require('../models/Categorie');
 let Champ = require('../models/champ_par_categorie_pari');
-
+const categorie =  require("./categorie.route")
+const jwt = require('jsonwebtoken');
 
 //Récupérer tous les cotes (GET), avec paggination
 function getChamps(req, res){
@@ -32,59 +34,102 @@ function getChamp(req, res) {
     });
 }
 
+let getChampByIdAsync = async(champId)=>{
+  let resultat = await Champ.findOne({ _id: champId });
+  return resultat;
+}
 // Ajout d'un champ (POST)
 function postChamp(req, res) {
-  console.log("execution d'une requete POST!");
-    let champ = new Champ();
-    champ.idCategorie = req.body.idCategorie;
-    champ.nomChamp = req.body.nomChamp;
-  
-    console.log("POST champ reçu :");
-    console.log(champ);
-  
-    champ.save((err) => {
-      if (err) {
-        res.send("cant post champ ", err);
-      }
-      res.json({ message: `${champ.nomChamp} saved!` });
-    });
-  }
+	try { 
+	   const token = req.body.token; 
+	   console.log("token",token);
+	   if(!token || typeof token ==='undefined') res.status(403).send("token error");
+	   
+	   const user =  jwt.verify(token,'supersecret');
+	   console.log("execution d'une requete POST!");
+		let champ = new Champ();
+		champ.idCategorie = req.body.idCategorie;
+		champ.nomChamp = req.body.nomChamp;
+	  
+		console.log("POST champ reçu :");
+		console.log(champ);
+	  
+		champ.save((err) => {
+		  if (err) {
+			res.send("cant post champ ", err);
+		  }
+		  res.json({ message: `${champ.nomChamp} enregistrer!` });
+		});
+	}
+	catch(e) { 
+		if(e.name==='TokenExpiredError') { 
+			res.status(403).send({error:"Veuillez se reconnecter , votre session a expiré"});
+		}
+		res.send(e);
+    }
+ }
 
 
 // Update d'un cote (PUT)
 function updateChamp(req, res) {
-    console.log("UPDATE recu Champ : ");
-    console.log(req.body);
-    Champ.findByIdAndUpdate(
-      req.body.id,
-      req.body,
-      { new: true },
-      (err, champ) => {
-        if (err) {
-          console.log(err);
-          res.send(err);
-        } else {
-          res.json({ message: "updated" });
-        }
-      }
-    );
+	try { 
+		const token = req.body.token; 
+		console.log("token",token);
+		if(!token || typeof token ==='undefined') res.status(403).send("token error");
+		const user =  jwt.verify(token,'supersecret');
+			console.log("UPDATE recu Champ : ");
+			console.log(req.body);
+			Champ.findByIdAndUpdate(
+			  req.body._id,
+			  req.body,
+			  { new: true },
+			  (err, champ) => {
+				if (err) {
+				  console.log(err);
+				  res.send(err);
+				} else {
+				  res.json({ message: "Mise à jour" });
+				}
+			  }
+			);
+	}
+	catch(e) { 
+		if(e.name==='TokenExpiredError') { 
+			res.status(403).send({error:"Veuillez se reconnecter , votre session a expiré"});
+		}
+		res.send(e);
+    }
   }
   
   // suppression d'un cote (DELETE)
   function deleteChamp(req, res) {
-    Champ.findByIdAndRemove(req.params.id, (err, champ) => {
-      if (err) {
-        res.send(err);
+	  try { 
+	    const token = req.query.token; 
+	    console.log("token",token);
+	    if(!token || typeof token ==='undefined') res.status(403).send("token error");
+	   
+	    const user =  jwt.verify(token,'supersecret');
+		console.log("suppression champ "+req.params.id);
+		Champ.findByIdAndRemove(req.params.id, (err, champ) => {
+		  if (err) {
+			res.send(err);
+		  }
+		  res.json({ message: `${champ.nomChamp} supprimer` });
+		});
+	  }
+	  catch(e) { 
+		if(e.name==='TokenExpiredError') { 
+			res.status(403).send({error:"Veuillez se reconnecter , votre session a expiré"});
+		}
+		res.send(e);
       }
-      res.json({ message: `${champ.nomChamp} deleted` });
-    });
   }
 
 
   //Avoir les champs à partir d'une categorie
-  function getChampByIdCategorie(){
-    let categorieId = req.params.idCategorie;
-    Champ.findOne({ idCategorie: categorieId }, (err, champ) => {
+  function getChampByIdCategorie(req, res){
+    let categorieId = req.params.id;
+    Champ.find({ idCategorie: categorieId }, (err, champ) => {
       if (err) {
         res.send(err);
       }
@@ -93,9 +138,56 @@ function updateChamp(req, res) {
   }
 
   //Avoir les champs par categories
-  function getChampParCategorie(){
-    
+  function getChampParCategorie(req,res){
+    var champQuery = Champ.aggregate();
+    var dataReturn;
+    Champ.aggregatePaginate(
+      champQuery,
+      {
+        page: parseInt(req.query.page) || 1,
+        limit: parseInt(req.query.limit) || 10,
+      }).then(function(results){
+        var tab = Array.from(results.docs);
+        var data = [];
+        tab.forEach(element => {
+          data.push(element);
+          //console.log(element);
+        });
+           var hash = data.reduce((p,c) => (p[c.idCategorie] ? p[c.idCategorie].push(c) : p[c.idCategorie] = [c],p) ,{});
+           var newData = Object.keys(hash).map(
+             function(k){
+             return {idCategorie: k, /*nomCategorie:categorie.getNomByIdCategorie(k),*/ champs: hash[k]}
+            });
+
+           //console.log(categorie.getNomByIdCategorie("60c8945b80e58a3b546df516"));
+
+        dataReturn = {
+          docs:newData,
+          totalDocs:results.totalDocs,
+          limit:results.limit,
+          page:results.page,
+          totalPages:results.totalPages,
+          pagingCounter:results.pagingCounter,
+          hasPrevPage:results.hasPrevPage,
+          hasNextPage:results.hasNextPage,
+          prevPage:results.prevPage,
+          nextPage:results.nextPage
+        }
+        res.send(dataReturn);
+      }).catch(function(err){
+        res.send(err);
+      });
   }
+
+  deleteChampAvecCategorie = async(req,res)=>{
+	Champ.deleteOne({idCategorie:req.params.id}, (err, champ) => {
+    if (err) {
+	 res.send(err);
+    }
+    res.json({ message: 'deleted' });
+	});
+  }
+
 
   module.exports = {
     getChamps,
@@ -104,5 +196,7 @@ function updateChamp(req, res) {
     updateChamp,
     deleteChamp,
     getChampByIdCategorie,
-    getChampParCategorie
+    getChampParCategorie,
+	  deleteChampAvecCategorie,
+    getChampByIdAsync
   };
