@@ -12,6 +12,9 @@ import {LoggingService} from '../../clients/logging.service';
 import { ClientService } from '../dashboard/client.service';
 import { Client } from '../dashboard/client.model';
 import { ToastrService } from 'ngx-toastr';
+import { MouvementJeton,MouvementJetonModel } from '../tables/mouvementjeton.model';
+import { MouvementjetonService } from '../tables/mouvementjeton.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-foot',
@@ -26,9 +29,14 @@ export class  ChangeComponent implements OnInit {
   public jeton: AbstractControl;
   public numerosdecompte: AbstractControl;
   public password: AbstractControl;
+  public type: AbstractControl;
   public modalRef: NgbModalRef;
   public form:FormGroup;
   nombrejeton:Number;
+  myDate = new Date();
+  date:string;
+  messageerreur:string;
+  messagesuccess:string;
   
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -36,20 +44,27 @@ export class  ChangeComponent implements OnInit {
     });
     this.getDetailPariSport(this.id);
     var currentClients = this.authenticationService.currentClientsValue;
-    //this.nombrejeton = currentClients.jetons;
-    this.getJetonClient();
+    if(currentClients){
+      this.getJetonClient();
+    }else{
+      this.router.navigate(['/login']);
+    }
   }
 
   constructor(private pariSportService: ParisportService, fb: FormBuilder, private route: ActivatedRoute,
-    private router: Router,public modalService: NgbModal,public service: ChangeService,public serviceclient: ClientService,private authenticationService: LoggingService){
+    private router: Router,public modalService: NgbModal,public service: ChangeService,public serviceclient: ClientService,
+    private authenticationService: LoggingService,public serviceMouvementJeton: MouvementjetonService,private datePipe: DatePipe){
       this.form = fb.group({
         'jeton': ['', Validators.required],
         'numerosdecompte': ['', Validators.required],
-        'password': ['', [Validators.required]]
+        'password': ['', [Validators.required]],
+        'type':['']
     });
       this.jeton = this.form.controls['jeton'];
       this.numerosdecompte = this.form.controls['numerosdecompte'];
-        this.password = this.form.controls['password'];
+      this.password = this.form.controls['password'];
+      this.type = this.form.controls['type'];
+      this.date = this.datePipe.transform(this.myDate, 'dd/MM/yyyy');
     }
 
   getDetailPariSport(arg:String) {
@@ -79,10 +94,11 @@ export class  ChangeComponent implements OnInit {
       var somme= this.jeton.value * 100;
       let newclient= new Client();
       var currentClients = this.authenticationService.currentClientsValue;
-      newclient.jetons = this.nombrejeton + this.jeton.value;
       newclient._id = currentClients.id;
       
-      this.service.debitmouvementbancaire(somme,this.password.value, this.numerosdecompte.value,'DEBIT')
+      if(this.type.value == 'Achat'){
+        newclient.jetons = this.nombrejeton + this.jeton.value;
+        this.service.debitmouvementbancaire(somme,this.password.value, this.numerosdecompte.value,'DEBIT')
           .pipe(first())
           .subscribe(
               data => {
@@ -91,17 +107,73 @@ export class  ChangeComponent implements OnInit {
                   .pipe(first())
                   .subscribe(
                       data => {
-                          console.log('control' + data);
-                          this.modalService.dismissAll('Dismissed after saving data');
-                          this.router.navigate(['/']);
+                        let newMouvementJeton= new MouvementJeton();
+                        newMouvementJeton.idClient=currentClients.id;
+                        newMouvementJeton.typeMouvement="Achat";
+                        newMouvementJeton.jeton=this.jeton.value;
+                        newMouvementJeton.dateMouvement=this.date;
+                        this.serviceMouvementJeton.insertMouvementJeton(newMouvementJeton)
+                        .pipe(first())
+                        .subscribe(
+                            data => {
+                                console.log('Insert success');
+                                this.messagesuccess="Achat de jeton réussi.";
+                                this.ngOnInit();
+                          },
+                          error => {
+                            this.messageerreur="Veullez verifier vos informations";
+                            this.ngOnInit();
+                        });
                       },
                       error => {
-                          console.log(">>>>>>>>Manao erreur update");
+                        this.messageerreur="Veullez verifier vos informations";
+                        this.ngOnInit();
                       });
               },
               error => {
-                  console.log(">>>>>>>>Manao erreur");
+                this.messageerreur="Veullez verifier vos informations";
+                this.ngOnInit();
              });
+      }else{
+        let nbr:any = this.nombrejeton;
+        newclient.jetons = nbr - this.jeton.value;
+        this.service.debitmouvementbancaire(somme,this.password.value, this.numerosdecompte.value,'CREDIT')
+          .pipe(first())
+          .subscribe(
+              data => {
+                  console.log('control' + data);
+                  this.serviceclient.updateJeton(newclient)
+                  .pipe(first())
+                  .subscribe(
+                      data => {
+                            let newMouvementJeton= new MouvementJeton();
+                            newMouvementJeton.idClient=currentClients.id;
+                            newMouvementJeton.typeMouvement="Vente";
+                            newMouvementJeton.jeton=this.jeton.value;
+                            newMouvementJeton.dateMouvement=this.date;
+                            this.serviceMouvementJeton.insertMouvementJeton(newMouvementJeton)
+                            .pipe(first())
+                            .subscribe(
+                                data => {
+                                  this.messagesuccess="Vente de jeton réussi.";
+                                  this.ngOnInit();
+                              },
+                              error => {
+                                this.messageerreur="Veullez verifier vos informations";
+                                this.ngOnInit();
+                            });
+                      },
+                      error => {
+                        this.messageerreur="Veullez verifier vos informations";
+                        this.ngOnInit();
+                      });
+              },
+              error => {
+                  this.messageerreur="Veullez verifier vos informations";
+                  this.ngOnInit();
+             });
+      }
+      
   }
 }
 

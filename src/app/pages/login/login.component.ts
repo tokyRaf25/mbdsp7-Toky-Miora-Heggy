@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit{
     public form: FormGroup;
     public name: AbstractControl;
     public password: AbstractControl;
+    messageerreur:string;
 
     constructor( router: Router, fb: FormBuilder, public service: LoggingService) {
         this.service.logout();
@@ -41,7 +42,8 @@ export class LoginComponent implements OnInit{
                         this.router.navigate(['/']);
                     },
                     error => {
-                        //this.toastr.error('Email ou mot de passe incorrecte', 'Erreur');
+                        this.messageerreur="Email ou mot de passe incorrecte";
+                        this.ngOnInit();
                     });
         }
     }

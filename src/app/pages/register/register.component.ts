@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   public password: AbstractControl;
   public modalRef: NgbModalRef;
   public form:FormGroup;
+  messageerreur:string;
   constructor(private pariSportService: ParisportService, fb: FormBuilder, private route: ActivatedRoute,
     private router: Router,public modalService: NgbModal,public serviceclient: ClientService, public service: LoggingService){
       this.form = fb.group({
@@ -62,7 +63,8 @@ export class RegisterComponent implements OnInit {
                     });
               },
               error => {
-                  console.log(">>>>>>>>Manao erreur");
+                this.messageerreur="Verifier vos informations";
+                this.ngOnInit();
              });
   }
 }
