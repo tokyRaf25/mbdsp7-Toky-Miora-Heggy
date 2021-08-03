@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class ChangeService {
 
-  uri = "http://localhost:8080/Api";
+  uri = "https://grailsapiapp.herokuapp.com";
   httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
   };

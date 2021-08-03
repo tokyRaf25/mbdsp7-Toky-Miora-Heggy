@@ -7,7 +7,7 @@ import { ResultatsPredict } from './resultats-predict.model';
   providedIn: 'root'
 })
 export class ResultatsPredictService {
-  uri = "http://localhost:4000/api";
+  uri = "https://apinodeapp.herokuapp.com/api";
   constructor( private http:HttpClient) { }
 
   addParie(resultats_predit:ResultatsPredict):Observable<any> {

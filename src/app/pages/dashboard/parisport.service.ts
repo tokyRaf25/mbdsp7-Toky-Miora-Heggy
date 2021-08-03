@@ -6,7 +6,7 @@ import { HttpClient,HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class ParisportService {
-  uri = "http://localhost:4000/api";
+  uri = "https://apinodeapp.herokuapp.com/api";
   httpOptions = {
 	headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
   };

@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class MouvementjetonService {
 
-  uri = "http://localhost:4000/api";
+  uri = "https://apinodeapp.herokuapp.com/api";
 
   constructor( private http:HttpClient) { }
 

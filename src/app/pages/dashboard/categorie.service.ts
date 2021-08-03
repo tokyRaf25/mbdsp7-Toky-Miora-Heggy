@@ -6,7 +6,7 @@ import { HttpClient,HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class CategorieService {
-  uri = "http://localhost:4000/api";
+  uri = "https://apinodeapp.herokuapp.com//api";
 
   constructor( private http:HttpClient) { }
 

@@ -7,7 +7,7 @@ import { HttpClient,HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class ChampService {
-  uri = "http://localhost:4000/api";
+  uri = "https://apinodeapp.herokuapp.com/api";
   constructor(private http:HttpClient) { }
 
   getChamp(id:String):Observable<Champ[]> {
