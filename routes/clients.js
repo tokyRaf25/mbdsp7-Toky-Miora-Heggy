@@ -119,6 +119,76 @@ deleteClient =  async(req,res) =>{
 	});
 }
 
+//Heggy Update information client (PUT)
+function updateClientInformation(req, res) {
+  console.log("UPDATE client : ");
+  console.log(req.body);
+  Client.findByIdAndUpdate(
+    req.body._id,
+    req.body,
+    { new: true },
+    (err, client) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        res.json({ message: "updated" });
+      }
+    }
+  );
+}
+
+//update Client password
+function updateClientPassword(req, res) {
+  var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+  req.body.password = hashedPassword;
+  console.log(req.body);
+  Client .findByIdAndUpdate(
+    req.body._id,
+    req.body,
+    { new: true },
+    (err, client ) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        res.json({ message: "updated" });
+      }
+    }
+  );
+}
+
+//Récupérer jeton client par son id (GET)
+function getClientJeton(req, res) {
+    console.log("get jeton client by id "+req.params.id)
+    let clientId = req.params.id;
+  
+    Client.findOne({ _id: clientId }, (err, client) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(client);
+    });
+}
+
+// Update jeton client (PUT)
+function updateJeton(req, res) {
+    console.log("UPDATE jeton : ");
+    console.log(req.body);
+    Client.findByIdAndUpdate(
+      req.body._id,
+      req.body,
+      { new: true },
+      (err, client) => {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          res.json({ message: "updated" });
+        }
+      }
+    );
+  }
 
 module.exports = {
     authenticate,
@@ -128,5 +198,9 @@ module.exports = {
     listClient,
     deleteClient,
     updateJetonsClient,
-    getJetonClient
+    getJetonClient,
+    getClientJeton,
+    updateClientInformation,
+    updateClientPassword,
+    updateJeton
   }

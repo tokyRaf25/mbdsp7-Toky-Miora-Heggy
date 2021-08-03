@@ -15,6 +15,7 @@ const resultatPredit = require('./routes/resultats_predits');
 const pointDeVente = require('./routes/point_de_ventes');
 const client = require('./routes/clients');
 const Admin = require('./routes/administrateurs');
+let MouvementJeton = require('./routes/historique_mouvement_jeton');
 const jwt = require('./_helpers/jwt');
 const errorHandler = require('./_helpers/error-handler');
 
@@ -92,6 +93,24 @@ app.route(prefix + '/champParCat/:id')
   .get(champ.getChampByIdCategorie)
   .delete(champ.deleteChamp)
 /******************************************************************* */  
+
+/************************Routes API Client************************************** */
+app.route(prefix + '/updateJeton')
+.post(client.updateJeton)
+
+app.route(prefix + '/updateClient')
+.post(client.updateClientInformation)
+
+app.route(prefix + '/updateClientPassword')
+.post(client.updateClientPassword)
+
+app.route(prefix + '/getJeton/:id')
+.get(client.getClientJeton)
+
+/************************Routes API Mouvement Jeton ************************************** */
+app.route(prefix + '/mouvementJeton')
+  .get(MouvementJeton.getMouvementJeton)
+  .post(MouvementJeton.insertMouvementJeton)
 
 /************************Routes API PariSport************************************** */
 /*app.route(prefix + '/paris')
@@ -229,7 +248,7 @@ app.route(prefix + '/point_de_vente/:id')
 /******************************************************************* */  
 
 
-app.listen(4000, function () {
-  console.log("Application d'exemple écoutant sur le port 4000 !");
+app.listen(process.env.PORT || 5000, function () {
+  console.log("Application d'exemple écoutant sur le port d'Heroku !");
 });
 
