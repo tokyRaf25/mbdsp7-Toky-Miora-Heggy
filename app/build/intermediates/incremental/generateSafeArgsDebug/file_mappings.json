@@ -1,0 +1,1 @@
+[{"navFile":"src\\main\\res\\navigation\\mobile_navigation.xml","javaFiles":["com.example.parienligne.vues.ui.home.HomeFragmentDirections","com.example.parienligne.vues.ui.mes_paris.MesParisFragmentDirections","com.example.parienligne.vues.ui.historique.HistoriqueFragmentArgs","com.example.parienligne.vues.ui.parier.PariFragmentArgs"]}]

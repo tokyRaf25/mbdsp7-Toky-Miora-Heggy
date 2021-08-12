@@ -1,0 +1,227 @@
+com/example/parienligne/models/PariAllInfo.java
+ com.example.parienligne.models.PariAllInfo
+com/example/parienligne/vues/adapter/CategorieItemAdapter.java
+ com.example.parienligne.vues.adapter.CategorieItemAdapter
+ com.example.parienligne.vues.adapter.CategorieItemAdapter$1
+ com.example.parienligne.vues.adapter.CategorieItemAdapter$2
+ com.example.parienligne.vues.adapter.CategorieItemAdapter$3
+ com.example.parienligne.vues.adapter.CategorieItemAdapter$ItemViewHolder
+com/example/parienligne/databinding/RowCategorieBinding.java
+ com.example.parienligne.databinding.RowCategorieBinding
+com/example/parienligne/databinding/ContentAccueilBinding.java
+ com.example.parienligne.databinding.ContentAccueilBinding
+com/example/parienligne/vues/ui/compte/CompteFragment.java
+ com.example.parienligne.vues.ui.compte.CompteFragment
+ com.example.parienligne.vues.ui.compte.CompteFragment$1
+com/example/parienligne/models/ChampCategorieSubItem.java
+ com.example.parienligne.models.ChampCategorieSubItem
+com/example/parienligne/vues/AccueilActivity.java
+ com.example.parienligne.vues.AccueilActivity
+ com.example.parienligne.vues.AccueilActivity$1
+ com.example.parienligne.vues.AccueilActivity$2
+ com.example.parienligne.vues.AccueilActivity$3
+com/example/parienligne/vues/ui/home/HomeFragmentDirections.java
+ com.example.parienligne.vues.ui.home.HomeFragmentDirections
+ com.example.parienligne.vues.ui.home.HomeFragmentDirections$1
+ com.example.parienligne.vues.ui.home.HomeFragmentDirections$ActionNavHomeToNavPari
+com/example/parienligne/vues/CompteActivity.java
+ com.example.parienligne.vues.CompteActivity
+com/example/parienligne/vues/ScannerActivity.java
+ com.example.parienligne.vues.ScannerActivity
+ com.example.parienligne.vues.ScannerActivity$1
+ com.example.parienligne.vues.ScannerActivity$1$1
+ com.example.parienligne.vues.ScannerActivity$2
+ com.example.parienligne.vues.ScannerActivity$3
+com/example/parienligne/databinding/RowChampBinding.java
+ com.example.parienligne.databinding.RowChampBinding
+com/example/parienligne/databinding/FragmentHistoriqueBinding.java
+ com.example.parienligne.databinding.FragmentHistoriqueBinding
+com/example/parienligne/vues/ui/home/HomeFragment.java
+ com.example.parienligne.vues.ui.home.HomeFragment
+ com.example.parienligne.vues.ui.home.HomeFragment$1
+ com.example.parienligne.vues.ui.home.HomeFragment$1$1
+ com.example.parienligne.vues.ui.home.HomeFragment$MyAdapter
+com/example/parienligne/databinding/ActivityMainBinding.java
+ com.example.parienligne.databinding.ActivityMainBinding
+com/example/parienligne/databinding/ActivityScannerBinding.java
+ com.example.parienligne.databinding.ActivityScannerBinding
+com/example/parienligne/services/IServicePointDeVente.java
+ com.example.parienligne.services.IServicePointDeVente
+com/example/parienligne/databinding/FragmentMappingBinding.java
+ com.example.parienligne.databinding.FragmentMappingBinding
+com/example/parienligne/models/modelTest/SubItem.java
+ com.example.parienligne.models.modelTest.SubItem
+com/example/parienligne/models/TypePari.java
+ com.example.parienligne.models.TypePari
+com/example/parienligne/vues/adapter/ChampCategorieSubItemAdapter.java
+ com.example.parienligne.vues.adapter.ChampCategorieSubItemAdapter
+ com.example.parienligne.vues.adapter.ChampCategorieSubItemAdapter$OnItemClickListener
+ com.example.parienligne.vues.adapter.ChampCategorieSubItemAdapter$SubItemViewHolder
+ com.example.parienligne.vues.adapter.ChampCategorieSubItemAdapter$SubItemViewHolder$1
+com/example/parienligne/vues/LoginActivity.java
+ com.example.parienligne.vues.LoginActivity
+ com.example.parienligne.vues.LoginActivity$1
+ com.example.parienligne.vues.LoginActivity$2
+ com.example.parienligne.vues.LoginActivity$3
+ com.example.parienligne.vues.LoginActivity$4
+ com.example.parienligne.vues.LoginActivity$5
+ com.example.parienligne.vues.LoginActivity$5$1
+com/example/parienligne/vues/ui/home/HomeViewModel.java
+ com.example.parienligne.vues.ui.home.HomeViewModel
+com/example/parienligne/outils/LoadingDialog.java
+ com.example.parienligne.outils.LoadingDialog
+com/example/parienligne/vues/ui/parier/PariFragmentArgs.java
+ com.example.parienligne.vues.ui.parier.PariFragmentArgs
+ com.example.parienligne.vues.ui.parier.PariFragmentArgs$1
+ com.example.parienligne.vues.ui.parier.PariFragmentArgs$Builder
+com/example/parienligne/services/IServiceClient.java
+ com.example.parienligne.services.IServiceClient
+com/example/parienligne/services/IServiceResultatPredit.java
+ com.example.parienligne.services.IServiceResultatPredit
+com/example/parienligne/vues/adapter/PanierItemAdapter.java
+ com.example.parienligne.vues.adapter.PanierItemAdapter
+ com.example.parienligne.vues.adapter.PanierItemAdapter$1
+ com.example.parienligne.vues.adapter.PanierItemAdapter$2
+ com.example.parienligne.vues.adapter.PanierItemAdapter$3
+ com.example.parienligne.vues.adapter.PanierItemAdapter$4
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$1
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$2
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$3
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$4
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$5
+ com.example.parienligne.vues.adapter.PanierItemAdapter$OnItemClickListener
+com/example/parienligne/models/UserQrCode.java
+ com.example.parienligne.models.UserQrCode
+com/example/parienligne/databinding/CustomDialogBinding.java
+ com.example.parienligne.databinding.CustomDialogBinding
+com/example/parienligne/vues/ui/historique/HistoriqueFragmentArgs.java
+ com.example.parienligne.vues.ui.historique.HistoriqueFragmentArgs
+ com.example.parienligne.vues.ui.historique.HistoriqueFragmentArgs$1
+ com.example.parienligne.vues.ui.historique.HistoriqueFragmentArgs$Builder
+com/example/parienligne/databinding/RowHistoriqueBinding.java
+ com.example.parienligne.databinding.RowHistoriqueBinding
+com/example/parienligne/models/ItemCategorie.java
+ com.example.parienligne.models.ItemCategorie
+com/example/parienligne/vues/MapsFragment.java
+ com.example.parienligne.vues.MapsFragment
+ com.example.parienligne.vues.MapsFragment$1
+ com.example.parienligne.vues.MapsFragment$2
+com/example/parienligne/models/ResponsePost.java
+ com.example.parienligne.models.ResponsePost
+com/example/parienligne/vues/ui/historique/HistoriqueFragment.java
+ com.example.parienligne.vues.ui.historique.HistoriqueFragment
+ com.example.parienligne.vues.ui.historique.HistoriqueFragment$1
+ com.example.parienligne.vues.ui.historique.HistoriqueFragment$MyAdapter
+com/example/parienligne/models/PariCategorieChamp.java
+ com.example.parienligne.models.PariCategorieChamp
+ com.example.parienligne.models.PariCategorieChamp$Champ
+ com.example.parienligne.models.PariCategorieChamp$Doc_pari_categorie_champ
+com/example/parienligne/vues/ui/map/MapFragment.java
+ com.example.parienligne.vues.ui.map.MapFragment
+com/example/parienligne/vues/ui/parier/PariViewModel.java
+ com.example.parienligne.vues.ui.parier.PariViewModel
+com/example/parienligne/databinding/FragmentCompteBinding.java
+ com.example.parienligne.databinding.FragmentCompteBinding
+com/example/parienligne/databinding/FragmentMapBinding.java
+ com.example.parienligne.databinding.FragmentMapBinding
+com/example/parienligne/vues/ui/mes_paris/MesParisViewModel.java
+ com.example.parienligne.vues.ui.mes_paris.MesParisViewModel
+com/example/parienligne/models/Categorie.java
+ com.example.parienligne.models.Categorie
+ com.example.parienligne.models.Categorie$Doc_cat
+com/example/parienligne/models/Resultats_predit.java
+ com.example.parienligne.models.Resultats_predit
+com/example/parienligne/vues/ui/mes_paris/MesParisFragment.java
+ com.example.parienligne.vues.ui.mes_paris.MesParisFragment
+ com.example.parienligne.vues.ui.mes_paris.MesParisFragment$1
+ com.example.parienligne.vues.ui.mes_paris.MesParisFragment$1$1
+ com.example.parienligne.vues.ui.mes_paris.MesParisFragment$2
+ com.example.parienligne.vues.ui.mes_paris.MesParisFragment$2$1
+ com.example.parienligne.vues.ui.mes_paris.MesParisFragment$MyAdapter1
+com/example/parienligne/outils/PermissionUtils.java
+ com.example.parienligne.outils.PermissionUtils
+ com.example.parienligne.outils.PermissionUtils$PermissionDeniedDialog
+ com.example.parienligne.outils.PermissionUtils$RationaleDialog
+ com.example.parienligne.outils.PermissionUtils$RationaleDialog$1
+com/example/parienligne/databinding/NavHeaderAccueilBinding.java
+ com.example.parienligne.databinding.NavHeaderAccueilBinding
+com/example/parienligne/models/ClientResponse.java
+ com.example.parienligne.models.ClientResponse
+com/example/parienligne/models/modelTest/Item.java
+ com.example.parienligne.models.modelTest.Item
+com/example/parienligne/vues/ui/mes_paris/MesParisFragmentDirections.java
+ com.example.parienligne.vues.ui.mes_paris.MesParisFragmentDirections
+ com.example.parienligne.vues.ui.mes_paris.MesParisFragmentDirections$1
+ com.example.parienligne.vues.ui.mes_paris.MesParisFragmentDirections$ActionNavMesParisToNavHistorique
+com/example/parienligne/models/Historique.java
+ com.example.parienligne.models.Historique
+com/example/parienligne/services/RetrofitClient.java
+ com.example.parienligne.services.RetrofitClient
+com/example/parienligne/databinding/RowBinding.java
+ com.example.parienligne.databinding.RowBinding
+com/example/parienligne/outils/SessionSharedPreferences.java
+ com.example.parienligne.outils.SessionSharedPreferences
+com/example/parienligne/databinding/FragmentMesParisBinding.java
+ com.example.parienligne.databinding.FragmentMesParisBinding
+com/example/parienligne/models/Doc_Resultats_predits.java
+ com.example.parienligne.models.Doc_Resultats_predits
+com/example/parienligne/databinding/AppBarAccueilBinding.java
+ com.example.parienligne.databinding.AppBarAccueilBinding
+com/example/parienligne/models/PariSportDoc.java
+ com.example.parienligne.models.PariSportDoc
+com/example/parienligne/models/Cote.java
+ com.example.parienligne.models.Cote
+com/example/parienligne/models/ClientRequest.java
+ com.example.parienligne.models.ClientRequest
+com/example/parienligne/models/PointDeVente.java
+ com.example.parienligne.models.PointDeVente
+ com.example.parienligne.models.PointDeVente$Doc_point_de_dente
+com/example/parienligne/vues/MainActivity.java
+ com.example.parienligne.vues.MainActivity
+ com.example.parienligne.vues.MainActivity$1
+com/example/parienligne/BuildConfig.java
+ com.example.parienligne.BuildConfig
+com/example/parienligne/models/PariSport.java
+ com.example.parienligne.models.PariSport
+ com.example.parienligne.models.PariSport$Doc_pari
+com/example/parienligne/models/Doc_pari_all_info.java
+ com.example.parienligne.models.Doc_pari_all_info
+ com.example.parienligne.models.Doc_pari_all_info$Categorie_champ
+ com.example.parienligne.models.Doc_pari_all_info$Champ
+com/example/parienligne/models/PanierItem.java
+ com.example.parienligne.models.PanierItem
+com/example/parienligne/services/IServicePariSport.java
+ com.example.parienligne.services.IServicePariSport
+com/example/parienligne/databinding/ActivityCompteBinding.java
+ com.example.parienligne.databinding.ActivityCompteBinding
+com/example/parienligne/vues/ui/parier/PariFragment.java
+ com.example.parienligne.vues.ui.parier.PariFragment
+ com.example.parienligne.vues.ui.parier.PariFragment$1
+ com.example.parienligne.vues.ui.parier.PariFragment$2
+com/example/parienligne/databinding/FragmentPariBinding.java
+ com.example.parienligne.databinding.FragmentPariBinding
+com/example/parienligne/models/ChampParCategorie.java
+ com.example.parienligne.models.ChampParCategorie
+com/example/parienligne/models/Equipe.java
+ com.example.parienligne.models.Equipe
+com/example/parienligne/vues/ui/compte/CompteViewModel.java
+ com.example.parienligne.vues.ui.compte.CompteViewModel
+com/example/parienligne/services/IServicePariCategorieChamp.java
+ com.example.parienligne.services.IServicePariCategorieChamp
+com/example/parienligne/vues/ui/historique/HistoriqueViewModel.java
+ com.example.parienligne.vues.ui.historique.HistoriqueViewModel
+com/example/parienligne/vues/ui/map/MapViewModel.java
+ com.example.parienligne.vues.ui.map.MapViewModel
+com/example/parienligne/databinding/FragmentHomeBinding.java
+ com.example.parienligne.databinding.FragmentHomeBinding
+com/example/parienligne/databinding/ActivityLoginBinding.java
+ com.example.parienligne.databinding.ActivityLoginBinding
+com/example/parienligne/models/InfoClient.java
+ com.example.parienligne.models.InfoClient
+com/example/parienligne/databinding/RowAddPanierBinding.java
+ com.example.parienligne.databinding.RowAddPanierBinding
+com/example/parienligne/services/IServiceCategorie.java
+ com.example.parienligne.services.IServiceCategorie
+com/example/parienligne/databinding/ActivityAccueilBinding.java
+ com.example.parienligne.databinding.ActivityAccueilBinding

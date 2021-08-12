@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vues.LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@drawable/header"
+        android:id="@+id/imageHeader"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageHeader"
+        android:background="@drawable/header_layer"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center_vertical"
+        android:layout_marginStart="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageHeader"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_app"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tag_line"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:includeFontPadding="false"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:id="@+id/viewSupporter"
+        app:layout_constraintBottom_toBottomOf="@+id/imageHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="30dp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewSupporter"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:background="@drawable/login_background">
+
+       <TextView
+           android:id="@+id/textWelcome"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="@string/welcome"
+           android:gravity="center"
+           android:textSize="20sp"
+           android:textStyle="bold"
+           android:layout_marginTop="25dp"
+           android:layout_marginStart="10dp"
+           android:layout_marginEnd="10dp"
+           app:layout_constraintTop_toTopOf="parent"
+           android:textColor="@color/colorTextPrimary"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:text="Miora"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputEmail"
+            app:layout_constraintTop_toBottomOf="@id/textWelcome"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@null"
+            android:hint="@string/email"
+            android:imeOptions="actionNext"
+            android:paddingStart="60dp"
+            android:paddingEnd="10dp"
+            android:textSize="15sp"
+            tools:ignore="AutoFill"
+            />
+        
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/viewDividerForEmail"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintTop_toBottomOf="@id/inputEmail"
+            android:background="@color/colorTextHint"
+            />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_email"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/inputEmail"
+            app:layout_constraintStart_toStartOf="@id/inputEmail"
+            app:tint="@color/colorTextHint"/>
+
+        <EditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:text="Mioraiany"
+            android:layout_marginEnd="10dp"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:paddingStart="60dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="15sp"
+            tools:ignore="Autofill"
+            android:hint="@string/password"
+            android:background="@null"
+            app:layout_constraintTop_toBottomOf="@id/viewDividerForEmail"
+            />
+
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="@color/colorTextHint"
+           app:layout_constraintTop_toBottomOf="@id/inputPassword"
+           android:id="@+id/viewDividerForPassword"
+           android:layout_marginStart="10dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_lock"
+            app:layout_constraintBottom_toBottomOf="@id/inputPassword"
+            app:layout_constraintStart_toStartOf="@id/inputPassword"
+            app:tint="@color/colorTextHint"
+            android:layout_marginStart="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primary_button_background"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/login"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/viewDividerForPassword"/>
+
+        <TextView
+            android:id="@+id/txt_inscription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:text="@string/website_address"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/buttonLogin"
+            />
+
+        <!--<TextView
+            android:id="@+id/txt_siteweb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:textColor="#3F51B5"
+            android:text="www.facebook.com"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/txt_inscription"
+            />-->
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_qrcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primary_button_background"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="10dp"
+            android:text="Se connecter avec QRCODE"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/txt_inscription"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonCreateAccount"
+            android:background="@drawable/secondary_button_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_qrcode"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="Accéder au module MAP"
+            android:textStyle="bold"
+            android:textColor="@color/colorRed"
+            android:textAllCaps="false"
+            android:textSize="13sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
