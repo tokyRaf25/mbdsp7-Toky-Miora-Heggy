@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-small-v4\\values-small-v4.xml",
+            "outputFile": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-small-v4\\values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\rainl\\.gradle\\caches\\transforms-2\\files-2.1\\15e311936f9dda684f6a755929f1add5\\material-1.4.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\autres\\gradle-6.7.1\\caches\\transforms-2\\files-2.1\\15e311936f9dda684f6a755929f1add5\\material-1.4.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

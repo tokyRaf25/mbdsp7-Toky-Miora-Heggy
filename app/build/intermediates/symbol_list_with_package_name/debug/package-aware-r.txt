@@ -1157,6 +1157,7 @@ color foreground_material_light
 color grey_dialog_box
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color ic_launcher_background
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -1854,7 +1855,6 @@ drawable ic_history_dark
 drawable ic_home
 drawable ic_home_dark
 drawable ic_keyboard_black_24dp
-drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_lock
 drawable ic_login
@@ -2641,6 +2641,7 @@ layout text_view_without_line_height
 menu accueil
 menu activity_main_drawer
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 navigation mobile_navigation
 plurals mtrl_badge_content_description

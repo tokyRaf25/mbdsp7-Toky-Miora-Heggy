@@ -6,133 +6,132 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="23"
-8-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml
+8-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml
+9-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:5:5-67
-11-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:5:22-64
+11-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:5:22-64
 12    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-12-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:6:5-79
-12-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:6:22-76
+12-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:6:5-79
+12-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:6:22-76
 13    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-13-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:7:5-81
-13-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:7:22-78
+13-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:7:5-81
+13-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:7:22-78
 14    <uses-permission android:name="android.permission.CAMERA" />
-14-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:8:5-65
-14-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:8:22-62
+14-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:8:5-65
+14-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:8:22-62
 15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-15-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:9:5-80
-15-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:9:22-77
+15-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:9:5-80
+15-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:9:22-77
 16
 17    <!-- Include required permissions for Google Maps API to run. -->
 18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-18-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:23:5-79
-18-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:23:22-76
+18-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:23:5-79
+18-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:23:22-76
 19
 20    <uses-feature
-20-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:26:5-28:35
+20-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:26:5-28:35
 21        android:glEsVersion="0x00020000"
-21-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:27:9-41
+21-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:27:9-41
 22        android:required="true" />
-22-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:28:9-32
+22-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:28:9-32
 23
 24    <queries>
-24-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:30:5-34:15
+24-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:30:5-34:15
 25
 26        <!-- Needs to be explicitly declared on Android R+ -->
 27        <package android:name="com.google.android.apps.maps" />
-27-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:33:9-64
-27-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:33:18-61
+27-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:33:9-64
+27-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:33:18-61
 28    </queries>
 29
 30    <application
-30-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:11:5-36:19
+30-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:11:5-36:19
 31        android:allowBackup="true"
-31-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:12:9-35
+31-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:12:9-35
 32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-32-->[androidx.core:core:1.5.0] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\6aa83178dbbdd42b98a883eb47f8d06c\core-1.5.0\AndroidManifest.xml:24:18-86
+32-->[androidx.core:core:1.5.0] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\6aa83178dbbdd42b98a883eb47f8d06c\core-1.5.0\AndroidManifest.xml:24:18-86
 33        android:debuggable="true"
 34        android:extractNativeLibs="false"
 35        android:icon="@mipmap/ic_launcher"
-35-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:13:9-43
+35-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:13:9-43
 36        android:label="@string/app_name"
-36-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:14:9-41
+36-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:14:9-41
 37        android:roundIcon="@mipmap/ic_launcher_round"
-37-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:15:9-54
+37-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:15:9-54
 38        android:supportsRtl="true"
-38-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:16:9-35
-39        android:testOnly="true"
-40        android:theme="@style/Theme.PariEnLigne"
-40-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:17:9-49
-41        android:usesCleartextTraffic="true" >
-41-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:18:9-44
-42        <activity android:name="com.example.parienligne.vues.ScannerActivity" />
-42-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:19:9-58
-42-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:19:19-55
-43
-44        <meta-data
-44-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:21:9-23:55
-45            android:name="com.google.android.geo.API_KEY"
-45-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:22:13-58
-46            android:value="@string/google_maps_key" />
-46-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:23:13-52
-47
-48        <activity android:name="com.example.parienligne.vues.AccueilActivity" />
-48-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:25:9-58
-48-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:25:19-55
-49        <activity android:name="com.example.parienligne.vues.CompteActivity" />
-49-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:26:9-57
-49-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:26:19-54
-50        <activity android:name="com.example.parienligne.vues.LoginActivity" />
-50-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:27:9-56
-50-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:27:19-53
-51        <activity android:name="com.example.parienligne.vues.MapsFragment" />
-51-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:28:9-55
-51-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:28:19-52
-52        <activity android:name="com.example.parienligne.vues.MainActivity" >
-52-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:29:9-35:20
-52-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:29:19-52
-53            <intent-filter>
-53-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:30:13-34:29
-54                <action android:name="android.intent.action.MAIN" />
-54-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:31:17-69
-54-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:31:25-66
-55
-56                <category android:name="android.intent.category.LAUNCHER" />
-56-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:33:17-77
-56-->D:\ProjetTPT\AndroidFinal\mbdsp7-Toky-Miora-Heggy\app\src\main\AndroidManifest.xml:33:27-74
-57            </intent-filter>
-58        </activity>
-59        <activity
-59-->[com.karumi:dexter:6.2.2] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\dab816e40afbe14e19e2cee8aab68ae4\dexter-6.2.2\AndroidManifest.xml:27:9-29:72
-60            android:name="com.karumi.dexter.DexterActivity"
-60-->[com.karumi:dexter:6.2.2] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\dab816e40afbe14e19e2cee8aab68ae4\dexter-6.2.2\AndroidManifest.xml:28:13-60
-61            android:theme="@style/Dexter.Internal.Theme.Transparent" /> <!-- Needs to be explicitly declared on P+ -->
-61-->[com.karumi:dexter:6.2.2] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\dab816e40afbe14e19e2cee8aab68ae4\dexter-6.2.2\AndroidManifest.xml:29:13-69
-62        <uses-library
-62-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:39:9-41:40
-63            android:name="org.apache.http.legacy"
-63-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:40:13-50
-64            android:required="false" />
-64-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:41:13-37
-65
-66        <activity
-66-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\468d7c17d076ea0743763b9c8c5812ec\play-services-base-17.5.0\AndroidManifest.xml:23:9-26:75
-67            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-67-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\468d7c17d076ea0743763b9c8c5812ec\play-services-base-17.5.0\AndroidManifest.xml:24:13-79
-68            android:exported="false"
-68-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\468d7c17d076ea0743763b9c8c5812ec\play-services-base-17.5.0\AndroidManifest.xml:25:13-37
-69            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-69-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\468d7c17d076ea0743763b9c8c5812ec\play-services-base-17.5.0\AndroidManifest.xml:26:13-72
-70
-71        <meta-data
-71-->[com.google.android.gms:play-services-basement:17.5.0] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\77899a98992099982e9ee20ca5ee53ee\play-services-basement-17.5.0\AndroidManifest.xml:23:9-25:69
-72            android:name="com.google.android.gms.version"
-72-->[com.google.android.gms:play-services-basement:17.5.0] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\77899a98992099982e9ee20ca5ee53ee\play-services-basement-17.5.0\AndroidManifest.xml:24:13-58
-73            android:value="@integer/google_play_services_version" />
-73-->[com.google.android.gms:play-services-basement:17.5.0] C:\Users\rainl\.gradle\caches\transforms-2\files-2.1\77899a98992099982e9ee20ca5ee53ee\play-services-basement-17.5.0\AndroidManifest.xml:25:13-66
-74    </application>
-75
-76</manifest>
+38-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:16:9-35
+39        android:theme="@style/Theme.PariEnLigne"
+39-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:17:9-49
+40        android:usesCleartextTraffic="true" >
+40-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:18:9-44
+41        <activity android:name="com.example.parienligne.vues.ScannerActivity" />
+41-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:19:9-58
+41-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:19:19-55
+42
+43        <meta-data
+43-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:21:9-23:55
+44            android:name="com.google.android.geo.API_KEY"
+44-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:22:13-58
+45            android:value="@string/google_maps_key" />
+45-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:23:13-52
+46
+47        <activity android:name="com.example.parienligne.vues.AccueilActivity" />
+47-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:25:9-58
+47-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:25:19-55
+48        <activity android:name="com.example.parienligne.vues.CompteActivity" />
+48-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:26:9-57
+48-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:26:19-54
+49        <activity android:name="com.example.parienligne.vues.LoginActivity" />
+49-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:27:9-56
+49-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:27:19-53
+50        <activity android:name="com.example.parienligne.vues.MapsFragment" />
+50-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:28:9-55
+50-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:28:19-52
+51        <activity android:name="com.example.parienligne.vues.MainActivity" >
+51-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:29:9-35:20
+51-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:29:19-52
+52            <intent-filter>
+52-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:30:13-34:29
+53                <action android:name="android.intent.action.MAIN" />
+53-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:31:17-69
+53-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:31:25-66
+54
+55                <category android:name="android.intent.category.LAUNCHER" />
+55-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:33:17-77
+55-->C:\Users\rtoky\AndroidStudioProjects\projetAndroid\app\src\main\AndroidManifest.xml:33:27-74
+56            </intent-filter>
+57        </activity>
+58        <activity
+58-->[com.karumi:dexter:6.2.2] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\dab816e40afbe14e19e2cee8aab68ae4\dexter-6.2.2\AndroidManifest.xml:27:9-29:72
+59            android:name="com.karumi.dexter.DexterActivity"
+59-->[com.karumi:dexter:6.2.2] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\dab816e40afbe14e19e2cee8aab68ae4\dexter-6.2.2\AndroidManifest.xml:28:13-60
+60            android:theme="@style/Dexter.Internal.Theme.Transparent" /> <!-- Needs to be explicitly declared on P+ -->
+60-->[com.karumi:dexter:6.2.2] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\dab816e40afbe14e19e2cee8aab68ae4\dexter-6.2.2\AndroidManifest.xml:29:13-69
+61        <uses-library
+61-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:39:9-41:40
+62            android:name="org.apache.http.legacy"
+62-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:40:13-50
+63            android:required="false" />
+63-->[com.google.android.gms:play-services-maps:17.0.1] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\e7ed7ebac8556d4b677dc8c3e3f9d751\play-services-maps-17.0.1\AndroidManifest.xml:41:13-37
+64
+65        <activity
+65-->[com.google.android.gms:play-services-base:17.5.0] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\468d7c17d076ea0743763b9c8c5812ec\play-services-base-17.5.0\AndroidManifest.xml:23:9-26:75
+66            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+66-->[com.google.android.gms:play-services-base:17.5.0] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\468d7c17d076ea0743763b9c8c5812ec\play-services-base-17.5.0\AndroidManifest.xml:24:13-79
+67            android:exported="false"
+67-->[com.google.android.gms:play-services-base:17.5.0] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\468d7c17d076ea0743763b9c8c5812ec\play-services-base-17.5.0\AndroidManifest.xml:25:13-37
+68            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+68-->[com.google.android.gms:play-services-base:17.5.0] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\468d7c17d076ea0743763b9c8c5812ec\play-services-base-17.5.0\AndroidManifest.xml:26:13-72
+69
+70        <meta-data
+70-->[com.google.android.gms:play-services-basement:17.5.0] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\77899a98992099982e9ee20ca5ee53ee\play-services-basement-17.5.0\AndroidManifest.xml:23:9-25:69
+71            android:name="com.google.android.gms.version"
+71-->[com.google.android.gms:play-services-basement:17.5.0] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\77899a98992099982e9ee20ca5ee53ee\play-services-basement-17.5.0\AndroidManifest.xml:24:13-58
+72            android:value="@integer/google_play_services_version" />
+72-->[com.google.android.gms:play-services-basement:17.5.0] C:\autres\gradle-6.7.1\caches\transforms-2\files-2.1\77899a98992099982e9ee20ca5ee53ee\play-services-basement-17.5.0\AndroidManifest.xml:25:13-66
+73    </application>
+74
+75</manifest>

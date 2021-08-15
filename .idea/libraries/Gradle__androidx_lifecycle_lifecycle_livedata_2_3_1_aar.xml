@@ -5,16 +5,13 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ff6ba3688cf1534d98cdaec7cae839be/lifecycle-livedata-2.3.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f0ae7a2d4a99468d5f01c54b16d175ab/lifecycle-livedata-2.3.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ed7b71af9e4d8a97ef4b3af6002ac2d6/lifecycle-livedata-2.3.1/res" />
-      <root url="jar://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/ed7b71af9e4d8a97ef4b3af6002ac2d6/lifecycle-livedata-2.3.1/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/ed7b71af9e4d8a97ef4b3af6002ac2d6/lifecycle-livedata-2.3.1/res" />
-      <root url="file://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/ed7b71af9e4d8a97ef4b3af6002ac2d6/lifecycle-livedata-2.3.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ed7b71af9e4d8a97ef4b3af6002ac2d6/lifecycle-livedata-2.3.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ed7b71af9e4d8a97ef4b3af6002ac2d6/lifecycle-livedata-2.3.1/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/ed7b71af9e4d8a97ef4b3af6002ac2d6/lifecycle-livedata-2.3.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/ed7b71af9e4d8a97ef4b3af6002ac2d6/lifecycle-livedata-2.3.1/res" />
+      <root url="file://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/ed7b71af9e4d8a97ef4b3af6002ac2d6/lifecycle-livedata-2.3.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-livedata/2.3.1/79c9b6bb8cb5d788988ae6a481f29c6692c3bdd2/lifecycle-livedata-2.3.1-sources.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-livedata/2.3.1/79c9b6bb8cb5d788988ae6a481f29c6692c3bdd2/lifecycle-livedata-2.3.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-livedata/2.3.1/79c9b6bb8cb5d788988ae6a481f29c6692c3bdd2/lifecycle-livedata-2.3.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -5,16 +5,13 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d7383a777df35e8f90a72033544a7af3/dynamicanimation-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f389e87e5262032d41cd974fcb20f317/dynamicanimation-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7a234a841c2fb901093eb3c1e0532bfe/dynamicanimation-1.0.0/res" />
-      <root url="file://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/7a234a841c2fb901093eb3c1e0532bfe/dynamicanimation-1.0.0/res" />
-      <root url="jar://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/7a234a841c2fb901093eb3c1e0532bfe/dynamicanimation-1.0.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/7a234a841c2fb901093eb3c1e0532bfe/dynamicanimation-1.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7a234a841c2fb901093eb3c1e0532bfe/dynamicanimation-1.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7a234a841c2fb901093eb3c1e0532bfe/dynamicanimation-1.0.0/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/7a234a841c2fb901093eb3c1e0532bfe/dynamicanimation-1.0.0/res" />
+      <root url="jar://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/7a234a841c2fb901093eb3c1e0532bfe/dynamicanimation-1.0.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/7a234a841c2fb901093eb3c1e0532bfe/dynamicanimation-1.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/modules-2/files-2.1/androidx.dynamicanimation/dynamicanimation/1.0.0/5c050e29af5033ff5e2d58ccf657ae92fdfbda4a/dynamicanimation-1.0.0-sources.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.dynamicanimation/dynamicanimation/1.0.0/5c050e29af5033ff5e2d58ccf657ae92fdfbda4a/dynamicanimation-1.0.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/modules-2/files-2.1/androidx.dynamicanimation/dynamicanimation/1.0.0/5c050e29af5033ff5e2d58ccf657ae92fdfbda4a/dynamicanimation-1.0.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

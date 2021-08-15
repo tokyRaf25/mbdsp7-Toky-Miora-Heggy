@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.parienligne.vues.AccueilActivity">
+    <item
+        android:id="@+id/action_accueil"
+        android:orderInCategory="100"
+        android:title="Accueil"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_deconnexion"
+        android:orderInCategory="100"
+        android:title="Déconnexion"
+        app:showAsAction="never" />
+</menu>

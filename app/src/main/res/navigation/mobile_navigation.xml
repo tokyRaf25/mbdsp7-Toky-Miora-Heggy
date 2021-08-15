@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.parienligne.vues.ui.home.HomeFragment"
+        android:label="@string/accueil"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_pari"
+            app:destination="@id/nav_pari" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_gallery"
+            app:destination="@id/nav_compte" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_map"
+            app:destination="@id/nav_map" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_mes_paris"
+            app:destination="@id/nav_mes_paris" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_compte"
+        android:name="com.example.parienligne.vues.ui.compte.CompteFragment"
+        android:label="@string/compte"
+        tools:layout="@layout/fragment_compte" />
+
+    <fragment
+        android:id="@+id/nav_mes_paris"
+        android:name="com.example.parienligne.vues.ui.mes_paris.MesParisFragment"
+        android:label="@string/mes_paris"
+        tools:layout="@layout/fragment_mes_paris" >
+        <action
+            android:id="@+id/action_nav_mes_paris_to_nav_historique"
+            app:destination="@id/nav_historique" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.example.parienligne.vues.ui.map.MapFragment"
+        android:label="@string/map"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/nav_historique"
+        android:name="com.example.parienligne.vues.ui.historique.HistoriqueFragment"
+        android:label="@string/historique"
+        tools:layout="@layout/fragment_historique" >
+        <argument
+            android:name="idParis"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="status"
+            app:argType="string"
+            android:defaultValue="en_cours" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_pari"
+        android:name="com.example.parienligne.vues.ui.parier.PariFragment"
+        android:label="@string/pari"
+        tools:layout="@layout/fragment_pari" >
+        <argument
+            android:name="message"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="idParis"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
+</navigation>

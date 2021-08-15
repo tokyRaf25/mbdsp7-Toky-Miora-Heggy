@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F13413</color>
+    <color name="colorPrimaryDark">#F13413</color>
+    <color name="colorAccent">#F13413</color>
+    <color name="colorLayerDark">#D6000000</color>
+    <color name="colorLayerSemiDark">#60000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextHint">#808080</color>
+    <color name="colorRed">#db1200</color>
+    <color name="colorGreen">#63bc48</color>
+    <color name="colorRedClair">#ec0008</color>
+    <color name="blue">#1D7EC7</color>
+    <color name="disabled">#929292</color>
+
+</resources>

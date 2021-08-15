@@ -1,86 +1,86 @@
 [
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_historique.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\fragment_historique.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_compte.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\fragment_compte.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_scanner.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\activity_scanner.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\row_champ.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\row_champ.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\row_historique.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\row_historique.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\row_add_panier.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\row_add_panier.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_pari.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\fragment_pari.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\row_historique.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\row_historique.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\row.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\row.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_pari.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\fragment_pari.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\fragment_home.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\row_categorie.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\row_categorie.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_map.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\fragment_map.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_accueil.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\activity_accueil.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_scanner.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\activity_scanner.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\fragment_home.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_historique.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\fragment_historique.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\custom_dialog.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_mes_paris.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\fragment_mes_paris.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_compte.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\activity_compte.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\row.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\row.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\row_champ.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\row_champ.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_compte.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\activity_compte.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\app_bar_accueil.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\app_bar_accueil.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\custom_dialog.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\custom_dialog.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\nav_header_accueil.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\nav_header_accueil.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\content_accueil.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\content_accueil.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\row_categorie.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\row_categorie.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_mapping.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\fragment_mapping.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_mapping.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\fragment_mapping.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_login.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\activity_login.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_accueil.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\activity_accueil.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\nav_header_accueil.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\nav_header_accueil.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\row_add_panier.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\row_add_panier.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_map.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\fragment_map.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_login.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\activity_login.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\app_bar_accueil.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\app_bar_accueil.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\content_accueil.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\content_accueil.xml"
     },
     {
-        "merged": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_compte.xml",
-        "source": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\src\\main\\res\\layout\\fragment_compte.xml"
+        "merged": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_mes_paris.xml",
+        "source": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\src\\main\\res\\layout\\fragment_mes_paris.xml"
     }
 ]

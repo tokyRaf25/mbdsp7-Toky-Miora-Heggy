@@ -5,15 +5,12 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/61287e1a1f2c1d96065c1c0f91e524a1/play-services-location-18.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/be961fea754770ae8bb7a2988bac3156/play-services-location-18.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/81a8483596040550b3950843017ed666/play-services-location-18.0.0/res" />
-      <root url="jar://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/81a8483596040550b3950843017ed666/play-services-location-18.0.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/81a8483596040550b3950843017ed666/play-services-location-18.0.0/res" />
-      <root url="file://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/81a8483596040550b3950843017ed666/play-services-location-18.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/81a8483596040550b3950843017ed666/play-services-location-18.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/81a8483596040550b3950843017ed666/play-services-location-18.0.0/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/81a8483596040550b3950843017ed666/play-services-location-18.0.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/81a8483596040550b3950843017ed666/play-services-location-18.0.0/res" />
+      <root url="file://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/transforms-2/files-2.1/81a8483596040550b3950843017ed666/play-services-location-18.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../../autres/gradle-6.7.1/caches/modules-2/files-2.1/com.google.android.gms/play-services-location/18.0.0/21c0fe95fc8d679c87e65c85129c1191a8ca8625/play-services-location-18.0.0-javadoc.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.gms/play-services-location/18.0.0/21c0fe95fc8d679c87e65c85129c1191a8ca8625/play-services-location-18.0.0-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../autres/gradle-6.7.1/caches/modules-2/files-2.1/com.google.android.gms/play-services-location/18.0.0/21c0fe95fc8d679c87e65c85129c1191a8ca8625/play-services-location-18.0.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>
