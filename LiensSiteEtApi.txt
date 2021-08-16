@@ -1,12 +1,18 @@
 Front: https://frontapiapp.herokuapp.com/
 	Login front et mobile: 
-		- user: test
-		-mdp: test
+		- user: toky	
+		-mdp: toky
 
 Back: https://backofficenode.herokuapp.com/login
 	Login: 
 		- user: admin
 		-mdp: admin
+
+Application Windows Banque:
+	Login: 
+		- user: toky
+		-mdp: toky
+
 
 ApiBanque: https://grailsapiapp.herokuapp.com/
 ApiPariEnLigne: https://apinodeapp.herokuapp.com/
