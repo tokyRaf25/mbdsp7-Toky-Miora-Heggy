@@ -1,11 +1,7 @@
 com/example/parienligne/models/PariAllInfo.java
  com.example.parienligne.models.PariAllInfo
-com/example/parienligne/vues/adapter/CategorieItemAdapter.java
- com.example.parienligne.vues.adapter.CategorieItemAdapter
- com.example.parienligne.vues.adapter.CategorieItemAdapter$1
- com.example.parienligne.vues.adapter.CategorieItemAdapter$2
- com.example.parienligne.vues.adapter.CategorieItemAdapter$3
- com.example.parienligne.vues.adapter.CategorieItemAdapter$ItemViewHolder
+com/example/parienligne/databinding/ActivityAccueilBinding.java
+ com.example.parienligne.databinding.ActivityAccueilBinding
 com/example/parienligne/databinding/RowCategorieBinding.java
  com.example.parienligne.databinding.RowCategorieBinding
 com/example/parienligne/databinding/ContentAccueilBinding.java
@@ -78,19 +74,8 @@ com/example/parienligne/services/IServiceClient.java
  com.example.parienligne.services.IServiceClient
 com/example/parienligne/services/IServiceResultatPredit.java
  com.example.parienligne.services.IServiceResultatPredit
-com/example/parienligne/vues/adapter/PanierItemAdapter.java
- com.example.parienligne.vues.adapter.PanierItemAdapter
- com.example.parienligne.vues.adapter.PanierItemAdapter$1
- com.example.parienligne.vues.adapter.PanierItemAdapter$2
- com.example.parienligne.vues.adapter.PanierItemAdapter$3
- com.example.parienligne.vues.adapter.PanierItemAdapter$4
- com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder
- com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$1
- com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$2
- com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$3
- com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$4
- com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$5
- com.example.parienligne.vues.adapter.PanierItemAdapter$OnItemClickListener
+com/example/parienligne/services/IServiceCategorie.java
+ com.example.parienligne.services.IServiceCategorie
 com/example/parienligne/models/UserQrCode.java
  com.example.parienligne.models.UserQrCode
 com/example/parienligne/databinding/CustomDialogBinding.java
@@ -221,7 +206,22 @@ com/example/parienligne/models/InfoClient.java
  com.example.parienligne.models.InfoClient
 com/example/parienligne/databinding/RowAddPanierBinding.java
  com.example.parienligne.databinding.RowAddPanierBinding
-com/example/parienligne/services/IServiceCategorie.java
- com.example.parienligne.services.IServiceCategorie
-com/example/parienligne/databinding/ActivityAccueilBinding.java
- com.example.parienligne.databinding.ActivityAccueilBinding
+com/example/parienligne/vues/adapter/CategorieItemAdapter.java
+ com.example.parienligne.vues.adapter.CategorieItemAdapter
+ com.example.parienligne.vues.adapter.CategorieItemAdapter$1
+ com.example.parienligne.vues.adapter.CategorieItemAdapter$2
+ com.example.parienligne.vues.adapter.CategorieItemAdapter$3
+ com.example.parienligne.vues.adapter.CategorieItemAdapter$ItemViewHolder
+com/example/parienligne/vues/adapter/PanierItemAdapter.java
+ com.example.parienligne.vues.adapter.PanierItemAdapter
+ com.example.parienligne.vues.adapter.PanierItemAdapter$1
+ com.example.parienligne.vues.adapter.PanierItemAdapter$2
+ com.example.parienligne.vues.adapter.PanierItemAdapter$3
+ com.example.parienligne.vues.adapter.PanierItemAdapter$4
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$1
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$2
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$3
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$4
+ com.example.parienligne.vues.adapter.PanierItemAdapter$ItemViewHolder$5
+ com.example.parienligne.vues.adapter.PanierItemAdapter$OnItemClickListener
