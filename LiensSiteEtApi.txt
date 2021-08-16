@@ -1,0 +1,12 @@
+Front: https://frontapiapp.herokuapp.com/
+	Login front et mobile: 
+		- user: test
+		-mdp: test
+
+Back: https://backofficenode.herokuapp.com/login
+	Login: 
+		- user: admin
+		-mdp: admin
+
+ApiBanque: https://grailsapiapp.herokuapp.com/
+ApiPariEnLigne: https://apinodeapp.herokuapp.com/
