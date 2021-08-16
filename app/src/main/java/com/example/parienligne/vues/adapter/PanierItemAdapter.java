@@ -115,7 +115,7 @@ public class PanierItemAdapter extends RecyclerView.Adapter<PanierItemAdapter.It
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         for(PanierItem item : itemList){
-                            TextView textMiseTotal = view.findViewById(R.id.txt_gain_total);
+                            TextView textMiseTotal = view.findViewById(R.id.txt_mise_total);
                             double miseTotal = Double.parseDouble(textMiseTotal.getText().toString().split(" ")[0]);
                             double gain = item.getCote() * item.getMise();
                             Doc_Resultats_predits resultat = new Doc_Resultats_predits(SessionSharedPreferences.getIdClient(getActivity()),item.getId_champ(),idPariSport, item.getCote(), item.getMise(), gain,0, now.toString(), miseTotal );
