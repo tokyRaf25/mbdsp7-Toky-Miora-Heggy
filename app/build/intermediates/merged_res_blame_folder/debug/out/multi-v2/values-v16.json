@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\rtoky\\AndroidStudioProjects\\projetAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "D:\\ProjetTPT\\AndroidFinal\\mbdsp7-Toky-Miora-Heggy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\autres\\gradle-6.7.1\\caches\\transforms-2\\files-2.1\\508182b37be00e2ecc27d7eea417e948\\appcompat-1.3.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\rainl\\.gradle\\caches\\transforms-2\\files-2.1\\508182b37be00e2ecc27d7eea417e948\\appcompat-1.3.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\autres\\gradle-6.7.1\\caches\\transforms-2\\files-2.1\\6aa83178dbbdd42b98a883eb47f8d06c\\core-1.5.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\rainl\\.gradle\\caches\\transforms-2\\files-2.1\\6aa83178dbbdd42b98a883eb47f8d06c\\core-1.5.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
